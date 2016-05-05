@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_hijoprodigo_uj_dominio_Empresas" object="${empresas}" path="/empresases" z="k/t2MpvSsU4svrYrYHO7hTjTL90=">
+        <field:display field="nombre_" id="s_es_uca_hijoprodigo_uj_dominio_Empresas_nombre_" object="${empresas}" z="+UjJYp5m0EvxMwR/4e9aVKPK1t0="/>
+        <field:display field="cif_" id="s_es_uca_hijoprodigo_uj_dominio_Empresas_cif_" object="${empresas}" z="KocVUr4Pljlj/C7XtMIVGDo37WE="/>
+        <field:display field="email_" id="s_es_uca_hijoprodigo_uj_dominio_Empresas_email_" object="${empresas}" z="MfdpiIXJlqPCJ5OezN3/yUoym8M="/>
+        <field:display field="actividad_profesional_" id="s_es_uca_hijoprodigo_uj_dominio_Empresas_actividad_profesional_" object="${empresas}" z="1ayj2pJnackRhDoy7e63i05AyjA="/>
+        <field:display field="empleados_" id="s_es_uca_hijoprodigo_uj_dominio_Empresas_empleados_" object="${empresas}" z="JInB3jRDE57+VKR6a0Xl+z55S3g="/>
+        <field:display field="localizaciones_" id="s_es_uca_hijoprodigo_uj_dominio_Empresas_localizaciones_" object="${empresas}" z="sdbID38PCGH1QUgVgYSO5VVMxKM="/>
+    </page:show>
+</div>

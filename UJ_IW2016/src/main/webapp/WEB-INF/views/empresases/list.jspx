@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_hijoprodigo_uj_dominio_Empresas" items="${empresases}" z="gUBayiKKyil7dL5UJPTSDjlwjzc=">
+        <table:table data="${empresases}" id="l_es_uca_hijoprodigo_uj_dominio_Empresas" path="/empresases" z="aZ7LmpR/UWWlHV41eraxUA0kJsc=">
+            <table:column id="c_es_uca_hijoprodigo_uj_dominio_Empresas_nombre_" property="nombre_" z="on6HfYKyvd9zCncXWD8eNKCVfUk="/>
+            <table:column id="c_es_uca_hijoprodigo_uj_dominio_Empresas_cif_" property="cif_" z="wXa1X6e3ZyzsXy6P6efnWgLnetg="/>
+            <table:column id="c_es_uca_hijoprodigo_uj_dominio_Empresas_email_" property="email_" z="KjltHgG1Wi/hH89GVB/Flgub1JE="/>
+            <table:column id="c_es_uca_hijoprodigo_uj_dominio_Empresas_actividad_profesional_" property="actividad_profesional_" z="LlZUrBwQf+HRp1Paj4afGJEc90Q="/>
+            <table:column id="c_es_uca_hijoprodigo_uj_dominio_Empresas_empleados_" property="empleados_" z="PiRczHQ96hsgIr/uazXGSEC86J8="/>
+            <table:column id="c_es_uca_hijoprodigo_uj_dominio_Empresas_localizaciones_" property="localizaciones_" z="ekBXi23aMqynYQb1JVjJrpsxJ/c="/>
+        </table:table>
+    </page:list>
+</div>

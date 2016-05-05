@@ -1,0 +1,17 @@
+<aspectj>
+<aspects>
+<aspect name="es.uca.hijoprodigo.uj.dominio.Empresas_Roo_Configurable"/>
+<aspect name="es.uca.hijoprodigo.uj.dominio.Localizaciones_Roo_JavaBean"/>
+<aspect name="es.uca.hijoprodigo.uj.dominio.Localizaciones_Roo_Jpa_ActiveRecord"/>
+<aspect name="es.uca.hijoprodigo.uj.dominio.Empresas_Roo_Jpa_ActiveRecord"/>
+<aspect name="es.uca.hijoprodigo.uj.web.ApplicationConversionServiceFactoryBean_Roo_ConversionService"/>
+<aspect name="es.uca.hijoprodigo.uj.dominio.Empresas_Roo_ToString"/>
+<aspect name="es.uca.hijoprodigo.uj.dominio.Localizaciones_Roo_Jpa_Entity"/>
+<aspect name="es.uca.hijoprodigo.uj.dominio.Empresas_Roo_JavaBean"/>
+<aspect name="es.uca.hijoprodigo.uj.dominio.Localizaciones_Roo_ToString"/>
+<aspect name="es.uca.hijoprodigo.uj.dominio.Localizaciones_Roo_Configurable"/>
+<aspect name="es.uca.hijoprodigo.uj.web.EmpresasController_Roo_Controller"/>
+<aspect name="es.uca.hijoprodigo.uj.dominio.Empresas_Roo_Jpa_Entity"/>
+</aspects>
+</aspectj>
+

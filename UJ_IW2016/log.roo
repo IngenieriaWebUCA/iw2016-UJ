@@ -1,0 +1,29 @@
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-05 22:08:16
+project --topLevelPackage es.uca.hijoprodigo.uj --projectName UJ_IW2016 --java 6 --packaging JAR
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log closed at 2016-05-05 22:08:17
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-05 22:08:19
+
+persistence setup --database MYSQL --provider HIBERNATE
+hint
+hint
+hint 
+hint controllers
+hint controller
+download status
+download accept terms of use
+download status
+hint
+entity jpa --class es.uca.hijoprodigo.dominio.Empresas
+field string --fieldName nombre_
+field string --fieldName cif_
+field string --fieldName email_
+field string --fieldName actividad_profesional_
+field number --type int --fieldName empleados_
+entity jpa --class ~.Localizaciones
+hint undo
+entity jpa --class ~.dominio.Localizaciones
+field string Direccion
+field string Poblacion_
+focus --class ~.dominio.Empresas
+field set --fieldName localizaciones_ --type ~dominio.Localizaciones
+controller scaffold --class ~.web.EmpresasController --entity ~.dominio.Empresas
