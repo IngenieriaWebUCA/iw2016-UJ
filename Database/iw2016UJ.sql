@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.12deb2+deb8u1build0.15.04.1
+-- version 4.2.12deb2+deb8u1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 12, 2016 at 07:16 PM
--- Server version: 5.6.28-0ubuntu0.15.04.1
--- PHP Version: 5.6.4-4ubuntu6.4
+-- Servidor: localhost
+-- Tiempo de generación: 15-05-2016 a las 15:45:45
+-- Versión del servidor: 5.5.49-0+deb8u1
+-- Versión de PHP: 5.6.20-0+deb8u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `iw2016UJ`
+-- Base de datos: `iw2016UJ`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ciudad`
+-- Estructura de tabla para la tabla `ciudad`
 --
 
 CREATE TABLE IF NOT EXISTS `ciudad` (
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `ciudad` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demandante`
+-- Estructura de tabla para la tabla `demandante`
 --
 
 CREATE TABLE IF NOT EXISTS `demandante` (
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `demandante` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `empresa`
+-- Estructura de tabla para la tabla `empresa`
 --
 
 CREATE TABLE IF NOT EXISTS `empresa` (
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `empresa` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `estado`
+-- Estructura de tabla para la tabla `estado`
 --
 
 CREATE TABLE IF NOT EXISTS `estado` (
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `estado` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `experiencia_profesional`
+-- Estructura de tabla para la tabla `experiencia_profesional`
 --
 
 CREATE TABLE IF NOT EXISTS `experiencia_profesional` (
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `experiencia_profesional` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `formacion_academica`
+-- Estructura de tabla para la tabla `formacion_academica`
 --
 
 CREATE TABLE IF NOT EXISTS `formacion_academica` (
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `formacion_academica` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `inscripcion`
+-- Estructura de tabla para la tabla `inscripcion`
 --
 
 CREATE TABLE IF NOT EXISTS `inscripcion` (
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `inscripcion` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `localizacion`
+-- Estructura de tabla para la tabla `localizacion`
 --
 
 CREATE TABLE IF NOT EXISTS `localizacion` (
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `localizacion` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oferta_de_trabajo`
+-- Estructura de tabla para la tabla `oferta_de_trabajo`
 --
 
 CREATE TABLE IF NOT EXISTS `oferta_de_trabajo` (
@@ -151,10 +151,11 @@ CREATE TABLE IF NOT EXISTS `oferta_de_trabajo` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oferta_trabajo_titulos`
+-- Estructura de tabla para la tabla `oferta_trabajo_titulos`
 --
 
 CREATE TABLE IF NOT EXISTS `oferta_trabajo_titulos` (
+`id` int(11) NOT NULL,
   `id_oferta_de_trabajo` int(11) NOT NULL,
   `id_titulo_academico` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -162,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `oferta_trabajo_titulos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perfil`
+-- Estructura de tabla para la tabla `perfil`
 --
 
 CREATE TABLE IF NOT EXISTS `perfil` (
@@ -175,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `perfil` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `puesto_de_trabajo`
+-- Estructura de tabla para la tabla `puesto_de_trabajo`
 --
 
 CREATE TABLE IF NOT EXISTS `puesto_de_trabajo` (
@@ -186,10 +187,11 @@ CREATE TABLE IF NOT EXISTS `puesto_de_trabajo` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `puesto_trabajo_perfil`
+-- Estructura de tabla para la tabla `puesto_trabajo_perfil`
 --
 
 CREATE TABLE IF NOT EXISTS `puesto_trabajo_perfil` (
+`id` int(11) NOT NULL,
   `id_puesto_de_trabajo` int(11) NOT NULL,
   `id_perfil` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -197,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `puesto_trabajo_perfil` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `titulos_academicos`
+-- Estructura de tabla para la tabla `titulos_academicos`
 --
 
 CREATE TABLE IF NOT EXISTS `titulos_academicos` (
@@ -208,205 +210,221 @@ CREATE TABLE IF NOT EXISTS `titulos_academicos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `titulos_formacion`
+-- Estructura de tabla para la tabla `titulos_formacion`
 --
 
 CREATE TABLE IF NOT EXISTS `titulos_formacion` (
+`id` int(11) NOT NULL,
   `id_titulos_academicos` int(11) NOT NULL,
   `id_formacion_academica` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `ciudad`
+-- Indices de la tabla `ciudad`
 --
 ALTER TABLE `ciudad`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `demandante`
+-- Indices de la tabla `demandante`
 --
 ALTER TABLE `demandante`
  ADD PRIMARY KEY (`id`), ADD KEY `id_perfil` (`id_perfil`);
 
 --
--- Indexes for table `empresa`
+-- Indices de la tabla `empresa`
 --
 ALTER TABLE `empresa`
  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `cif` (`cif`);
 
 --
--- Indexes for table `estado`
+-- Indices de la tabla `estado`
 --
 ALTER TABLE `estado`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `experiencia_profesional`
+-- Indices de la tabla `experiencia_profesional`
 --
 ALTER TABLE `experiencia_profesional`
  ADD PRIMARY KEY (`id`), ADD KEY `id_puesto_de_trabajo` (`id_puesto_de_trabajo`), ADD KEY `id_perfil` (`id_perfil`);
 
 --
--- Indexes for table `formacion_academica`
+-- Indices de la tabla `formacion_academica`
 --
 ALTER TABLE `formacion_academica`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `inscripcion`
+-- Indices de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
  ADD PRIMARY KEY (`id`), ADD KEY `id_oferta_de_trabajo` (`id_oferta_de_trabajo`,`id_demandante`), ADD KEY `id_demandante` (`id_demandante`);
 
 --
--- Indexes for table `localizacion`
+-- Indices de la tabla `localizacion`
 --
 ALTER TABLE `localizacion`
  ADD PRIMARY KEY (`id`), ADD KEY `id_ciudad` (`id_ciudad`), ADD KEY `id_empresa` (`id_empresa`);
 
 --
--- Indexes for table `oferta_de_trabajo`
+-- Indices de la tabla `oferta_de_trabajo`
 --
 ALTER TABLE `oferta_de_trabajo`
  ADD PRIMARY KEY (`id`), ADD KEY `id_estado` (`id_estado`,`id_empresa`), ADD KEY `id_titulos_academicos` (`id_puesto_de_trabajo`), ADD KEY `id_empresa` (`id_empresa`), ADD KEY `id_puesto_de_trabajo` (`id_puesto_de_trabajo`);
 
 --
--- Indexes for table `oferta_trabajo_titulos`
+-- Indices de la tabla `oferta_trabajo_titulos`
 --
 ALTER TABLE `oferta_trabajo_titulos`
- ADD KEY `id_oferta_de_trabajo` (`id_oferta_de_trabajo`,`id_titulo_academico`), ADD KEY `id_titulo_academico` (`id_titulo_academico`);
+ ADD PRIMARY KEY (`id`), ADD KEY `id_oferta_de_trabajo` (`id_oferta_de_trabajo`,`id_titulo_academico`), ADD KEY `id_titulo_academico` (`id_titulo_academico`);
 
 --
--- Indexes for table `perfil`
+-- Indices de la tabla `perfil`
 --
 ALTER TABLE `perfil`
  ADD PRIMARY KEY (`id`), ADD KEY `id_puesto_de_trabajo` (`id_formacion_academica`), ADD KEY `id_formacion_academica` (`id_formacion_academica`);
 
 --
--- Indexes for table `puesto_de_trabajo`
+-- Indices de la tabla `puesto_de_trabajo`
 --
 ALTER TABLE `puesto_de_trabajo`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `puesto_trabajo_perfil`
+-- Indices de la tabla `puesto_trabajo_perfil`
 --
 ALTER TABLE `puesto_trabajo_perfil`
- ADD KEY `id_puesto_de_trabajo` (`id_puesto_de_trabajo`,`id_perfil`), ADD KEY `id_perfil` (`id_perfil`);
+ ADD PRIMARY KEY (`id`), ADD KEY `id_puesto_de_trabajo` (`id_puesto_de_trabajo`,`id_perfil`), ADD KEY `id_perfil` (`id_perfil`);
 
 --
--- Indexes for table `titulos_academicos`
+-- Indices de la tabla `titulos_academicos`
 --
 ALTER TABLE `titulos_academicos`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `titulos_formacion`
+-- Indices de la tabla `titulos_formacion`
 --
 ALTER TABLE `titulos_formacion`
- ADD KEY `id_titulos_academicos` (`id_titulos_academicos`), ADD KEY `id_formacion_academica` (`id_formacion_academica`);
+ ADD PRIMARY KEY (`id`), ADD KEY `id_titulos_academicos` (`id_titulos_academicos`), ADD KEY `id_formacion_academica` (`id_formacion_academica`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `ciudad`
+-- AUTO_INCREMENT de la tabla `ciudad`
 --
 ALTER TABLE `ciudad`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `demandante`
+-- AUTO_INCREMENT de la tabla `demandante`
 --
 ALTER TABLE `demandante`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `empresa`
+-- AUTO_INCREMENT de la tabla `empresa`
 --
 ALTER TABLE `empresa`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `estado`
+-- AUTO_INCREMENT de la tabla `estado`
 --
 ALTER TABLE `estado`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `experiencia_profesional`
+-- AUTO_INCREMENT de la tabla `experiencia_profesional`
 --
 ALTER TABLE `experiencia_profesional`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `formacion_academica`
+-- AUTO_INCREMENT de la tabla `formacion_academica`
 --
 ALTER TABLE `formacion_academica`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `inscripcion`
+-- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `localizacion`
+-- AUTO_INCREMENT de la tabla `localizacion`
 --
 ALTER TABLE `localizacion`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `oferta_de_trabajo`
+-- AUTO_INCREMENT de la tabla `oferta_de_trabajo`
 --
 ALTER TABLE `oferta_de_trabajo`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `perfil`
+-- AUTO_INCREMENT de la tabla `oferta_trabajo_titulos`
+--
+ALTER TABLE `oferta_trabajo_titulos`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `puesto_de_trabajo`
+-- AUTO_INCREMENT de la tabla `puesto_de_trabajo`
 --
 ALTER TABLE `puesto_de_trabajo`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `titulos_academicos`
+-- AUTO_INCREMENT de la tabla `puesto_trabajo_perfil`
+--
+ALTER TABLE `puesto_trabajo_perfil`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `titulos_academicos`
 --
 ALTER TABLE `titulos_academicos`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT de la tabla `titulos_formacion`
+--
+ALTER TABLE `titulos_formacion`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `demandante`
+-- Filtros para la tabla `demandante`
 --
 ALTER TABLE `demandante`
 ADD CONSTRAINT `demandante_ibfk_1` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `experiencia_profesional`
+-- Filtros para la tabla `experiencia_profesional`
 --
 ALTER TABLE `experiencia_profesional`
 ADD CONSTRAINT `experiencia_profesional_ibfk_1` FOREIGN KEY (`id_puesto_de_trabajo`) REFERENCES `puesto_de_trabajo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `experiencia_profesional_ibfk_2` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `inscripcion`
+-- Filtros para la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
 ADD CONSTRAINT `inscripcion_ibfk_1` FOREIGN KEY (`id_oferta_de_trabajo`) REFERENCES `oferta_de_trabajo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `inscripcion_ibfk_2` FOREIGN KEY (`id_demandante`) REFERENCES `demandante` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `localizacion`
+-- Filtros para la tabla `localizacion`
 --
 ALTER TABLE `localizacion`
 ADD CONSTRAINT `localizacion_ibfk_1` FOREIGN KEY (`id_ciudad`) REFERENCES `ciudad` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `localizacion_ibfk_2` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `oferta_de_trabajo`
+-- Filtros para la tabla `oferta_de_trabajo`
 --
 ALTER TABLE `oferta_de_trabajo`
 ADD CONSTRAINT `oferta_de_trabajo_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -414,27 +432,27 @@ ADD CONSTRAINT `oferta_de_trabajo_ibfk_2` FOREIGN KEY (`id_empresa`) REFERENCES 
 ADD CONSTRAINT `oferta_de_trabajo_ibfk_4` FOREIGN KEY (`id_puesto_de_trabajo`) REFERENCES `puesto_de_trabajo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `oferta_trabajo_titulos`
+-- Filtros para la tabla `oferta_trabajo_titulos`
 --
 ALTER TABLE `oferta_trabajo_titulos`
 ADD CONSTRAINT `oferta_trabajo_titulos_ibfk_1` FOREIGN KEY (`id_oferta_de_trabajo`) REFERENCES `oferta_de_trabajo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `oferta_trabajo_titulos_ibfk_2` FOREIGN KEY (`id_titulo_academico`) REFERENCES `titulos_academicos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `perfil`
+-- Filtros para la tabla `perfil`
 --
 ALTER TABLE `perfil`
 ADD CONSTRAINT `perfil_ibfk_2` FOREIGN KEY (`id_formacion_academica`) REFERENCES `formacion_academica` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `puesto_trabajo_perfil`
+-- Filtros para la tabla `puesto_trabajo_perfil`
 --
 ALTER TABLE `puesto_trabajo_perfil`
 ADD CONSTRAINT `puesto_trabajo_perfil_ibfk_1` FOREIGN KEY (`id_puesto_de_trabajo`) REFERENCES `puesto_de_trabajo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `puesto_trabajo_perfil_ibfk_2` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `titulos_formacion`
+-- Filtros para la tabla `titulos_formacion`
 --
 ALTER TABLE `titulos_formacion`
 ADD CONSTRAINT `titulos_formacion_ibfk_1` FOREIGN KEY (`id_titulos_academicos`) REFERENCES `titulos_academicos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
