@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_uj2016_dominio_OfertaTrabajoTitulos" object="${ofertatrabajotitulos}" path="/ofertatrabajotituloses" z="w0N8I9a0opCGXCjMjm2D0aNiNK0=">
+        <field:display field="idOfertaDeTrabajo" id="s_es_uca_iw_uj2016_dominio_OfertaTrabajoTitulos_idOfertaDeTrabajo" object="${ofertatrabajotitulos}" z="wpAmKBOF/OgdQOQpsODcDIyOE2w="/>
+        <field:display field="idTituloAcademico" id="s_es_uca_iw_uj2016_dominio_OfertaTrabajoTitulos_idTituloAcademico" object="${ofertatrabajotitulos}" z="z65rcKpO2OEIRGEUNSSHHxKFyVo="/>
+    </page:show>
+</div>

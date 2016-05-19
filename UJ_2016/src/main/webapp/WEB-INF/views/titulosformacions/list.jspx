@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_uj2016_dominio_TitulosFormacion" items="${titulosformacions}" z="X/GS9n+uJt5OBq2K0k5vDfT5aZc=">
+        <table:table data="${titulosformacions}" id="l_es_uca_iw_uj2016_dominio_TitulosFormacion" path="/titulosformacions" z="rZkV8M477Nspm5TGe1xDVT+KdUg=">
+            <table:column id="c_es_uca_iw_uj2016_dominio_TitulosFormacion_idTitulosAcademicos" property="idTitulosAcademicos" z="VUevC/daR/hPYvt8SVzckSDf3rw="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_TitulosFormacion_idFormacionAcademica" property="idFormacionAcademica" z="0B1DFdAz7DHGsNdHkkhiareNcxc="/>
+        </table:table>
+    </page:list>
+</div>

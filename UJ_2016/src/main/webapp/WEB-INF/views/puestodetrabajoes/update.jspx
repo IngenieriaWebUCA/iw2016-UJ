@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_iw_uj2016_dominio_PuestoDeTrabajo" modelAttribute="puestoDeTrabajo" path="/puestodetrabajoes" versionField="none" z="zMmNZeuSedyTaQnncQEsMODDaZE=">
+        <field:simple field="experienciaProfesionals" id="c_es_uca_iw_uj2016_dominio_PuestoDeTrabajo_experienciaProfesionals" messageCode="entity_reference_not_managed" messageCodeAttribute="Experiencia Profesional" z="Mc/zgBEBS3H1Iw+Dw4lyE0OIbPw="/>
+        <field:simple field="ofertaDeTrabajoes" id="c_es_uca_iw_uj2016_dominio_PuestoDeTrabajo_ofertaDeTrabajoes" messageCode="entity_reference_not_managed" messageCodeAttribute="Oferta De Trabajo" z="hphLrTtsfDFaAipjSXUoPqjtl7E="/>
+        <field:simple field="puestoTrabajoPerfils" id="c_es_uca_iw_uj2016_dominio_PuestoDeTrabajo_puestoTrabajoPerfils" messageCode="entity_reference_not_managed" messageCodeAttribute="Puesto Trabajo Perfil" z="PQ6NczXMuNKPbEIAklRaog5svGk="/>
+        <field:input field="nombre" id="c_es_uca_iw_uj2016_dominio_PuestoDeTrabajo_nombre" required="true" z="i4NlL2Lofs3vwkN4hQW1ggXtQxA="/>
+    </form:update>
+</div>

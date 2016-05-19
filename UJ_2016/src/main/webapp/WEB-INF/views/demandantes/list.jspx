@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_uj2016_dominio_Demandante" items="${demandantes}" z="9vwX3x2o5mnGjeN2yhq7aoasPZ8=">
+        <table:table data="${demandantes}" id="l_es_uca_iw_uj2016_dominio_Demandante" path="/demandantes" z="mUgKX9D81xYF/2zyoyEhOUz+X8A=">
+            <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_idPerfil" property="idPerfil" z="eulyN87QmsRqtZVeRKJW9CgqfOU="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_nombre" property="nombre" z="7xwbEKRQzzOeo0FUvKr0gvc+B3M="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_apellidos" property="apellidos" z="KdoT6VvJOVMaipmZUOnV1oOqkrU="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_dni" property="dni" z="ZFh/CIOOf9ltGvltrv1ffEpn3y0="/>
+            <table:column date="true" dateTimePattern="${demandante_fechanacimiento_date_format}" id="c_es_uca_iw_uj2016_dominio_Demandante_fechaNacimiento" property="fechaNacimiento" z="uC+72bG1dAFoHNZms3g1B0fwUv8="/>
+        </table:table>
+    </page:list>
+</div>

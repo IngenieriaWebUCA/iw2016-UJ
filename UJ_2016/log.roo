@@ -7,3 +7,16 @@ persistence setup --provider HIBERNATE --database MYSQL
 osgi start --url file:/home/emilio/Documentos/sts-bundle/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-bin.jar
 database reverse engineer --package ~.dominio --schema no-schema-required
 // Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2016-05-15 15:42:11
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2016-05-19 16:16:10
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2016-05-19 16:19:38
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-19 16:19:47
+web mvc setup
+web mvc all --package ~.web
+web mvc finder all
+web mvc language --code es
+web mvc language --code it
+web mvc language --code es
+web mvc jquery setup
+// [failed] web mvc jquery all
+web mvc datatables setup
+web mvc bootstrap setup

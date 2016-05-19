@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_uj2016_dominio_Localizacion" items="${localizacions}" z="ciy7LWrr2FdQeY+ESui3JaaWeQ4=">
+        <table:table data="${localizacions}" id="l_es_uca_iw_uj2016_dominio_Localizacion" path="/localizacions" z="+8WKoQGkINDjBW0naFyR0tDcm/Q=">
+            <table:column id="c_es_uca_iw_uj2016_dominio_Localizacion_idCiudad" property="idCiudad" z="MGG5GULiPdI3vdych9Quq/xzRKA="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Localizacion_idEmpresa" property="idEmpresa" z="4yn/zzt+jGHpeIALPlJTj6En2g8="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Localizacion_direccion" property="direccion" z="CoXxY9boB2+P7CFwd/x7TcbXLmc="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_iw_uj2016_dominio_ExperienciaProfesional" modelAttribute="experienciaProfesional" path="/experienciaprofesionals" versionField="none" z="gZu+7y4Uh7Plix5LAOwhKZgRSow=">
+        <field:select field="idPuestoDeTrabajo" id="c_es_uca_iw_uj2016_dominio_ExperienciaProfesional_idPuestoDeTrabajo" itemValue="id" items="${puestodetrabajoes}" path="/puestodetrabajoes" z="Bv2myWIb7VcnKJhLj/WRvFGPfDY="/>
+        <field:select field="idPerfil" id="c_es_uca_iw_uj2016_dominio_ExperienciaProfesional_idPerfil" itemValue="id" items="${perfils}" path="/perfils" z="39yiLK7K3N68l7xcVzRiTTyE70c="/>
+        <field:input field="nombreEmpresa" id="c_es_uca_iw_uj2016_dominio_ExperienciaProfesional_nombreEmpresa" required="true" z="HZUD4iez+LbfMeyNTJtxhopfr94="/>
+        <field:datetime dateTimePattern="${experienciaProfesional_fechainicio_date_format}" field="fechaInicio" id="c_es_uca_iw_uj2016_dominio_ExperienciaProfesional_fechaInicio" required="true" z="Lxx6k5Kqlu58Wlj1ym/gCdozp6w="/>
+        <field:datetime dateTimePattern="${experienciaProfesional_fechafin_date_format}" field="fechaFin" id="c_es_uca_iw_uj2016_dominio_ExperienciaProfesional_fechaFin" required="true" z="lC7gA7gi1Wr/OPV550mwiIZQnEc="/>
+    </form:update>
+</div>

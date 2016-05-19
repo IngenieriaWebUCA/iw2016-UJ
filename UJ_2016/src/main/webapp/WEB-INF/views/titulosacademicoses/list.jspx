@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_uj2016_dominio_TitulosAcademicos" items="${titulosacademicoses}" z="1/BkA7emW5a4E0P4uDYFstzBxtg=">
+        <table:table data="${titulosacademicoses}" id="l_es_uca_iw_uj2016_dominio_TitulosAcademicos" path="/titulosacademicoses" z="eVcHcTGOTrxmATk00BxMF7pYL8w=">
+            <table:column id="c_es_uca_iw_uj2016_dominio_TitulosAcademicos_nombre" property="nombre" z="pVE0xdnmlrrA4uqGk8XvmO/W2G4="/>
+        </table:table>
+    </page:list>
+</div>

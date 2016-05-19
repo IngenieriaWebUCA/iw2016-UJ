@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_uj2016_dominio_TitulosAcademicos" object="${titulosacademicos}" path="/titulosacademicoses" z="NcELqn9hJENyDCf2XScTc/PbcJ4=">
+        <field:display field="nombre" id="s_es_uca_iw_uj2016_dominio_TitulosAcademicos_nombre" object="${titulosacademicos}" z="iPjFARLmjWjWaE+1jhp9wsxS1T8="/>
+    </page:show>
+</div>

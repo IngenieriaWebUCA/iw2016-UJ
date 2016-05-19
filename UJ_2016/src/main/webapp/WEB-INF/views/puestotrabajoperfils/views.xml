@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="puestotrabajoperfils/list">
+        <put-attribute name="body" value="/WEB-INF/views/puestotrabajoperfils/list.jspx"/>
+    </definition>
+<definition extends="default" name="puestotrabajoperfils/show">
+        <put-attribute name="body" value="/WEB-INF/views/puestotrabajoperfils/show.jspx"/>
+    </definition>
+<definition extends="default" name="puestotrabajoperfils/create">
+        <put-attribute name="body" value="/WEB-INF/views/puestotrabajoperfils/create.jspx"/>
+    </definition>
+<definition extends="default" name="puestotrabajoperfils/update">
+        <put-attribute name="body" value="/WEB-INF/views/puestotrabajoperfils/update.jspx"/>
+    </definition>
+</tiles-definitions>
