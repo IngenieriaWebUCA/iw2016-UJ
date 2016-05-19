@@ -8,7 +8,7 @@
             <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_nombre" property="nombre" z="7xwbEKRQzzOeo0FUvKr0gvc+B3M="/>
             <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_apellidos" property="apellidos" z="KdoT6VvJOVMaipmZUOnV1oOqkrU="/>
             <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_dni" property="dni" z="ZFh/CIOOf9ltGvltrv1ffEpn3y0="/>
-            <table:column date="true" dateTimePattern="${demandante_fechanacimiento_date_format}" id="c_es_uca_iw_uj2016_dominio_Demandante_fechaNacimiento" property="fechaNacimiento" z="uC+72bG1dAFoHNZms3g1B0fwUv8="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_idUsuario" property="idUsuario" z="hQ0kUhCiBbQzdRjvNBmBF1hLH0s="/>
         </table:table>
     </page:list>
 </div>

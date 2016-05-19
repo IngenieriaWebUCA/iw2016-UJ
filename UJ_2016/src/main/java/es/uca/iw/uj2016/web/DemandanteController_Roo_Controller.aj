@@ -6,6 +6,7 @@ package es.uca.iw.uj2016.web;
 import es.uca.iw.uj2016.dominio.Demandante;
 import es.uca.iw.uj2016.dominio.Inscripcion;
 import es.uca.iw.uj2016.dominio.Perfil;
+import es.uca.iw.uj2016.dominio.Usuario;
 import es.uca.iw.uj2016.web.DemandanteController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -99,6 +100,7 @@ privileged aspect DemandanteController_Roo_Controller {
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("inscripcions", Inscripcion.findAllInscripcions());
         uiModel.addAttribute("perfils", Perfil.findAllPerfils());
+        uiModel.addAttribute("usuarios", Usuario.findAllUsuarios());
     }
     
     String DemandanteController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

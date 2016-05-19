@@ -7,6 +7,6 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooJpaActiveRecord(versionField = "", table = "empresa")
 @RooDbManaged(automaticallyDelete = true)
-@RooToString(excludeFields = { "localizacions", "ofertaDeTrabajoes" })
+@RooToString(excludeFields = { "localizacions", "ofertaDeTrabajoes", "idUsuario" })
 public class Empresa {
 }

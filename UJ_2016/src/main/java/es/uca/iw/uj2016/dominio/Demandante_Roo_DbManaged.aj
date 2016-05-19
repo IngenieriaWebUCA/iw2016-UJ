@@ -6,6 +6,7 @@ package es.uca.iw.uj2016.dominio;
 import es.uca.iw.uj2016.dominio.Demandante;
 import es.uca.iw.uj2016.dominio.Inscripcion;
 import es.uca.iw.uj2016.dominio.Perfil;
+import es.uca.iw.uj2016.dominio.Usuario;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -22,6 +23,10 @@ privileged aspect Demandante_Roo_DbManaged {
     
     @OneToMany(mappedBy = "idDemandante", cascade = CascadeType.ALL)
     private Set<Inscripcion> Demandante.inscripcions;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
+    private Usuario Demandante.idUsuario;
     
     @ManyToOne
     @JoinColumn(name = "id_perfil", referencedColumnName = "id", nullable = false)
@@ -67,6 +72,14 @@ privileged aspect Demandante_Roo_DbManaged {
     
     public void Demandante.setInscripcions(Set<Inscripcion> inscripcions) {
         this.inscripcions = inscripcions;
+    }
+    
+    public Usuario Demandante.getIdUsuario() {
+        return idUsuario;
+    }
+    
+    public void Demandante.setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
     
     public Perfil Demandante.getIdPerfil() {

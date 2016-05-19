@@ -29,7 +29,12 @@
         <column name="direccion" primaryKey="false" required="true" scale="0" size="128" type="12,VARCHAR"/>
         <column name="email" primaryKey="false" required="true" scale="0" size="128" type="12,VARCHAR"/>
         <column name="telefono" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
+        <column name="id_usuario" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
         <column name="id_perfil" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
+        <foreign-key foreignTable="usuario" name="demandante_ibfk_2" onDelete="cascade" onUpdate="cascade">
+            <option key="exported" value="false"/>
+            <reference foreign="id" local="id_usuario"/>
+        </foreign-key>
         <foreign-key foreignTable="perfil" name="demandante_ibfk_1" onDelete="cascade" onUpdate="cascade">
             <option key="exported" value="false"/>
             <reference foreign="id" local="id_perfil"/>
@@ -44,6 +49,9 @@
         <index name="id_perfil">
             <index-column name="id_perfil"/>
         </index>
+        <index name="id_usuario">
+            <index-column name="id_usuario"/>
+        </index>
     </table>
     <table name="empresa">
         <column name="id" primaryKey="true" required="true" scale="0" size="10" type="4,INT"/>
@@ -51,7 +59,12 @@
         <column name="nombre" primaryKey="false" required="true" scale="0" size="64" type="12,VARCHAR"/>
         <column name="email" primaryKey="false" required="true" scale="0" size="64" type="12,VARCHAR"/>
         <column name="numero_empleados" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
+        <column name="id_usuario" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
         <column name="actividad_profesional" primaryKey="false" required="true" scale="0" size="128" type="12,VARCHAR"/>
+        <foreign-key foreignTable="usuario" name="empresa_ibfk_1" onDelete="cascade" onUpdate="cascade">
+            <option key="exported" value="false"/>
+            <reference foreign="id" local="id_usuario"/>
+        </foreign-key>
         <foreign-key foreignTable="localizacion" name="localizacion_ibfk_2" onDelete="cascade" onUpdate="cascade">
             <option key="exported" value="true"/>
             <reference foreign="id_empresa" local="id"/>
@@ -66,6 +79,9 @@
         <unique name="PRIMARY">
             <unique-column name="id"/>
         </unique>
+        <index name="id_usuario">
+            <index-column name="id_usuario"/>
+        </index>
     </table>
     <table name="estado">
         <column name="id" primaryKey="true" required="true" scale="0" size="10" type="4,INT"/>
@@ -346,5 +362,25 @@
         <index name="id_titulos_academicos">
             <index-column name="id_titulos_academicos"/>
         </index>
+    </table>
+    <table name="usuario">
+        <column name="id" primaryKey="true" required="true" scale="0" size="10" type="4,INT"/>
+        <column name="nombre" primaryKey="false" required="true" scale="0" size="32" type="12,VARCHAR"/>
+        <column name="tipo" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
+        <column name="password" primaryKey="false" required="true" scale="0" size="32" type="12,VARCHAR"/>
+        <foreign-key foreignTable="demandante" name="demandante_ibfk_2" onDelete="cascade" onUpdate="cascade">
+            <option key="exported" value="true"/>
+            <reference foreign="id_usuario" local="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="empresa" name="empresa_ibfk_1" onDelete="cascade" onUpdate="cascade">
+            <option key="exported" value="true"/>
+            <reference foreign="id_usuario" local="id"/>
+        </foreign-key>
+        <unique name="nombre">
+            <unique-column name="nombre"/>
+        </unique>
+        <unique name="PRIMARY">
+            <unique-column name="id"/>
+        </unique>
     </table>
 </database>

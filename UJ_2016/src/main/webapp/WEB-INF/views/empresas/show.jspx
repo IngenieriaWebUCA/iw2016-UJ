@@ -8,5 +8,6 @@
         <field:display field="email" id="s_es_uca_iw_uj2016_dominio_Empresa_email" object="${empresa}" z="AiWl78OgPpazm9gMByMIgNzcq0U="/>
         <field:display field="numeroEmpleados" id="s_es_uca_iw_uj2016_dominio_Empresa_numeroEmpleados" object="${empresa}" z="ArFKdfnA8MoplQlkvGpfAEHqCIE="/>
         <field:display field="actividadProfesional" id="s_es_uca_iw_uj2016_dominio_Empresa_actividadProfesional" object="${empresa}" z="yezNbUTt21sOTyADJHiqBo4wzvE="/>
+        <field:display field="idUsuario" id="s_es_uca_iw_uj2016_dominio_Empresa_idUsuario" object="${empresa}" z="7EzhvXW549p6QCBIJkZsxgez5wA="/>
     </page:show>
 </div>

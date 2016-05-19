@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 15-05-2016 a las 15:45:45
+-- Tiempo de generación: 19-05-2016 a las 19:32:14
 -- Versión del servidor: 5.5.49-0+deb8u1
 -- Versión de PHP: 5.6.20-0+deb8u1
 
@@ -29,7 +29,14 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `ciudad` (
 `id` int(11) NOT NULL,
   `nombre` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `ciudad`
+--
+
+INSERT INTO `ciudad` (`id`, `nombre`) VALUES
+(1, 'Cai');
 
 -- --------------------------------------------------------
 
@@ -47,6 +54,7 @@ CREATE TABLE IF NOT EXISTS `demandante` (
   `direccion` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   `telefono` int(32) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `id_perfil` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -62,8 +70,16 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   `nombre` varchar(64) NOT NULL,
   `email` varchar(64) NOT NULL,
   `numero_empleados` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `actividad_profesional` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `empresa`
+--
+
+INSERT INTO `empresa` (`id`, `cif`, `nombre`, `email`, `numero_empleados`, `id_usuario`, `actividad_profesional`) VALUES
+(1, '000001', 'EmpresaPrueba', 'prueeab@fdsaf.com', 23, 1, 'En paro');
 
 -- --------------------------------------------------------
 
@@ -219,6 +235,26 @@ CREATE TABLE IF NOT EXISTS `titulos_formacion` (
   `id_formacion_academica` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `usuario` (
+`id` int(11) NOT NULL,
+  `nombre` varchar(32) NOT NULL,
+  `tipo` int(11) NOT NULL,
+  `password` varchar(32) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nombre`, `tipo`, `password`) VALUES
+(1, 'prueba', 0, 'prueba');
+
 --
 -- Índices para tablas volcadas
 --
@@ -233,13 +269,13 @@ ALTER TABLE `ciudad`
 -- Indices de la tabla `demandante`
 --
 ALTER TABLE `demandante`
- ADD PRIMARY KEY (`id`), ADD KEY `id_perfil` (`id_perfil`);
+ ADD PRIMARY KEY (`id`), ADD KEY `id_perfil` (`id_perfil`), ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `empresa`
 --
 ALTER TABLE `empresa`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `cif` (`cif`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `cif` (`cif`), ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `estado`
@@ -314,6 +350,12 @@ ALTER TABLE `titulos_formacion`
  ADD PRIMARY KEY (`id`), ADD KEY `id_titulos_academicos` (`id_titulos_academicos`), ADD KEY `id_formacion_academica` (`id_formacion_academica`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `nombre` (`nombre`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -321,7 +363,7 @@ ALTER TABLE `titulos_formacion`
 -- AUTO_INCREMENT de la tabla `ciudad`
 --
 ALTER TABLE `ciudad`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `demandante`
 --
@@ -331,7 +373,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `empresa`
 --
 ALTER TABLE `empresa`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `estado`
 --
@@ -393,6 +435,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `titulos_formacion`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -400,7 +447,14 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- Filtros para la tabla `demandante`
 --
 ALTER TABLE `demandante`
+ADD CONSTRAINT `demandante_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `demandante_ibfk_1` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `empresa`
+--
+ALTER TABLE `empresa`
+ADD CONSTRAINT `empresa_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `experiencia_profesional`

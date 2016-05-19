@@ -10,5 +10,6 @@
         <field:input field="email" id="c_es_uca_iw_uj2016_dominio_Empresa_email" required="true" validationMessageCode="field_invalid_email" z="Uc1TTnfjjjTnGLRNFADWE90VBLg="/>
         <field:input field="numeroEmpleados" id="c_es_uca_iw_uj2016_dominio_Empresa_numeroEmpleados" required="true" validationMessageCode="field_invalid_integer" z="RTNLYTqUP5q8wqC/Dwtz0nPDJ3A="/>
         <field:input field="actividadProfesional" id="c_es_uca_iw_uj2016_dominio_Empresa_actividadProfesional" required="true" z="E3W1ujavSm/NTWfdyQ8Q7XGvDlQ="/>
+        <field:select field="idUsuario" id="c_es_uca_iw_uj2016_dominio_Empresa_idUsuario" itemValue="id" items="${usuarios}" path="/usuarios" z="gBk4evEtJTI/YhA60i1FG46xQFo="/>
     </form:update>
 </div>

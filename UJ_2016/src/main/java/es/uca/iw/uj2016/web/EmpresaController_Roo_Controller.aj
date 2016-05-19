@@ -6,6 +6,7 @@ package es.uca.iw.uj2016.web;
 import es.uca.iw.uj2016.dominio.Empresa;
 import es.uca.iw.uj2016.dominio.Localizacion;
 import es.uca.iw.uj2016.dominio.OfertaDeTrabajo;
+import es.uca.iw.uj2016.dominio.Usuario;
 import es.uca.iw.uj2016.web.EmpresaController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -90,6 +91,7 @@ privileged aspect EmpresaController_Roo_Controller {
         uiModel.addAttribute("empresa", empresa);
         uiModel.addAttribute("localizacions", Localizacion.findAllLocalizacions());
         uiModel.addAttribute("ofertadetrabajoes", OfertaDeTrabajo.findAllOfertaDeTrabajoes());
+        uiModel.addAttribute("usuarios", Usuario.findAllUsuarios());
     }
     
     String EmpresaController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

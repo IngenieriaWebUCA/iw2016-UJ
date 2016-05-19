@@ -18,6 +18,7 @@ import es.uca.iw.uj2016.dominio.PuestoDeTrabajo;
 import es.uca.iw.uj2016.dominio.PuestoTrabajoPerfil;
 import es.uca.iw.uj2016.dominio.TitulosAcademicos;
 import es.uca.iw.uj2016.dominio.TitulosFormacion;
+import es.uca.iw.uj2016.dominio.Usuario;
 import es.uca.iw.uj2016.web.ApplicationConversionServiceFactoryBean;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
@@ -387,6 +388,30 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<Usuario, String> ApplicationConversionServiceFactoryBean.getUsuarioToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<es.uca.iw.uj2016.dominio.Usuario, java.lang.String>() {
+            public String convert(Usuario usuario) {
+                return new StringBuilder().append(usuario.getNombre()).append(' ').append(usuario.getTipo()).append(' ').append(usuario.getPassword()).toString();
+            }
+        };
+    }
+    
+    public Converter<Integer, Usuario> ApplicationConversionServiceFactoryBean.getIdToUsuarioConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Integer, es.uca.iw.uj2016.dominio.Usuario>() {
+            public es.uca.iw.uj2016.dominio.Usuario convert(java.lang.Integer id) {
+                return Usuario.findUsuario(id);
+            }
+        };
+    }
+    
+    public Converter<String, Usuario> ApplicationConversionServiceFactoryBean.getStringToUsuarioConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.uj2016.dominio.Usuario>() {
+            public es.uca.iw.uj2016.dominio.Usuario convert(String id) {
+                return getObject().convert(getObject().convert(id, Integer.class), Usuario.class);
+            }
+        };
+    }
+    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getCiudadToStringConverter());
         registry.addConverter(getIdToCiudadConverter());
@@ -433,6 +458,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getTitulosFormacionToStringConverter());
         registry.addConverter(getIdToTitulosFormacionConverter());
         registry.addConverter(getStringToTitulosFormacionConverter());
+        registry.addConverter(getUsuarioToStringConverter());
+        registry.addConverter(getIdToUsuarioConverter());
+        registry.addConverter(getStringToUsuarioConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

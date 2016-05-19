@@ -13,6 +13,7 @@
         <field:input field="direccion" id="c_es_uca_iw_uj2016_dominio_Demandante_direccion" required="true" z="C7wWY2RTch+nnPhdYGMe6fQK6Zo="/>
         <field:input field="email" id="c_es_uca_iw_uj2016_dominio_Demandante_email" required="true" validationMessageCode="field_invalid_email" z="jyfEZL4vCkWGnzCp2Ccv+FR6duI="/>
         <field:input field="telefono" id="c_es_uca_iw_uj2016_dominio_Demandante_telefono" required="true" validationMessageCode="field_invalid_integer" z="zg8mL995bXNMhJGXFFfCU5V3tf0="/>
+        <field:select field="idUsuario" id="c_es_uca_iw_uj2016_dominio_Demandante_idUsuario" itemValue="id" items="${usuarios}" path="/usuarios" z="gQNc7yCAQAWuIR0AoxduaG5GD9Q="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_es_uca_iw_uj2016_dominio_Demandante" render="${not empty dependencies}" z="eU5tL5MLbzaX2Fh3i7vbuSqXLik="/>
 </div>

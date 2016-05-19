@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_uj2016_dominio_Usuario" items="${usuarios}" z="CoPyg4hQC1lL2z6GKOvYRWxYVxo=">
+        <table:table data="${usuarios}" id="l_es_uca_iw_uj2016_dominio_Usuario" path="/usuarios" z="eaWCwM4RHjnnmXRGu7GwdAM+5WY=">
+            <table:column id="c_es_uca_iw_uj2016_dominio_Usuario_nombre" property="nombre" z="bAYKhr6AA7q6xvzcaViP7OQyEEo="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Usuario_tipo" property="tipo" z="9w+92vfjO8NJFAIoKSBBuqAepMM="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Usuario_password" property="password" z="7wwi0meRJl2FyyWrR8K3IPY0Nxo="/>
+        </table:table>
+    </page:list>
+</div>

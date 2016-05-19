@@ -10,7 +10,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 privileged aspect Empresa_Roo_ToString {
     
     public String Empresa.toString() {
-        return new ReflectionToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).setExcludeFieldNames("localizacions", "ofertaDeTrabajoes").toString();
+        return new ReflectionToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).setExcludeFieldNames("localizacions", "ofertaDeTrabajoes", "idUsuario").toString();
     }
     
 }

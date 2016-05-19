@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_uj2016_dominio_Usuario" object="${usuario}" path="/usuarios" z="/X9CJK9KlMzuulQtL4Bi0xLKKv0=">
+        <field:display field="nombre" id="s_es_uca_iw_uj2016_dominio_Usuario_nombre" object="${usuario}" z="CV920MS9w5xj50t7TAGznrcMQL0="/>
+        <field:display field="tipo" id="s_es_uca_iw_uj2016_dominio_Usuario_tipo" object="${usuario}" z="6Lb4bOz/nknaoACnSaTp3MMX+HA="/>
+        <field:display field="password" id="s_es_uca_iw_uj2016_dominio_Usuario_password" object="${usuario}" z="CRlevdlCFkBHOXSu2+8EyXUkRJo="/>
+    </page:show>
+</div>

@@ -12,5 +12,6 @@
         <field:display field="direccion" id="s_es_uca_iw_uj2016_dominio_Demandante_direccion" object="${demandante}" z="NjmqpoNl4S6kDnaz9to7qE57Eu4="/>
         <field:display field="email" id="s_es_uca_iw_uj2016_dominio_Demandante_email" object="${demandante}" z="n5C26jGw71Q1+hYF2hVWzjOGdjE="/>
         <field:display field="telefono" id="s_es_uca_iw_uj2016_dominio_Demandante_telefono" object="${demandante}" z="4MyaMdTP7ESCUqpg2wboincjx8M="/>
+        <field:display field="idUsuario" id="s_es_uca_iw_uj2016_dominio_Demandante_idUsuario" object="${demandante}" z="SoWK2n7F0XkeMSBXWSgf1BGXWjI="/>
     </page:show>
 </div>

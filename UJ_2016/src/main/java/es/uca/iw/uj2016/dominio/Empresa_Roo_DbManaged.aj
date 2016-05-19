@@ -6,9 +6,12 @@ package es.uca.iw.uj2016.dominio;
 import es.uca.iw.uj2016.dominio.Empresa;
 import es.uca.iw.uj2016.dominio.Localizacion;
 import es.uca.iw.uj2016.dominio.OfertaDeTrabajo;
+import es.uca.iw.uj2016.dominio.Usuario;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -19,6 +22,10 @@ privileged aspect Empresa_Roo_DbManaged {
     
     @OneToMany(mappedBy = "idEmpresa", cascade = CascadeType.ALL)
     private Set<OfertaDeTrabajo> Empresa.ofertaDeTrabajoes;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
+    private Usuario Empresa.idUsuario;
     
     @Column(name = "cif", length = 32, unique = true)
     @NotNull
@@ -54,6 +61,14 @@ privileged aspect Empresa_Roo_DbManaged {
     
     public void Empresa.setOfertaDeTrabajoes(Set<OfertaDeTrabajo> ofertaDeTrabajoes) {
         this.ofertaDeTrabajoes = ofertaDeTrabajoes;
+    }
+    
+    public Usuario Empresa.getIdUsuario() {
+        return idUsuario;
+    }
+    
+    public void Empresa.setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
     
     public String Empresa.getCif() {
