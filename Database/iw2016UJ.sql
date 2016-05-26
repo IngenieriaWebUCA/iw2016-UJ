@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-05-2016 a las 19:32:14
+-- Tiempo de generación: 26-05-2016 a las 16:06:22
 -- Versión del servidor: 5.5.49-0+deb8u1
 -- Versión de PHP: 5.6.20-0+deb8u1
 
@@ -73,13 +73,6 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   `id_usuario` int(11) NOT NULL,
   `actividad_profesional` varchar(128) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `empresa`
---
-
-INSERT INTO `empresa` (`id`, `cif`, `nombre`, `email`, `numero_empleados`, `id_usuario`, `actividad_profesional`) VALUES
-(1, '000001', 'EmpresaPrueba', 'prueeab@fdsaf.com', 23, 1, 'En paro');
 
 -- --------------------------------------------------------
 
@@ -215,6 +208,26 @@ CREATE TABLE IF NOT EXISTS `puesto_trabajo_perfil` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `rol_usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `rol_usuario` (
+`id` int(11) NOT NULL,
+  `nombre` varchar(32) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `rol_usuario`
+--
+
+INSERT INTO `rol_usuario` (`id`, `nombre`) VALUES
+(1, 'Administrador'),
+(2, 'Empresa'),
+(3, 'Demandante');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `titulos_academicos`
 --
 
@@ -244,16 +257,9 @@ CREATE TABLE IF NOT EXISTS `titulos_formacion` (
 CREATE TABLE IF NOT EXISTS `usuario` (
 `id` int(11) NOT NULL,
   `nombre` varchar(32) NOT NULL,
-  `tipo` int(11) NOT NULL,
-  `password` varchar(32) NOT NULL
+  `password` varchar(32) NOT NULL,
+  `id_rol_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`id`, `nombre`, `tipo`, `password`) VALUES
-(1, 'prueba', 0, 'prueba');
 
 --
 -- Índices para tablas volcadas
@@ -338,6 +344,12 @@ ALTER TABLE `puesto_trabajo_perfil`
  ADD PRIMARY KEY (`id`), ADD KEY `id_puesto_de_trabajo` (`id_puesto_de_trabajo`,`id_perfil`), ADD KEY `id_perfil` (`id_perfil`);
 
 --
+-- Indices de la tabla `rol_usuario`
+--
+ALTER TABLE `rol_usuario`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `titulos_academicos`
 --
 ALTER TABLE `titulos_academicos`
@@ -353,7 +365,7 @@ ALTER TABLE `titulos_formacion`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `nombre` (`nombre`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `nombre` (`nombre`), ADD KEY `id_rol_usuario` (`id_rol_usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -425,6 +437,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `puesto_trabajo_perfil`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `rol_usuario`
+--
+ALTER TABLE `rol_usuario`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT de la tabla `titulos_academicos`
 --
 ALTER TABLE `titulos_academicos`
@@ -447,8 +464,8 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- Filtros para la tabla `demandante`
 --
 ALTER TABLE `demandante`
-ADD CONSTRAINT `demandante_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `demandante_ibfk_1` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `demandante_ibfk_1` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `demandante_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `empresa`
@@ -511,6 +528,12 @@ ADD CONSTRAINT `puesto_trabajo_perfil_ibfk_2` FOREIGN KEY (`id_perfil`) REFERENC
 ALTER TABLE `titulos_formacion`
 ADD CONSTRAINT `titulos_formacion_ibfk_1` FOREIGN KEY (`id_titulos_academicos`) REFERENCES `titulos_academicos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `titulos_formacion_ibfk_2` FOREIGN KEY (`id_formacion_academica`) REFERENCES `formacion_academica` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol_usuario`) REFERENCES `rol_usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
