@@ -19,17 +19,17 @@ import javax.validation.constraints.NotNull;
 privileged aspect Perfil_Roo_DbManaged {
     
     @OneToMany(mappedBy = "idPerfil", cascade = CascadeType.ALL)
-    private Set<Demandante> Perfil.demandantes;
+    private Set<ExperienciaProfesional> Perfil.experienciaProfesionals;
     
     @OneToMany(mappedBy = "idPerfil", cascade = CascadeType.ALL)
-    private Set<ExperienciaProfesional> Perfil.experienciaProfesionals;
+    private Set<FormacionAcademica> Perfil.formacionAcademicas;
     
     @OneToMany(mappedBy = "idPerfil", cascade = CascadeType.ALL)
     private Set<PuestoTrabajoPerfil> Perfil.puestoTrabajoPerfils;
     
     @ManyToOne
-    @JoinColumn(name = "id_formacion_academica", referencedColumnName = "id", nullable = false)
-    private FormacionAcademica Perfil.idFormacionAcademica;
+    @JoinColumn(name = "id_demandante", referencedColumnName = "id", nullable = false)
+    private Demandante Perfil.idDemandante;
     
     @Column(name = "foto", length = 256)
     @NotNull
@@ -39,20 +39,20 @@ privileged aspect Perfil_Roo_DbManaged {
     @NotNull
     private String Perfil.presentacion;
     
-    public Set<Demandante> Perfil.getDemandantes() {
-        return demandantes;
-    }
-    
-    public void Perfil.setDemandantes(Set<Demandante> demandantes) {
-        this.demandantes = demandantes;
-    }
-    
     public Set<ExperienciaProfesional> Perfil.getExperienciaProfesionals() {
         return experienciaProfesionals;
     }
     
     public void Perfil.setExperienciaProfesionals(Set<ExperienciaProfesional> experienciaProfesionals) {
         this.experienciaProfesionals = experienciaProfesionals;
+    }
+    
+    public Set<FormacionAcademica> Perfil.getFormacionAcademicas() {
+        return formacionAcademicas;
+    }
+    
+    public void Perfil.setFormacionAcademicas(Set<FormacionAcademica> formacionAcademicas) {
+        this.formacionAcademicas = formacionAcademicas;
     }
     
     public Set<PuestoTrabajoPerfil> Perfil.getPuestoTrabajoPerfils() {
@@ -63,12 +63,12 @@ privileged aspect Perfil_Roo_DbManaged {
         this.puestoTrabajoPerfils = puestoTrabajoPerfils;
     }
     
-    public FormacionAcademica Perfil.getIdFormacionAcademica() {
-        return idFormacionAcademica;
+    public Demandante Perfil.getIdDemandante() {
+        return idDemandante;
     }
     
-    public void Perfil.setIdFormacionAcademica(FormacionAcademica idFormacionAcademica) {
-        this.idFormacionAcademica = idFormacionAcademica;
+    public void Perfil.setIdDemandante(Demandante idDemandante) {
+        this.idDemandante = idDemandante;
     }
     
     public String Perfil.getFoto() {

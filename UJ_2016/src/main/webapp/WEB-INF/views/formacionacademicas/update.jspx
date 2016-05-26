@@ -3,9 +3,9 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_es_uca_iw_uj2016_dominio_FormacionAcademica" modelAttribute="formacionAcademica" path="/formacionacademicas" versionField="none" z="eAA0fnitty3wkqou40XpXqtguUM=">
-        <field:simple field="perfils" id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_perfils" messageCode="entity_reference_not_managed" messageCodeAttribute="Perfil" z="mCiaL4M4E5B252xenBbxbHdfD48="/>
         <field:simple field="titulosFormacions" id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_titulosFormacions" messageCode="entity_reference_not_managed" messageCodeAttribute="Titulos Formacion" z="gdo7EX3S787hM7FBs4HVsDpmnDg="/>
         <field:input field="curso" id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_curso" required="true" z="C+5a2z5RI6+LD8I2JY7dHRKCaqE="/>
         <field:input field="idioma" id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_idioma" required="true" z="dlI97TdZlNNuzGs/S5dVytOheMg="/>
+        <field:select field="idPerfil" id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_idPerfil" itemValue="id" items="${perfils}" path="/perfils" z="MLg8EEEE8Xx9pSZW0G26ZNQAH/g="/>
     </form:update>
 </div>

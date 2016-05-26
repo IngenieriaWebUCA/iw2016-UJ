@@ -5,10 +5,13 @@ package es.uca.iw.uj2016.dominio;
 
 import es.uca.iw.uj2016.dominio.Demandante;
 import es.uca.iw.uj2016.dominio.Empresa;
+import es.uca.iw.uj2016.dominio.RolUsuario;
 import es.uca.iw.uj2016.dominio.Usuario;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -20,13 +23,13 @@ privileged aspect Usuario_Roo_DbManaged {
     @OneToMany(mappedBy = "idUsuario", cascade = CascadeType.ALL)
     private Set<Empresa> Usuario.empresas;
     
+    @ManyToOne
+    @JoinColumn(name = "id_rol_usuario", referencedColumnName = "id", nullable = false)
+    private RolUsuario Usuario.idRolUsuario;
+    
     @Column(name = "nombre", length = 32, unique = true)
     @NotNull
     private String Usuario.nombre;
-    
-    @Column(name = "tipo")
-    @NotNull
-    private Integer Usuario.tipo;
     
     @Column(name = "password", length = 32)
     @NotNull
@@ -48,20 +51,20 @@ privileged aspect Usuario_Roo_DbManaged {
         this.empresas = empresas;
     }
     
+    public RolUsuario Usuario.getIdRolUsuario() {
+        return idRolUsuario;
+    }
+    
+    public void Usuario.setIdRolUsuario(RolUsuario idRolUsuario) {
+        this.idRolUsuario = idRolUsuario;
+    }
+    
     public String Usuario.getNombre() {
         return nombre;
     }
     
     public void Usuario.setNombre(String nombre) {
         this.nombre = nombre;
-    }
-    
-    public Integer Usuario.getTipo() {
-        return tipo;
-    }
-    
-    public void Usuario.setTipo(Integer tipo) {
-        this.tipo = tipo;
     }
     
     public String Usuario.getPassword() {

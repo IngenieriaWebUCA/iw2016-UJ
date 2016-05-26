@@ -9,29 +9,58 @@
         <form-login login-processing-url="/resources/j_spring_security_check" login-page="/login" authentication-failure-url="/login?login_error=t" />
         <logout logout-url="/resources/j_spring_security_logout" />
         <!-- Configure these elements to secure URIs in your application -->
-        <!--  <intercept-url pattern="/choices/**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/member/**" access="isAuthenticated()" />
-        <intercept-url pattern="/resources/**" access="permitAll" />
-        <intercept-url pattern="/login/**" access="permitAll" />
-        <intercept-url pattern="usuarios/**" access="permitAll" />
-        <intercept-url pattern="/UJ_2016/usuarios?form" access="permitAll" />
         
-        <intercept-url pattern="\A/usuarios\?form.*\Z" access="permitAll" />-->
+        <!-- Ciudad -->
+        <intercept-url pattern="\A/ciudads/\d*\Z" method="DELETE" access="hasRole('Administrador')" />
+        <intercept-url pattern="\A/ciudads\Z" method="PUT" access="hasRole('Administrador')" />
+        <intercept-url pattern="\A/ciudads/\d*\Z" method="GET" access="hasRole('Administrador')" />
+        <intercept-url pattern="\A/ciudads\?form.*\Z" access="hasRole('Administrador')" />
+        <intercept-url pattern="\A/ciudads\?page=\d*.*" access="hasRole('Administrador')" />
+        <intercept-url pattern="\A/ciudads/\d" access="hasRole('Administrador')" />
+        <intercept-url pattern="\A/ciudads" access="hasAnyRole('Administrador')" />
+        
+        <!-- Demandante -->
+        <intercept-url pattern="\A/demandantes/\d*\Z" method="DELETE" access="hasAnyRole('Administrador', 'Demandante')" />
+        <intercept-url pattern="\A/demandantes\Z" method="PUT" access="hasAnyRole('Administrador', 'Demandante')" />
+        <intercept-url pattern="\A/demandantes/\d*\Z" method="GET" access="hasAnyRole('Administrador', 'Demandante', 'Empresa')" />
+        <intercept-url pattern="\A/demandantes\?form.*\Z" access="hasAnyRole('Administrador', 'Demandante')" />
+        <intercept-url pattern="\A/demandantes\?page=\d*.*" access="hasAnyRole('Administrador', 'Demandante', 'Empresa')" />
+        <intercept-url pattern="\A/demandantes/\d" access="hasAnyRole('Administrador', 'Demandante', 'Empresa')" />
+        <intercept-url pattern="\A/demandantes" access="hasAnyRole('Administrador', 'Demandante')" />
+        
         <!-- Usuarios -->
+        <intercept-url pattern="\A/usuarios/\d*\Z" method="DELETE" access="hasAnyRole('Administrador', 'Empresa', 'Demandante')" />
+        <intercept-url pattern="\A/usuarios\Z" method="PUT" access="permitAll" />
+        <intercept-url pattern="\A/usuarios/\d*\Z" method="GET" access="hasAnyRole('Administrador', 'Empresa', 'Demandante')" />
         <intercept-url pattern="\A/usuarios\?form.*\Z" access="permitAll" />
+        <intercept-url pattern="\A/usuarios\?page=\d*.*" access="hasAnyRole('Administrador', 'Empresa', 'Demandante')" />
+        <intercept-url pattern="\A/usuarios/\d" access="hasAnyRole('Administrador', 'Empresa', 'Demandante')" />
+        <intercept-url pattern="\A/usuarios" access="permitAll" />
         
-        <intercept-url pattern="\A/login/*\Z" access="permitAll" />
+        
+        
+        <!-- Login para todos los usuarios -->
+        <intercept-url pattern="\A/\Z" access="hasAnyRole('Administrador', 'Empresa', 'Demandante')" />
         <intercept-url pattern="/**" access="permitAll" />
     </http>
     <!-- Configure Authentication mechanism -->
     <authentication-manager alias="authenticationManager">
         <!-- SHA-256 values can be produced using 'echo -n your_desired_password | sha256sum' (using normal *nix environments) -->
         <authentication-provider>
+        
+        
+        <jdbc-user-service data-source-ref="dataSource"
+                users-by-username-query="SELECT nombre, password,1 FROM usuario WHERE nombre=?;"
+                authorities-by-username-query="SELECT usuario.nombre, rol_usuario.nombre FROM usuario left join rol_usuario on usuario.id_rol_usuario=rol_usuario.id WHERE usuario.nombre=?;"/>
+        <!-- 
             <password-encoder hash="sha-256" />
             <user-service>
+            
                 <user name="admin" password="8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918" authorities="ROLE_ADMIN" />
                 <user name="user" password="04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb" authorities="ROLE_USER" />
-            </user-service>
+                
+            </user-service> -->
+            
         </authentication-provider>
     </authentication-manager>
 </beans:beans>

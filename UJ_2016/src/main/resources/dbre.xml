@@ -30,25 +30,21 @@
         <column name="email" primaryKey="false" required="true" scale="0" size="128" type="12,VARCHAR"/>
         <column name="telefono" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
         <column name="id_usuario" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
-        <column name="id_perfil" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
         <foreign-key foreignTable="usuario" name="demandante_ibfk_2" onDelete="cascade" onUpdate="cascade">
             <option key="exported" value="false"/>
             <reference foreign="id" local="id_usuario"/>
         </foreign-key>
-        <foreign-key foreignTable="perfil" name="demandante_ibfk_1" onDelete="cascade" onUpdate="cascade">
-            <option key="exported" value="false"/>
-            <reference foreign="id" local="id_perfil"/>
-        </foreign-key>
         <foreign-key foreignTable="inscripcion" name="inscripcion_ibfk_2" onDelete="cascade" onUpdate="cascade">
+            <option key="exported" value="true"/>
+            <reference foreign="id_demandante" local="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="perfil" name="perfil_ibfk_1" onDelete="cascade" onUpdate="cascade">
             <option key="exported" value="true"/>
             <reference foreign="id_demandante" local="id"/>
         </foreign-key>
         <unique name="PRIMARY">
             <unique-column name="id"/>
         </unique>
-        <index name="id_perfil">
-            <index-column name="id_perfil"/>
-        </index>
         <index name="id_usuario">
             <index-column name="id_usuario"/>
         </index>
@@ -123,9 +119,10 @@
         <column name="id" primaryKey="true" required="true" scale="0" size="10" type="4,INT"/>
         <column name="curso" primaryKey="false" required="true" scale="0" size="65535" type="-1,TEXT"/>
         <column name="idioma" primaryKey="false" required="true" scale="0" size="65535" type="-1,TEXT"/>
-        <foreign-key foreignTable="perfil" name="perfil_ibfk_2" onDelete="cascade" onUpdate="cascade">
-            <option key="exported" value="true"/>
-            <reference foreign="id_formacion_academica" local="id"/>
+        <column name="id_perfil" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
+        <foreign-key foreignTable="perfil" name="formacion_academica_ibfk_1" onDelete="cascade" onUpdate="cascade">
+            <option key="exported" value="false"/>
+            <reference foreign="id" local="id_perfil"/>
         </foreign-key>
         <foreign-key foreignTable="titulos_formacion" name="titulos_formacion_ibfk_2" onDelete="cascade" onUpdate="cascade">
             <option key="exported" value="true"/>
@@ -134,6 +131,9 @@
         <unique name="PRIMARY">
             <unique-column name="id"/>
         </unique>
+        <index name="id_perfil">
+            <index-column name="id_perfil"/>
+        </index>
     </table>
     <table name="inscripcion">
         <column name="id" primaryKey="true" required="true" scale="0" size="10" type="4,INT"/>
@@ -257,16 +257,16 @@
         <column name="id" primaryKey="true" required="true" scale="0" size="10" type="4,INT"/>
         <column name="foto" primaryKey="false" required="true" scale="0" size="256" type="12,VARCHAR"/>
         <column name="presentacion" primaryKey="false" required="true" scale="0" size="65535" type="-1,TEXT"/>
-        <column name="id_formacion_academica" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
-        <foreign-key foreignTable="formacion_academica" name="perfil_ibfk_2" onDelete="cascade" onUpdate="cascade">
+        <column name="id_demandante" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
+        <foreign-key foreignTable="demandante" name="perfil_ibfk_1" onDelete="cascade" onUpdate="cascade">
             <option key="exported" value="false"/>
-            <reference foreign="id" local="id_formacion_academica"/>
+            <reference foreign="id" local="id_demandante"/>
         </foreign-key>
-        <foreign-key foreignTable="demandante" name="demandante_ibfk_1" onDelete="cascade" onUpdate="cascade">
+        <foreign-key foreignTable="experiencia_profesional" name="experiencia_profesional_ibfk_2" onDelete="cascade" onUpdate="cascade">
             <option key="exported" value="true"/>
             <reference foreign="id_perfil" local="id"/>
         </foreign-key>
-        <foreign-key foreignTable="experiencia_profesional" name="experiencia_profesional_ibfk_2" onDelete="cascade" onUpdate="cascade">
+        <foreign-key foreignTable="formacion_academica" name="formacion_academica_ibfk_1" onDelete="cascade" onUpdate="cascade">
             <option key="exported" value="true"/>
             <reference foreign="id_perfil" local="id"/>
         </foreign-key>
@@ -277,11 +277,8 @@
         <unique name="PRIMARY">
             <unique-column name="id"/>
         </unique>
-        <index name="id_formacion_academica">
-            <index-column name="id_formacion_academica"/>
-        </index>
-        <index name="id_puesto_de_trabajo">
-            <index-column name="id_formacion_academica"/>
+        <index name="id_demandante">
+            <index-column name="id_demandante"/>
         </index>
     </table>
     <table name="puesto_de_trabajo">
@@ -326,6 +323,17 @@
             <index-column name="id_perfil"/>
         </index>
     </table>
+    <table name="rol_usuario">
+        <column name="id" primaryKey="true" required="true" scale="0" size="10" type="4,INT"/>
+        <column name="nombre" primaryKey="false" required="true" scale="0" size="32" type="12,VARCHAR"/>
+        <foreign-key foreignTable="usuario" name="usuario_ibfk_1" onDelete="cascade" onUpdate="cascade">
+            <option key="exported" value="true"/>
+            <reference foreign="id_rol_usuario" local="id"/>
+        </foreign-key>
+        <unique name="PRIMARY">
+            <unique-column name="id"/>
+        </unique>
+    </table>
     <table name="titulos_academicos">
         <column name="id" primaryKey="true" required="true" scale="0" size="10" type="4,INT"/>
         <column name="nombre" primaryKey="false" required="true" scale="0" size="128" type="12,VARCHAR"/>
@@ -366,8 +374,12 @@
     <table name="usuario">
         <column name="id" primaryKey="true" required="true" scale="0" size="10" type="4,INT"/>
         <column name="nombre" primaryKey="false" required="true" scale="0" size="32" type="12,VARCHAR"/>
-        <column name="tipo" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
         <column name="password" primaryKey="false" required="true" scale="0" size="32" type="12,VARCHAR"/>
+        <column name="id_rol_usuario" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
+        <foreign-key foreignTable="rol_usuario" name="usuario_ibfk_1" onDelete="cascade" onUpdate="cascade">
+            <option key="exported" value="false"/>
+            <reference foreign="id" local="id_rol_usuario"/>
+        </foreign-key>
         <foreign-key foreignTable="demandante" name="demandante_ibfk_2" onDelete="cascade" onUpdate="cascade">
             <option key="exported" value="true"/>
             <reference foreign="id_usuario" local="id"/>
@@ -382,5 +394,8 @@
         <unique name="PRIMARY">
             <unique-column name="id"/>
         </unique>
+        <index name="id_rol_usuario">
+            <index-column name="id_rol_usuario"/>
+        </index>
     </table>
 </database>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-05-2016 a las 16:06:22
+-- Tiempo de generación: 26-05-2016 a las 19:35:32
 -- Versión del servidor: 5.5.49-0+deb8u1
 -- Versión de PHP: 5.6.20-0+deb8u1
 
@@ -29,14 +29,17 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `ciudad` (
 `id` int(11) NOT NULL,
   `nombre` varchar(64) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ciudad`
 --
 
 INSERT INTO `ciudad` (`id`, `nombre`) VALUES
-(1, 'Cai');
+(1, 'Cai'),
+(2, 'datocualquiera'),
+(3, 'nombrecualquiera2'),
+(4, 'insertootravez');
 
 -- --------------------------------------------------------
 
@@ -54,9 +57,15 @@ CREATE TABLE IF NOT EXISTS `demandante` (
   `direccion` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   `telefono` int(32) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `id_perfil` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_usuario` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `demandante`
+--
+
+INSERT INTO `demandante` (`id`, `nombre`, `apellidos`, `dni`, `fecha_nacimiento`, `sexo`, `direccion`, `email`, `telefono`, `id_usuario`) VALUES
+(1, 'paquito', 'paquitodos', '252555', '2016-05-18', 'Hombre', 'calle calel', 'dafds@hotmail.com', 949494, 10);
 
 -- --------------------------------------------------------
 
@@ -98,7 +107,14 @@ CREATE TABLE IF NOT EXISTS `experiencia_profesional` (
   `fecha_fin` date NOT NULL,
   `id_puesto_de_trabajo` int(11) NOT NULL,
   `id_perfil` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `experiencia_profesional`
+--
+
+INSERT INTO `experiencia_profesional` (`id`, `nombre_empresa`, `fecha_inicio`, `fecha_fin`, `id_puesto_de_trabajo`, `id_perfil`) VALUES
+(1, 'Empresa', '2016-05-16', '2016-05-24', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -109,7 +125,8 @@ CREATE TABLE IF NOT EXISTS `experiencia_profesional` (
 CREATE TABLE IF NOT EXISTS `formacion_academica` (
 `id` int(11) NOT NULL,
   `curso` text NOT NULL,
-  `idioma` text NOT NULL
+  `idioma` text NOT NULL,
+  `id_perfil` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -179,8 +196,15 @@ CREATE TABLE IF NOT EXISTS `perfil` (
 `id` int(11) NOT NULL,
   `foto` varchar(256) NOT NULL,
   `presentacion` text NOT NULL,
-  `id_formacion_academica` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_demandante` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `perfil`
+--
+
+INSERT INTO `perfil` (`id`, `foto`, `presentacion`, `id_demandante`) VALUES
+(1, 'cualuqiercosa', 'Hola soy paquito', 1);
 
 -- --------------------------------------------------------
 
@@ -191,7 +215,14 @@ CREATE TABLE IF NOT EXISTS `perfil` (
 CREATE TABLE IF NOT EXISTS `puesto_de_trabajo` (
 `id` int(11) NOT NULL,
   `nombre` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `puesto_de_trabajo`
+--
+
+INSERT INTO `puesto_de_trabajo` (`id`, `nombre`) VALUES
+(1, 'Informatico');
 
 -- --------------------------------------------------------
 
@@ -259,7 +290,16 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nombre` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
   `id_rol_usuario` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nombre`, `password`, `id_rol_usuario`) VALUES
+(9, 'administrador', 'administrador', 1),
+(10, 'deman', 'deman', 3),
+(11, 'empresa', 'empresa', 2);
 
 --
 -- Índices para tablas volcadas
@@ -275,7 +315,7 @@ ALTER TABLE `ciudad`
 -- Indices de la tabla `demandante`
 --
 ALTER TABLE `demandante`
- ADD PRIMARY KEY (`id`), ADD KEY `id_perfil` (`id_perfil`), ADD KEY `id_usuario` (`id_usuario`);
+ ADD PRIMARY KEY (`id`), ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `empresa`
@@ -299,7 +339,7 @@ ALTER TABLE `experiencia_profesional`
 -- Indices de la tabla `formacion_academica`
 --
 ALTER TABLE `formacion_academica`
- ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `id_perfil` (`id_perfil`);
 
 --
 -- Indices de la tabla `inscripcion`
@@ -329,7 +369,7 @@ ALTER TABLE `oferta_trabajo_titulos`
 -- Indices de la tabla `perfil`
 --
 ALTER TABLE `perfil`
- ADD PRIMARY KEY (`id`), ADD KEY `id_puesto_de_trabajo` (`id_formacion_academica`), ADD KEY `id_formacion_academica` (`id_formacion_academica`);
+ ADD PRIMARY KEY (`id`), ADD KEY `id_demandante` (`id_demandante`);
 
 --
 -- Indices de la tabla `puesto_de_trabajo`
@@ -375,12 +415,12 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `ciudad`
 --
 ALTER TABLE `ciudad`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `demandante`
 --
 ALTER TABLE `demandante`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `empresa`
 --
@@ -395,7 +435,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `experiencia_profesional`
 --
 ALTER TABLE `experiencia_profesional`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `formacion_academica`
 --
@@ -425,12 +465,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `puesto_de_trabajo`
 --
 ALTER TABLE `puesto_de_trabajo`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `puesto_trabajo_perfil`
 --
@@ -455,7 +495,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- Restricciones para tablas volcadas
 --
@@ -464,7 +504,6 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- Filtros para la tabla `demandante`
 --
 ALTER TABLE `demandante`
-ADD CONSTRAINT `demandante_ibfk_1` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `demandante_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -479,6 +518,12 @@ ADD CONSTRAINT `empresa_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` 
 ALTER TABLE `experiencia_profesional`
 ADD CONSTRAINT `experiencia_profesional_ibfk_1` FOREIGN KEY (`id_puesto_de_trabajo`) REFERENCES `puesto_de_trabajo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `experiencia_profesional_ibfk_2` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `formacion_academica`
+--
+ALTER TABLE `formacion_academica`
+ADD CONSTRAINT `formacion_academica_ibfk_1` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `inscripcion`
@@ -513,7 +558,7 @@ ADD CONSTRAINT `oferta_trabajo_titulos_ibfk_2` FOREIGN KEY (`id_titulo_academico
 -- Filtros para la tabla `perfil`
 --
 ALTER TABLE `perfil`
-ADD CONSTRAINT `perfil_ibfk_2` FOREIGN KEY (`id_formacion_academica`) REFERENCES `formacion_academica` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `perfil_ibfk_1` FOREIGN KEY (`id_demandante`) REFERENCES `demandante` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `puesto_trabajo_perfil`

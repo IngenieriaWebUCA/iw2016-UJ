@@ -16,6 +16,7 @@ import es.uca.iw.uj2016.dominio.OfertaTrabajoTitulos;
 import es.uca.iw.uj2016.dominio.Perfil;
 import es.uca.iw.uj2016.dominio.PuestoDeTrabajo;
 import es.uca.iw.uj2016.dominio.PuestoTrabajoPerfil;
+import es.uca.iw.uj2016.dominio.RolUsuario;
 import es.uca.iw.uj2016.dominio.TitulosAcademicos;
 import es.uca.iw.uj2016.dominio.TitulosFormacion;
 import es.uca.iw.uj2016.dominio.Usuario;
@@ -340,6 +341,30 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<RolUsuario, String> ApplicationConversionServiceFactoryBean.getRolUsuarioToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<es.uca.iw.uj2016.dominio.RolUsuario, java.lang.String>() {
+            public String convert(RolUsuario rolUsuario) {
+                return new StringBuilder().append(rolUsuario.getNombre()).toString();
+            }
+        };
+    }
+    
+    public Converter<Integer, RolUsuario> ApplicationConversionServiceFactoryBean.getIdToRolUsuarioConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Integer, es.uca.iw.uj2016.dominio.RolUsuario>() {
+            public es.uca.iw.uj2016.dominio.RolUsuario convert(java.lang.Integer id) {
+                return RolUsuario.findRolUsuario(id);
+            }
+        };
+    }
+    
+    public Converter<String, RolUsuario> ApplicationConversionServiceFactoryBean.getStringToRolUsuarioConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, es.uca.iw.uj2016.dominio.RolUsuario>() {
+            public es.uca.iw.uj2016.dominio.RolUsuario convert(String id) {
+                return getObject().convert(getObject().convert(id, Integer.class), RolUsuario.class);
+            }
+        };
+    }
+    
     public Converter<TitulosAcademicos, String> ApplicationConversionServiceFactoryBean.getTitulosAcademicosToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<es.uca.iw.uj2016.dominio.TitulosAcademicos, java.lang.String>() {
             public String convert(TitulosAcademicos titulosAcademicos) {
@@ -391,7 +416,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Usuario, String> ApplicationConversionServiceFactoryBean.getUsuarioToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<es.uca.iw.uj2016.dominio.Usuario, java.lang.String>() {
             public String convert(Usuario usuario) {
-                return new StringBuilder().append(usuario.getNombre()).append(' ').append(usuario.getTipo()).append(' ').append(usuario.getPassword()).toString();
+                return new StringBuilder().append(usuario.getNombre()).append(' ').append(usuario.getPassword()).toString();
             }
         };
     }
@@ -452,6 +477,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getPuestoTrabajoPerfilToStringConverter());
         registry.addConverter(getIdToPuestoTrabajoPerfilConverter());
         registry.addConverter(getStringToPuestoTrabajoPerfilConverter());
+        registry.addConverter(getRolUsuarioToStringConverter());
+        registry.addConverter(getIdToRolUsuarioConverter());
+        registry.addConverter(getStringToRolUsuarioConverter());
         registry.addConverter(getTitulosAcademicosToStringConverter());
         registry.addConverter(getIdToTitulosAcademicosConverter());
         registry.addConverter(getStringToTitulosAcademicosConverter());

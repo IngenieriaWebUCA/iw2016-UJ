@@ -24,13 +24,12 @@ privileged aspect Demandante_Roo_DbManaged {
     @OneToMany(mappedBy = "idDemandante", cascade = CascadeType.ALL)
     private Set<Inscripcion> Demandante.inscripcions;
     
+    @OneToMany(mappedBy = "idDemandante", cascade = CascadeType.ALL)
+    private Set<Perfil> Demandante.perfils;
+    
     @ManyToOne
     @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
     private Usuario Demandante.idUsuario;
-    
-    @ManyToOne
-    @JoinColumn(name = "id_perfil", referencedColumnName = "id", nullable = false)
-    private Perfil Demandante.idPerfil;
     
     @Column(name = "nombre", length = 64)
     @NotNull
@@ -74,20 +73,20 @@ privileged aspect Demandante_Roo_DbManaged {
         this.inscripcions = inscripcions;
     }
     
+    public Set<Perfil> Demandante.getPerfils() {
+        return perfils;
+    }
+    
+    public void Demandante.setPerfils(Set<Perfil> perfils) {
+        this.perfils = perfils;
+    }
+    
     public Usuario Demandante.getIdUsuario() {
         return idUsuario;
     }
     
     public void Demandante.setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }
-    
-    public Perfil Demandante.getIdPerfil() {
-        return idPerfil;
-    }
-    
-    public void Demandante.setIdPerfil(Perfil idPerfil) {
-        this.idPerfil = idPerfil;
     }
     
     public String Demandante.getNombre() {

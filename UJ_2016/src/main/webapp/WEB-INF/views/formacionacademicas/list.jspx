@@ -6,6 +6,7 @@
         <table:table data="${formacionacademicas}" id="l_es_uca_iw_uj2016_dominio_FormacionAcademica" path="/formacionacademicas" z="3UPCT27iv7WxhcpX4/4Hlg0Frws=">
             <table:column id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_curso" property="curso" z="3OYx72OCugnMTDNlZw1i/2oDmGM="/>
             <table:column id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_idioma" property="idioma" z="2IA5uAP2K8iwJykHyhXB7YQlF/k="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_idPerfil" property="idPerfil" z="BbXLrg3K2ZUa58wpYx5PtoVfYLU="/>
         </table:table>
     </page:list>
 </div>

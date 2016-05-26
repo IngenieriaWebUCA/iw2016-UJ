@@ -6,7 +6,7 @@
         <field:simple field="demandantes" id="c_es_uca_iw_uj2016_dominio_Usuario_demandantes" messageCode="entity_reference_not_managed" messageCodeAttribute="Demandante" z="fdR4WXYMgRF3fiqhnK9Vifyvvv4="/>
         <field:simple field="empresas" id="c_es_uca_iw_uj2016_dominio_Usuario_empresas" messageCode="entity_reference_not_managed" messageCodeAttribute="Empresa" z="KqoWJHaLo9pJrAeKCQgh816RELM="/>
         <field:input field="nombre" id="c_es_uca_iw_uj2016_dominio_Usuario_nombre" required="true" z="uWvwfwMQuu5p4VDiwagDG9g58ks="/>
-        <field:input field="tipo" id="c_es_uca_iw_uj2016_dominio_Usuario_tipo" required="true" validationMessageCode="field_invalid_integer" z="gY5U7mge5qf0Pn97W1J+7Swjzu8="/>
         <field:input field="password" id="c_es_uca_iw_uj2016_dominio_Usuario_password" required="true" z="Ih1FaIEYAR95ARk/jjHLmGSNhlo="/>
+        <field:select field="idRolUsuario" id="c_es_uca_iw_uj2016_dominio_Usuario_idRolUsuario" itemValue="id" items="${rolusuarios}" path="/rolusuarios" z="lZifXa1/VDe/kBNZqWBXZhQ+hdw="/>
     </form:update>
 </div>

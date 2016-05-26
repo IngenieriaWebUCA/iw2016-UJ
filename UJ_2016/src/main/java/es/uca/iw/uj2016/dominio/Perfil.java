@@ -7,6 +7,6 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooJpaActiveRecord(versionField = "", table = "perfil")
 @RooDbManaged(automaticallyDelete = true)
-@RooToString(excludeFields = { "demandantes", "experienciaProfesionals", "puestoTrabajoPerfils", "idFormacionAcademica" })
+@RooToString(excludeFields = { "demandantes", "experienciaProfesionals", "puestoTrabajoPerfils", "idFormacionAcademica", "formacionAcademicas", "idDemandante" })
 public class Perfil {
 }

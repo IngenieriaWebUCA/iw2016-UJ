@@ -10,7 +10,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 privileged aspect Perfil_Roo_ToString {
     
     public String Perfil.toString() {
-        return new ReflectionToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).setExcludeFieldNames("demandantes", "experienciaProfesionals", "puestoTrabajoPerfils", "idFormacionAcademica").toString();
+        return new ReflectionToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).setExcludeFieldNames("demandantes", "experienciaProfesionals", "puestoTrabajoPerfils", "idFormacionAcademica", "formacionAcademicas", "idDemandante").toString();
     }
     
 }
