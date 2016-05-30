@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-05-2016 a las 19:35:32
+-- Tiempo de generación: 31-05-2016 a las 00:41:28
 -- Versión del servidor: 5.5.49-0+deb8u1
 -- Versión de PHP: 5.6.20-0+deb8u1
 
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   `numero_empleados` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `actividad_profesional` varchar(128) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -288,9 +288,9 @@ CREATE TABLE IF NOT EXISTS `titulos_formacion` (
 CREATE TABLE IF NOT EXISTS `usuario` (
 `id` int(11) NOT NULL,
   `nombre` varchar(32) NOT NULL,
-  `password` varchar(32) NOT NULL,
+  `password` varchar(128) NOT NULL,
   `id_rol_usuario` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -299,7 +299,10 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 INSERT INTO `usuario` (`id`, `nombre`, `password`, `id_rol_usuario`) VALUES
 (9, 'administrador', 'administrador', 1),
 (10, 'deman', 'deman', 3),
-(11, 'empresa', 'empresa', 2);
+(11, 'empresa', 'empresa', 2),
+(12, 'codifi', 'codifi', 3),
+(13, 'pruebaencoder', 'pruebaencoder', 3),
+(14, 'admin', '$2a$10$i01pdGedHI/LdA/sYqbQIuoAggPYoD/HtLesnyqLW59YA3t.PF/S6', 1);
 
 --
 -- Índices para tablas volcadas
@@ -425,7 +428,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `empresa`
 --
 ALTER TABLE `empresa`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `estado`
 --
@@ -495,7 +498,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- Restricciones para tablas volcadas
 --
