@@ -9,4 +9,5 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooDbManaged(automaticallyDelete = true)
 @RooToString(excludeFields = { "demandantes", "empresas", "idRolUsuario" })
 public class Usuario {
+
 }

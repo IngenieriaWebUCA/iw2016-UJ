@@ -15,6 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 privileged aspect Usuario_Roo_DbManaged {
     
     @OneToMany(mappedBy = "idUsuario", cascade = CascadeType.ALL)
@@ -31,7 +34,7 @@ privileged aspect Usuario_Roo_DbManaged {
     @NotNull
     private String Usuario.nombre;
     
-    @Column(name = "password", length = 32)
+    @Column(name = "password", length = 128)
     @NotNull
     private String Usuario.password;
     
@@ -72,7 +75,9 @@ privileged aspect Usuario_Roo_DbManaged {
     }
     
     public void Usuario.setPassword(String password) {
-        this.password = password;
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(password);
+        this.password = encodedPassword;
     }
     
 }
