@@ -49,7 +49,6 @@
 <aspect name="es.uca.iw.uj2016.dominio.Demandante_Roo_ToString"/>
 <aspect name="es.uca.iw.uj2016.dominio.Localizacion_Roo_Jpa_Entity"/>
 <aspect name="es.uca.iw.uj2016.dominio.OfertaTrabajoTitulos_Roo_Jpa_ActiveRecord"/>
-<aspect name="es.uca.iw.uj2016.dominio.Usuario_Roo_DbManaged"/>
 <aspect name="es.uca.iw.uj2016.web.TitulosFormacionController_Roo_Controller"/>
 <aspect name="es.uca.iw.uj2016.dominio.ExperienciaProfesional_Roo_DbManaged"/>
 <aspect name="es.uca.iw.uj2016.dominio.FormacionAcademica_Roo_DbManaged"/>

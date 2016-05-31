@@ -374,7 +374,7 @@
     <table name="usuario">
         <column name="id" primaryKey="true" required="true" scale="0" size="10" type="4,INT"/>
         <column name="nombre" primaryKey="false" required="true" scale="0" size="32" type="12,VARCHAR"/>
-        <column name="password" primaryKey="false" required="true" scale="0" size="32" type="12,VARCHAR"/>
+        <column name="password" primaryKey="false" required="true" scale="0" size="128" type="12,VARCHAR"/>
         <column name="id_rol_usuario" primaryKey="false" required="true" scale="0" size="10" type="4,INT"/>
         <foreign-key foreignTable="rol_usuario" name="usuario_ibfk_1" onDelete="cascade" onUpdate="cascade">
             <option key="exported" value="false"/>

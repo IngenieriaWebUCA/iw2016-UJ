@@ -97,6 +97,7 @@
         <servlet-class>com.github.dandelion.datatables.core.web.servlet.DatatablesServlet</servlet-class>
     </servlet>
     
+    
     <servlet-mapping>
         <servlet-name>UJ_2016</servlet-name>
         <url-pattern>/</url-pattern>
