@@ -94,7 +94,7 @@ public class UsuarioController {
         uiModel.addAttribute("usuario", usuario);
         uiModel.addAttribute("demandantes", Demandante.findAllDemandantes());
         uiModel.addAttribute("empresas", Empresa.findAllEmpresas());
-        uiModel.addAttribute("rolusuarios", RolUsuario.findAllRolUsuarios());
+        uiModel.addAttribute("rolusuarios", RolUsuario.findRolUsuarioEntries(1, 2));
     }
 
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

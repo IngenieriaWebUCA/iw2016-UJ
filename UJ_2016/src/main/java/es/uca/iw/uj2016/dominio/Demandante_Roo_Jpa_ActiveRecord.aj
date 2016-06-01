@@ -30,6 +30,7 @@ privileged aspect Demandante_Roo_Jpa_ActiveRecord {
         return entityManager().createQuery("SELECT o FROM Demandante o", Demandante.class).getResultList();
     }
     
+    
     public static List<Demandante> Demandante.findAllDemandantes(String sortFieldName, String sortOrder) {
         String jpaQuery = "SELECT o FROM Demandante o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {

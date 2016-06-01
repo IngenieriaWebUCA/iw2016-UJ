@@ -94,7 +94,6 @@
 <aspect name="es.uca.iw.uj2016.web.DemandanteController_Roo_Controller"/>
 <aspect name="es.uca.iw.uj2016.dominio.OfertaTrabajoTitulos_Roo_ToString"/>
 <aspect name="es.uca.iw.uj2016.dominio.Perfil_Roo_Jpa_ActiveRecord"/>
-<aspect name="es.uca.iw.uj2016.web.PerfilController_Roo_Controller"/>
 <aspect name="es.uca.iw.uj2016.web.RolUsuarioController_Roo_Controller"/>
 <aspect name="es.uca.iw.uj2016.dominio.OfertaTrabajoTitulos_Roo_Jpa_Entity"/>
 <aspect name="es.uca.iw.uj2016.dominio.Inscripcion_Roo_Jpa_ActiveRecord"/>
