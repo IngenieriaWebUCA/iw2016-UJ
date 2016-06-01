@@ -9,8 +9,12 @@ import es.uca.iw.uj2016.dominio.Inscripcion;
 import es.uca.iw.uj2016.dominio.OfertaDeTrabajo;
 import es.uca.iw.uj2016.dominio.OfertaTrabajoTitulos;
 import es.uca.iw.uj2016.dominio.PuestoDeTrabajo;
+import es.uca.iw.uj2016.dominio.Usuario;
 import es.uca.iw.uj2016.web.OfertaDeTrabajoController;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.joda.time.format.DateTimeFormat;
@@ -98,16 +102,7 @@ privileged aspect OfertaDeTrabajoController_Roo_Controller {
         uiModel.addAttribute("ofertaDeTrabajo_fechadefin_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
-    void OfertaDeTrabajoController.populateEditForm(Model uiModel, OfertaDeTrabajo ofertaDeTrabajo) {
-        uiModel.addAttribute("ofertaDeTrabajo", ofertaDeTrabajo);
-        addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("empresas", Empresa.findAllEmpresas());
-        uiModel.addAttribute("estadoes", Estado.findAllEstadoes());
-        uiModel.addAttribute("inscripcions", Inscripcion.findAllInscripcions());
-        uiModel.addAttribute("ofertatrabajotituloses", OfertaTrabajoTitulos.findAllOfertaTrabajoTituloses());
-        uiModel.addAttribute("puestodetrabajoes", PuestoDeTrabajo.findAllPuestoDeTrabajoes());
-    }
-    
+        
     String OfertaDeTrabajoController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {

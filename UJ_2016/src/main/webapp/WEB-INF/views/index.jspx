@@ -13,13 +13,10 @@
 		</sec:authorize>
 	
     <spring:message code="application_name" htmlEscape="false" var="app_name"/>
-    <spring:message arguments="${app_name}" code="welcome_titlepane" htmlEscape="false" var="title"/>
+    <spring:message arguments="Uca's Job" code="welcome_titlepane" htmlEscape="false" var="title"/>
 
         <div class="jumbotron">
-            <h1><spring:message arguments="${app_name}" code="welcome_h3"/></h1>
+            <h1><spring:message arguments="Uca's Job" code="welcome_h3"/></h1>
             <p><spring:message code="welcome_text"/></p>
         </div>
-        
-        
-
 </div>
