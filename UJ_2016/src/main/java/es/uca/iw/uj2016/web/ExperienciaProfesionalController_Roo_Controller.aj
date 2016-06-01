@@ -3,11 +3,16 @@
 
 package es.uca.iw.uj2016.web;
 
+import es.uca.iw.uj2016.dominio.Demandante;
 import es.uca.iw.uj2016.dominio.ExperienciaProfesional;
 import es.uca.iw.uj2016.dominio.Perfil;
 import es.uca.iw.uj2016.dominio.PuestoDeTrabajo;
+import es.uca.iw.uj2016.dominio.Usuario;
 import es.uca.iw.uj2016.web.ExperienciaProfesionalController;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.joda.time.format.DateTimeFormat;
@@ -95,13 +100,7 @@ privileged aspect ExperienciaProfesionalController_Roo_Controller {
         uiModel.addAttribute("experienciaProfesional_fechafin_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
-    void ExperienciaProfesionalController.populateEditForm(Model uiModel, ExperienciaProfesional experienciaProfesional) {
-        uiModel.addAttribute("experienciaProfesional", experienciaProfesional);
-        addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("perfils", Perfil.findAllPerfils());
-        uiModel.addAttribute("puestodetrabajoes", PuestoDeTrabajo.findAllPuestoDeTrabajoes());
-    }
-    
+        
     String ExperienciaProfesionalController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {

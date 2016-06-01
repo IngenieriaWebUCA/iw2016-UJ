@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    <!-- HECHO -->
+    <!-- Averiguamos el id del demandante actual -->
+    <c:set var="fin" value="${fn:length(userperfil) - 1}"/>
+    <c:forEach begin="0" end="${fin}" varStatus="loop">
+       	<c:if test="${idUsuarioActual == userperfil[loop.index].id}">
+        	<c:set var="idDemanActual" value="${demandantes[loop.index].id}"/>
+        </c:if>
+    </c:forEach>
+    
+    <!-- Averiguamos el Id del Perfil actual -->
+    <c:set var="fin" value="${fn:length(perfildeman) - 1}"/>
+        <c:forEach begin="0" end="${fin}" varStatus="loop">
+        	<c:if test="${idDemanActual == perfildeman[loop.index].id}">
+        		<c:set var="idPerfilActual" value="${perfils[loop.index].id}"/>
+        	</c:if>
+        </c:forEach>
+            
     <form:create id="fc_es_uca_iw_uj2016_dominio_FormacionAcademica" modelAttribute="formacionAcademica" path="/formacionacademicas" render="${empty dependencies}" z="ZdiLOW2VqZW/YehU0yegpnXhUXQ=">
-        <field:simple field="titulosFormacions" id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_titulosFormacions" messageCode="entity_reference_not_managed" messageCodeAttribute="Titulos Formacion" z="gdo7EX3S787hM7FBs4HVsDpmnDg="/>
         <field:input field="curso" id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_curso" required="true" z="C+5a2z5RI6+LD8I2JY7dHRKCaqE="/>
         <field:input field="idioma" id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_idioma" required="true" z="dlI97TdZlNNuzGs/S5dVytOheMg="/>
-        <field:select field="idPerfil" id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_idPerfil" itemValue="id" items="${perfils}" path="/perfils" z="MLg8EEEE8Xx9pSZW0G26ZNQAH/g="/>
+        <input type="hidden" field="idPerfil" name="idPerfil" id="c_es_uca_iw_uj2016_dominio_FormacionAcademica_idPerfil" value="${idPerfilActual}" z="MLg8EEEE8Xx9pSZW0G26ZNQAH/g="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_es_uca_iw_uj2016_dominio_FormacionAcademica" render="${not empty dependencies}" z="iCBOydg1TOYsIVg9ML6ndKIeLs4="/>
 </div>

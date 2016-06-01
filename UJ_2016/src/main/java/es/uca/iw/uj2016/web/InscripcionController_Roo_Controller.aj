@@ -6,8 +6,12 @@ package es.uca.iw.uj2016.web;
 import es.uca.iw.uj2016.dominio.Demandante;
 import es.uca.iw.uj2016.dominio.Inscripcion;
 import es.uca.iw.uj2016.dominio.OfertaDeTrabajo;
+import es.uca.iw.uj2016.dominio.Usuario;
 import es.uca.iw.uj2016.web.InscripcionController;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.ui.Model;
@@ -86,12 +90,7 @@ privileged aspect InscripcionController_Roo_Controller {
         return "redirect:/inscripcions";
     }
     
-    void InscripcionController.populateEditForm(Model uiModel, Inscripcion inscripcion) {
-        uiModel.addAttribute("inscripcion", inscripcion);
-        uiModel.addAttribute("demandantes", Demandante.findAllDemandantes());
-        uiModel.addAttribute("ofertadetrabajoes", OfertaDeTrabajo.findAllOfertaDeTrabajoes());
-    }
-    
+        
     String InscripcionController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
