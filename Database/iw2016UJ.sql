@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 31-05-2016 a las 00:41:28
+-- Tiempo de generación: 02-06-2016 a las 19:12:31
 -- Versión del servidor: 5.5.49-0+deb8u1
 -- Versión de PHP: 5.6.20-0+deb8u1
 
@@ -58,14 +58,16 @@ CREATE TABLE IF NOT EXISTS `demandante` (
   `email` varchar(128) NOT NULL,
   `telefono` int(32) NOT NULL,
   `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `demandante`
 --
 
 INSERT INTO `demandante` (`id`, `nombre`, `apellidos`, `dni`, `fecha_nacimiento`, `sexo`, `direccion`, `email`, `telefono`, `id_usuario`) VALUES
-(1, 'paquito', 'paquitodos', '252555', '2016-05-18', 'Hombre', 'calle calel', 'dafds@hotmail.com', 949494, 10);
+(3, 'aaa', 'a', 'a', '2016-07-30', 'a', 'a', 'a', 425, 15),
+(4, 'deman3', 'apellidos', '25252n', '2014-06-11', 'Hombre', 'calle 252', 'dfsa@hotmail.com', 2622363, 20),
+(5, 'Paco', 'paquinho', '35252', '2016-08-20', 'hombre', 'fdasf', 'fasdf', 85785, 16);
 
 -- --------------------------------------------------------
 
@@ -81,7 +83,17 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   `numero_empleados` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `actividad_profesional` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `empresa`
+--
+
+INSERT INTO `empresa` (`id`, `cif`, `nombre`, `email`, `numero_empleados`, `id_usuario`, `actividad_profesional`) VALUES
+(1, '000001', 'Empresa SA', 'empresa@empresa.com', 237, 17, 'Seguridad informática'),
+(2, '2020202', 'Hormigones SA', 'hormigas@sa.com', 2001, 18, 'Construcción de edificios'),
+(3, '33333', 'hito', 'fdsaff', 2, 14, 'Hito'),
+(4, '2122121', 'empresahito SA', 'empreaa@fdsas.com', 2, 19, 'fdasf');
 
 -- --------------------------------------------------------
 
@@ -92,7 +104,19 @@ CREATE TABLE IF NOT EXISTS `empresa` (
 CREATE TABLE IF NOT EXISTS `estado` (
 `id` int(11) NOT NULL,
   `nombre` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `estado`
+--
+
+INSERT INTO `estado` (`id`, `nombre`) VALUES
+(1, 'En espera'),
+(2, 'Activa'),
+(3, 'Detenida'),
+(4, 'Cancelada'),
+(5, 'En trámite'),
+(6, 'Resuelta');
 
 -- --------------------------------------------------------
 
@@ -114,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `experiencia_profesional` (
 --
 
 INSERT INTO `experiencia_profesional` (`id`, `nombre_empresa`, `fecha_inicio`, `fecha_fin`, `id_puesto_de_trabajo`, `id_perfil`) VALUES
-(1, 'Empresa', '2016-05-16', '2016-05-24', 1, 1);
+(1, 'uca', '2016-06-01', '2016-06-09', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -127,7 +151,15 @@ CREATE TABLE IF NOT EXISTS `formacion_academica` (
   `curso` text NOT NULL,
   `idioma` text NOT NULL,
   `id_perfil` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `formacion_academica`
+--
+
+INSERT INTO `formacion_academica` (`id`, `curso`, `idioma`, `id_perfil`) VALUES
+(1, 'Cursillo de Bootstrap', 'Inglés, Español...', 1),
+(2, 'cursillo', 'español, ingles', 2);
 
 -- --------------------------------------------------------
 
@@ -140,7 +172,14 @@ CREATE TABLE IF NOT EXISTS `inscripcion` (
   `nombre` varchar(32) NOT NULL,
   `id_oferta_de_trabajo` int(11) NOT NULL,
   `id_demandante` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `inscripcion`
+--
+
+INSERT INTO `inscripcion` (`id`, `nombre`, `id_oferta_de_trabajo`, `id_demandante`) VALUES
+(1, 'Deman', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -153,7 +192,16 @@ CREATE TABLE IF NOT EXISTS `localizacion` (
   `direccion` varchar(128) NOT NULL,
   `id_ciudad` int(11) NOT NULL,
   `id_empresa` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `localizacion`
+--
+
+INSERT INTO `localizacion` (`id`, `direccion`, `id_ciudad`, `id_empresa`) VALUES
+(1, 'Calle Antigua ESI', 1, 1),
+(2, 'Calle cualquiera nº 46', 2, 1),
+(3, 'calle final', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -172,7 +220,16 @@ CREATE TABLE IF NOT EXISTS `oferta_de_trabajo` (
   `id_estado` int(11) NOT NULL,
   `id_empresa` int(11) NOT NULL,
   `id_puesto_de_trabajo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `oferta_de_trabajo`
+--
+
+INSERT INTO `oferta_de_trabajo` (`id`, `tipo_concreto`, `sueldo_bruto`, `fecha_inicio`, `vacantes`, `experiencia_previa`, `fecha_de_fin`, `id_estado`, `id_empresa`, `id_puesto_de_trabajo`) VALUES
+(1, 'Programador', 250, '2016-06-01', 2, 0, '2016-06-08', 2, 1, 1),
+(2, 'Analista', 200, '2016-06-06', 1, 0, '2016-06-27', 2, 2, 1),
+(3, 'Programador Inf', 500, '2016-06-01', 3, 0, '2016-06-29', 2, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -197,14 +254,15 @@ CREATE TABLE IF NOT EXISTS `perfil` (
   `foto` varchar(256) NOT NULL,
   `presentacion` text NOT NULL,
   `id_demandante` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `perfil`
 --
 
 INSERT INTO `perfil` (`id`, `foto`, `presentacion`, `id_demandante`) VALUES
-(1, 'cualuqiercosa', 'Hola soy paquito', 1);
+(1, 'imagen.jpg', 'Hola que pasa', 3),
+(2, 'asdfsaf.jpg', 'fsadfasffd', 4);
 
 -- --------------------------------------------------------
 
@@ -290,19 +348,20 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nombre` varchar(32) NOT NULL,
   `password` varchar(128) NOT NULL,
   `id_rol_usuario` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `password`, `id_rol_usuario`) VALUES
-(9, 'administrador', 'administrador', 1),
-(10, 'deman', 'deman', 3),
-(11, 'empresa', 'empresa', 2),
-(12, 'codifi', 'codifi', 3),
-(13, 'pruebaencoder', 'pruebaencoder', 3),
-(14, 'admin', '$2a$10$i01pdGedHI/LdA/sYqbQIuoAggPYoD/HtLesnyqLW59YA3t.PF/S6', 1);
+(14, 'admin', '$2a$10$i01pdGedHI/LdA/sYqbQIuoAggPYoD/HtLesnyqLW59YA3t.PF/S6', 1),
+(15, 'deman', '$2a$10$KNYHuMiKb0wt4h3CdlDLMOfqz/9pe0nxhmBXipULR1ulfcZjcZB7C', 3),
+(16, 'deman2', '$2a$10$mOLnjTiItKfP3NBOssuNC.Dla.9bxMnLMlS2BwkjPaz.GEdZsPQoG', 3),
+(17, 'empresa', '$2a$10$Re9/B.cIgAgO.G0bc01rDeGnLyJzgUrbh9LeHH1BwkUvRffmEjXEG', 2),
+(18, 'empresaprueba', '$2a$10$jo5bci/i.jbS8JV4oAYSk.kcWXK7aVboezq7a.XxAzgwdFUzg4ula', 2),
+(19, 'empresahito', '$2a$10$4fY07jnXMiX7U25Kq0NjSuiv7m8o.zlYHHcYYXmx37pO1arz4R8pq', 2),
+(20, 'deman3', '$2a$10$LF.kpMlmmhbFlySAZZrkAO8n9L05E0d5c6RVOrSok0jjHvO30I9Kq', 3);
 
 --
 -- Índices para tablas volcadas
@@ -423,17 +482,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT de la tabla `demandante`
 --
 ALTER TABLE `demandante`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `empresa`
 --
 ALTER TABLE `empresa`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `estado`
 --
 ALTER TABLE `estado`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `experiencia_profesional`
 --
@@ -443,22 +502,22 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `formacion_academica`
 --
 ALTER TABLE `formacion_academica`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `localizacion`
 --
 ALTER TABLE `localizacion`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `oferta_de_trabajo`
 --
 ALTER TABLE `oferta_de_trabajo`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `oferta_trabajo_titulos`
 --
@@ -468,7 +527,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `puesto_de_trabajo`
 --
@@ -498,7 +557,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- Restricciones para tablas volcadas
 --
