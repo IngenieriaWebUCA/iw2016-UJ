@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,9 +36,47 @@ public class DemandanteController {
             populateEditForm(uiModel, demandante);
             return "demandantes/create";
         }
+        List<Demandante> deman = Demandante.findAllDemandantes();
+        List<Usuario> us = new ArrayList<Usuario>(); //Userperfil
+        for(int i=0; i<deman.size(); i++){
+        	us.add(deman.get(i).getIdUsuario());
+        }
+        List<Perfil> perf = Perfil.findAllPerfils();
+        List<Demandante> d = new ArrayList<Demandante>(); //PerfilDeman
+        for(int i=0; i<perf.size(); i++){
+        	d.add(perf.get(i).getIdDemandante());
+        }
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String name = user.getUsername();
+        List<Usuario> todosUs = new ArrayList<Usuario>();
+        todosUs = Usuario.findAllUsuarios();
+        int idUsuarioActual=-1;
+        for(int i=0; i<todosUs.size(); i++){
+        	if(name.equals(todosUs.get(i).getNombre())){
+        		idUsuarioActual=todosUs.get(i).getId();
+        	}
+        }
+            
+        int idDemanActual=0;
+        for(int i=0; i<us.size(); i++){
+        	if(idUsuarioActual==us.get(i).getId()){
+        		idDemanActual=deman.get(i).getId();
+        	}
+        }
+        
+        int idPerfilActual=0;
+        for(int i=0; i<d.size(); i++){
+        	if(idDemanActual == d.get(i).getId()){
+        		idPerfilActual=perf.get(i).getId();
+        	}
+        }
         uiModel.asMap().clear();
-        demandante.persist();
-        return "redirect:/demandantes/" + encodeUrlPathSegment(demandante.getId().toString(), httpServletRequest);
+    	demandante.merge();
+        if(idPerfilActual==0){
+        	return "redirect:/perfils/?form";
+        }else{
+        	return "redirect:/perfils/"+idPerfilActual+"?form";
+        }
     }
 
 	@RequestMapping(params = "form", produces = "text/html")
@@ -74,9 +114,49 @@ public class DemandanteController {
             populateEditForm(uiModel, demandante);
             return "demandantes/update";
         }
+        
+        List<Demandante> deman = Demandante.findAllDemandantes();
+        List<Usuario> us = new ArrayList<Usuario>(); //Userperfil
+        for(int i=0; i<deman.size(); i++){
+        	us.add(deman.get(i).getIdUsuario());
+        }
+        List<Perfil> perf = Perfil.findAllPerfils();
+        List<Demandante> d = new ArrayList<Demandante>(); //PerfilDeman
+        for(int i=0; i<perf.size(); i++){
+        	d.add(perf.get(i).getIdDemandante());
+        }
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String name = user.getUsername();
+        List<Usuario> todosUs = new ArrayList<Usuario>();
+        todosUs = Usuario.findAllUsuarios();
+        int idUsuarioActual=-1;
+        for(int i=0; i<todosUs.size(); i++){
+        	if(name.equals(todosUs.get(i).getNombre())){
+        		idUsuarioActual=todosUs.get(i).getId();
+        	}
+        }
+            
+        int idDemanActual=0;
+        for(int i=0; i<us.size(); i++){
+        	if(idUsuarioActual==us.get(i).getId()){
+        		idDemanActual=deman.get(i).getId();
+        	}
+        }
+        
+        int idPerfilActual=0;
+        for(int i=0; i<d.size(); i++){
+        	if(idDemanActual == d.get(i).getId()){
+        		idPerfilActual=perf.get(i).getId();
+        	}
+        }
         uiModel.asMap().clear();
-        demandante.merge();
-        return "redirect:/demandantes/" + encodeUrlPathSegment(demandante.getId().toString(), httpServletRequest);
+    	demandante.merge();
+        if(idPerfilActual==0){
+        	return "redirect:/perfils/?form";
+        }else{
+        	return "redirect:/perfils/"+idPerfilActual+"?form";
+        }
+   
     }
 
 	@RequestMapping(value = "/{id}", params = "form", produces = "text/html")
@@ -112,6 +192,12 @@ public class DemandanteController {
         	us.add(deman.get(i).getIdUsuario());
         }
         uiModel.addAttribute("userperfil", us);
+        List<Perfil> perf = Perfil.findAllPerfils();
+        List<Demandante> d = new ArrayList<Demandante>();
+        for(int i=0; i<perf.size(); i++){
+        	d.add(perf.get(i).getIdDemandante());
+        }
+        uiModel.addAttribute("perfildeman", d);
     }
 
 	String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

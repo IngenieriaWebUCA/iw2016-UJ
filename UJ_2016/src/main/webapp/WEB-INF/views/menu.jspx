@@ -107,7 +107,7 @@
 	        	<sec:authorize ifAnyGranted="Administrador, Empresa">
 	            	<menu:item id="i_empresa_new" messageCode="global_menu_new" url="/empresas?form" z="TBXez8QM+aB2tzcjHN1lQJYrewc="/>
 	            </sec:authorize>
-	            <sec:authorize ifAnyGranted="Administrador, Demandante, Empresa">
+	            <sec:authorize ifAnyGranted="Administrador, Demandante">
 	            	<menu:item id="i_empresa_list" messageCode="global_menu_list" url="/empresas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/YQYlSdehDz3lrOGSSpWZYe++Zk="/>
 	        	</sec:authorize>
 	        </menu:category>
@@ -132,7 +132,7 @@
 	        	<sec:authorize ifAnyGranted="Administrador, Demandante">
 	            	<menu:item id="i_demandante_new" messageCode="global_menu_new" url="/demandantes?form" z="8+S2ulD0VSXmoyyhDfXJ+CNxgh8="/>
 	            </sec:authorize>
-	            <sec:authorize ifAnyGranted="Administrador, Demandante, Empresa">
+	            <sec:authorize ifAnyGranted="Administrador, Empresa">
 	            	<menu:item id="i_demandante_list" messageCode="global_menu_list" url="/demandantes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="1MtvqFaAsZmIa4hZR8pApwIOdDY="/>
 	        	</sec:authorize>
 	        </menu:category>

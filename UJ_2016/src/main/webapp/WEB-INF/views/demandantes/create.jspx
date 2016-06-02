@@ -24,8 +24,9 @@
 	        <input type="hidden" field="idUsuario" id="c_es_uca_iw_uj2016_dominio_Demandante_idUsuario" name="idUsuario" value="${idUsuarioActual}" z="gQNc7yCAQAWuIR0AoxduaG5GD9Q="/>
 	    </form:create>
 	    <form:dependency dependencies="${dependencies}" id="d_es_uca_iw_uj2016_dominio_Demandante" render="${not empty dependencies}" z="eU5tL5MLbzaX2Fh3i7vbuSqXLik="/>
+		
 	</c:if>
 	<c:if test="${idDemanActual > 0}">
-		<h3>Datos ya completados.</h3>
+		<meta http-equiv="Refresh" content="0;url=http://localhost:8080/UJ_2016/demandantes/${idDemanActual}?form"/>
 	</c:if>
 </div>

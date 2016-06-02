@@ -106,7 +106,7 @@
         <intercept-url pattern="\A/empresas\Z" method="PUT" access="hasAnyRole('Administrador', 'Empresa')" />
         <intercept-url pattern="\A/empresas/\d*\Z" method="GET" access="hasAnyRole('Administrador', 'Demandante', 'Empresa')" />
         <intercept-url pattern="\A/empresas\?form.*\Z" access="hasAnyRole('Administrador', 'Empresa')" />
-        <intercept-url pattern="\A/empresas\?page=\d*.*" access="hasAnyRole('Administrador', 'Demandante', 'Empresa')" />
+        <intercept-url pattern="\A/empresas\?page=\d*.*" access="hasAnyRole('Administrador', 'Demandante')" />
         <intercept-url pattern="\A/empresas/\d" access="hasAnyRole('Administrador', 'Demandante', 'Empresa')" />
         <intercept-url pattern="\A/empresas" access="hasAnyRole('Administrador', 'Empresa')" />
         
@@ -152,7 +152,7 @@
         <intercept-url pattern="\A/demandantes\Z" method="PUT" access="hasAnyRole('Administrador', 'Demandante')" />
         <intercept-url pattern="\A/demandantes/\d*\Z" method="GET" access="hasAnyRole('Administrador', 'Demandante', 'Empresa')" />
         <intercept-url pattern="\A/demandantes\?form.*\Z" access="hasAnyRole('Administrador', 'Demandante')" />
-        <intercept-url pattern="\A/demandantes\?page=\d*.*" access="hasAnyRole('Administrador', 'Demandante', 'Empresa')" />
+        <intercept-url pattern="\A/demandantes\?page=\d*.*" access="hasAnyRole('Administrador', 'Empresa')" />
         <intercept-url pattern="\A/demandantes/\d" access="hasAnyRole('Administrador', 'Demandante', 'Empresa')" />
         <intercept-url pattern="\A/demandantes" access="hasAnyRole('Administrador', 'Demandante')" />
         
