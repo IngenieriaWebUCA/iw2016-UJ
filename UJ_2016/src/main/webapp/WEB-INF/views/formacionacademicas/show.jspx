@@ -5,6 +5,22 @@
     <page:show id="ps_es_uca_iw_uj2016_dominio_FormacionAcademica" object="${formacionacademica}" path="/formacionacademicas" z="6F+mUeKOdUe3mLvE4fEKL7pHlPc=">
         <field:display field="curso" id="s_es_uca_iw_uj2016_dominio_FormacionAcademica_curso" object="${formacionacademica}" z="O6o2j47t8fcnqv5d2yCa4VW5MfI="/>
         <field:display field="idioma" id="s_es_uca_iw_uj2016_dominio_FormacionAcademica_idioma" object="${formacionacademica}" z="9Csac7l09B+SiT3sXTih1BQqM9Q="/>
-        <field:display field="idPerfil" id="s_es_uca_iw_uj2016_dominio_FormacionAcademica_idPerfil" object="${formacionacademica}" z="2b9R+Q8conPywM5kB85v0NAIbQo="/>
+    </page:show>
+    
+    
+    <page:show id="ps_es_uca_iw_uj2016_dominio_Perfil" object="${perfil}" path="/perfils" z="vKouLDUDXfyPzUUtHbzpy3q/p7w=">
+        <field:display field="foto" id="s_es_uca_iw_uj2016_dominio_Perfil_foto" object="${perfil}" z="ea9/uP5qa5Ezn8EAyBn3YAdu9wk="/>
+        <field:display field="presentacion" id="s_es_uca_iw_uj2016_dominio_Perfil_presentacion" object="${perfil}" z="j7r8PbXUJkuJaUsDKeCEC3BByGQ="/>
+    </page:show>
+    
+    <page:show id="ps_es_uca_iw_uj2016_dominio_Demandante" object="${demandante}" path="/demandantes" z="/YIf3IscNSwP0pS/P8L9ZgLJ3uI=">
+        <field:display field="nombre" id="s_es_uca_iw_uj2016_dominio_Demandante_nombre" object="${demandante}" z="IytjKboH+vhu/9X6r/HBDkf5UeE="/>
+        <field:display field="apellidos" id="s_es_uca_iw_uj2016_dominio_Demandante_apellidos" object="${demandante}" z="AUQbYvG2mWsFzAmqNkVVuF4NNvE="/>
+        <field:display field="dni" id="s_es_uca_iw_uj2016_dominio_Demandante_dni" object="${demandante}" z="kD4S/eTEY5OhiyHeFrbWqUjReTE="/>
+        <field:display date="true" dateTimePattern="${demandante_fechanacimiento_date_format}" field="fechaNacimiento" id="s_es_uca_iw_uj2016_dominio_Demandante_fechaNacimiento" object="${demandante}" z="EaqRcC7V2tT3S3qTlv3atJh9D24="/>
+        <field:display field="sexo" id="s_es_uca_iw_uj2016_dominio_Demandante_sexo" object="${demandante}" z="qVXR0lJIZfYwPacojbMn6gAhUkk="/>
+        <field:display field="direccion" id="s_es_uca_iw_uj2016_dominio_Demandante_direccion" object="${demandante}" z="NjmqpoNl4S6kDnaz9to7qE57Eu4="/>
+        <field:display field="email" id="s_es_uca_iw_uj2016_dominio_Demandante_email" object="${demandante}" z="n5C26jGw71Q1+hYF2hVWzjOGdjE="/>
+        <field:display field="telefono" id="s_es_uca_iw_uj2016_dominio_Demandante_telefono" object="${demandante}" z="4MyaMdTP7ESCUqpg2wboincjx8M="/>
     </page:show>
 </div>

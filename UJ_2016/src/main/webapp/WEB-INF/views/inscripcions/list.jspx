@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+<div xmlns:sec="http://www.springframework.org/security/tags" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    
+    <sec:authorize ifAllGranted="Administrador"> 
     <page:list id="pl_es_uca_iw_uj2016_dominio_Inscripcion" items="${inscripcions}" z="/di1pLwNuF/PhWliUjouwgHD3uM=">
         <table:table data="${inscripcions}" id="l_es_uca_iw_uj2016_dominio_Inscripcion" path="/inscripcions" z="c9ZJbs15jxmc4ohNVbyUYcoz300=">
             <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_idOfertaDeTrabajo" property="idOfertaDeTrabajo" z="6XM1fbneKRCsHhfPUD6wJsw4nto="/>
@@ -9,4 +11,28 @@
             <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_nombre" property="nombre" z="JrYR99FviBAGse4AD/8jchRDHFU="/>
         </table:table>
     </page:list>
+    </sec:authorize>
+    
+    <sec:authorize ifAllGranted="Demandante">
+    <page:list id="pl_es_uca_iw_uj2016_dominio_Inscripcion" items="${inscDeman}" z="/di1pLwNuF/PhWliUjouwgHD3uM=">
+        <table:table data="${inscDeman}" id="l_es_uca_iw_uj2016_dominio_Inscripcion" path="/inscripcions" z="c9ZJbs15jxmc4ohNVbyUYcoz300=">
+            <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_idOfertaDeTrabajo" property="idOfertaDeTrabajo" z="6XM1fbneKRCsHhfPUD6wJsw4nto="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_idDemandante" property="idDemandante" z="s5dulch11JAvsBdns4bG7WsQ40M="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_nombre" property="nombre" z="JrYR99FviBAGse4AD/8jchRDHFU="/>
+        </table:table>
+    </page:list>
+    </sec:authorize>
+    
+    <sec:authorize ifAllGranted="Empresa">
+    <page:list id="pl_es_uca_iw_uj2016_dominio_Inscripcion" items="${inscEmpr}" z="/di1pLwNuF/PhWliUjouwgHD3uM=">
+        <table:table data="${inscEmpr}" id="l_es_uca_iw_uj2016_dominio_Inscripcion" path="/inscripcions" z="c9ZJbs15jxmc4ohNVbyUYcoz300=">
+            <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_idOfertaDeTrabajo" property="idOfertaDeTrabajo" z="6XM1fbneKRCsHhfPUD6wJsw4nto="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_idDemandante" property="idDemandante" z="s5dulch11JAvsBdns4bG7WsQ40M="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_nombre" property="nombre" z="JrYR99FviBAGse4AD/8jchRDHFU="/>
+        </table:table>
+    </page:list>
+    </sec:authorize>
+    
+    
+    
 </div>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+<div xmlns:sec="http://www.springframework.org/security/tags" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    
+    <sec:authorize ifAnyGranted="Administrador, Demandante"> 
     <page:list id="pl_es_uca_iw_uj2016_dominio_OfertaDeTrabajo" items="${ofertadetrabajoes}" z="Vggjrs4CFwxZMBtKuhYMMMlp864=">
         <table:table data="${ofertadetrabajoes}" id="l_es_uca_iw_uj2016_dominio_OfertaDeTrabajo" path="/ofertadetrabajoes" z="ZVxTSKvzyQxgE4XzVSIiLNh3GNs=">
             <table:column id="c_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_idEstado" property="idEstado" z="Nh8953OTKIfvItfMolqc2XjQSwU="/>
@@ -10,4 +12,16 @@
             <table:column id="c_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_tipoConcreto" property="tipoConcreto" z="XOYoFVX19jQxAUDkaLOjnW3C4EM="/>
         </table:table>
     </page:list>
+    </sec:authorize>
+    
+    <sec:authorize ifAllGranted="Empresa"> 
+    	<page:list id="pl_es_uca_iw_uj2016_dominio_OfertaDeTrabajo" items="${ofEmpr}" z="Vggjrs4CFwxZMBtKuhYMMMlp864=">
+        <table:table data="${ofEmpr}" id="l_es_uca_iw_uj2016_dominio_OfertaDeTrabajo" path="/ofertadetrabajoes" z="ZVxTSKvzyQxgE4XzVSIiLNh3GNs=">
+            <table:column id="c_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_idEstado" property="idEstado" z="Nh8953OTKIfvItfMolqc2XjQSwU="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_idEmpresa" property="idEmpresa" z="J5BxVJiUuEgEMgbes359scBNOZQ="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_idPuestoDeTrabajo" property="idPuestoDeTrabajo" z="RWvrg3qDdrAYZUi0Fca+/arzt7k="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_tipoConcreto" property="tipoConcreto" z="XOYoFVX19jQxAUDkaLOjnW3C4EM="/>
+        </table:table>
+    </page:list>
+    </sec:authorize>
 </div>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <page:list id="pl_es_uca_iw_uj2016_dominio_Usuario" items="${usuarios}" z="CoPyg4hQC1lL2z6GKOvYRWxYVxo=">
-        <table:table data="${usuarios}" id="l_es_uca_iw_uj2016_dominio_Usuario" path="/usuarios" z="eaWCwM4RHjnnmXRGu7GwdAM+5WY=">
-            <table:column id="c_es_uca_iw_uj2016_dominio_Usuario_nombre" property="nombre" z="bAYKhr6AA7q6xvzcaViP7OQyEEo="/>
-            <table:column id="c_es_uca_iw_uj2016_dominio_Usuario_password" property="password" z="7wwi0meRJl2FyyWrR8K3IPY0Nxo="/>
-            <table:column id="c_es_uca_iw_uj2016_dominio_Usuario_idRolUsuario" property="idRolUsuario" z="nVON4xeRUNmfmPmE4vZovV9vmic="/>
-        </table:table>
-    </page:list>
+    <page:show id="ps_es_uca_iw_uj2016_dominio_Usuario" object="${usuario}" path="/usuarios" z="/X9CJK9KlMzuulQtL4Bi0xLKKv0=">
+        <field:display field="nombre" id="s_es_uca_iw_uj2016_dominio_Usuario_nombre" object="${usuario}" z="CV920MS9w5xj50t7TAGznrcMQL0="/>
+        <field:display field="password" id="s_es_uca_iw_uj2016_dominio_Usuario_password" object="${usuario}" z="CRlevdlCFkBHOXSu2+8EyXUkRJo="/>
+        <field:display field="idRolUsuario" id="s_es_uca_iw_uj2016_dominio_Usuario_idRolUsuario" object="${usuario}" z="C/Ar8I74tx/C65GS7yV8l8XE7hE="/>
+    </page:show>
+
 </div>

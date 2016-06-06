@@ -53,7 +53,7 @@
 	        </menu:category>
 	    </sec:authorize>
         
-        <sec:authorize ifAnyGranted="Administrador, Demandante">
+        <sec:authorize ifAllGranted="Administrador">
 	        <menu:category id="c_formacionacademica" z="RhhwbYBIA+37xBOf4y79n4ZeYuU=">
 	            <menu:item id="i_formacionacademica_new" messageCode="global_menu_new" url="/formacionacademicas?form" z="BQ1VacwGYCerqZEL/2IyT3IuB6c="/>
 	            <menu:item id="i_formacionacademica_list" messageCode="global_menu_list" url="/formacionacademicas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="RLjXRWKygNkMUiCAXalXThNrK/8="/>
@@ -88,7 +88,7 @@
 	        </menu:category>
         </sec:authorize>
         
-        <sec:authorize ifAnyGranted="Administrador, Demandante">
+        <sec:authorize ifAllGranted="Administrador">
 	        <menu:category id="c_perfil" z="IXsqDjmAdFx8UDse6pIX4BWTzJI=">
 	            <menu:item id="i_perfil_new" messageCode="global_menu_new" url="/perfils?form" z="o4iwt5RupWuivgX3bSp1Ge1LhlA="/>
 	           	<menu:item id="i_perfil_list" messageCode="global_menu_list" url="/perfils?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9a6XPu7Dg4+ZnXkuIifSq+pUUuU="/>

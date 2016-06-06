@@ -10,6 +10,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -48,6 +50,46 @@ public class FormacionAcademicaController {
     public String show(@PathVariable("id") Integer id, Model uiModel) {
         uiModel.addAttribute("formacionacademica", FormacionAcademica.findFormacionAcademica(id));
         uiModel.addAttribute("itemId", id);
+        
+        
+        //Averiguar IdPerfilActual e IDDemandante Actual
+        List<Demandante> deman = Demandante.findAllDemandantes();
+        List<Usuario> us = new ArrayList<Usuario>(); //Userperfil
+        for(int i=0; i<deman.size(); i++){
+        	us.add(deman.get(i).getIdUsuario());
+        }
+        List<Perfil> perf = Perfil.findAllPerfils();
+        List<Demandante> d = new ArrayList<Demandante>(); //PerfilDeman
+        for(int i=0; i<perf.size(); i++){
+        	d.add(perf.get(i).getIdDemandante());
+        }
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String name = user.getUsername();
+        List<Usuario> todosUs = new ArrayList<Usuario>();
+        todosUs = Usuario.findAllUsuarios();
+        int idUsuarioActual=-1;
+        for(int i=0; i<todosUs.size(); i++){
+        	if(name.equals(todosUs.get(i).getNombre())){
+        		idUsuarioActual=todosUs.get(i).getId();
+        	}
+        }
+            
+        int idDemanActual=0;
+        for(int i=0; i<us.size(); i++){
+        	if(idUsuarioActual==us.get(i).getId()){
+        		idDemanActual=deman.get(i).getId();
+        	}
+        }
+        
+        int idPerfilActual=0;
+        for(int i=0; i<d.size(); i++){
+        	if(idDemanActual == d.get(i).getId()){
+        		idPerfilActual=perf.get(i).getId();
+        	}
+        }
+        
+        uiModel.addAttribute("perfil", Perfil.findPerfil(idPerfilActual));
+        uiModel.addAttribute("demandante", Demandante.findDemandante(idDemanActual));
         return "formacionacademicas/show";
     }
 

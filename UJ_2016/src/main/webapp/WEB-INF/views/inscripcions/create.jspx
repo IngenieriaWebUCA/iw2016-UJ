@@ -12,7 +12,7 @@
     <form:create id="fc_es_uca_iw_uj2016_dominio_Inscripcion" modelAttribute="inscripcion" path="/inscripcions" render="${empty dependencies}" z="8Y7nfoy7BtWcT0bOieP7ja2Lj9Y=">
         <field:select field="idOfertaDeTrabajo" id="c_es_uca_iw_uj2016_dominio_Inscripcion_idOfertaDeTrabajo" itemValue="id" items="${ofertadetrabajoes}" path="/ofertadetrabajoes" z="iceB7pezKmH4PIPHHk7+D5+zus0="/>
         <input type="hidden" field="idDemandante" id="c_es_uca_iw_uj2016_dominio_Inscripcion_idDemandante" itemValue="id" name="idDemandante" value="${idDemanActual}" z="qEkp+rkdPty1m0Y7xR6rkfFGZHc="/>
-        <field:input field="nombre" id="c_es_uca_iw_uj2016_dominio_Inscripcion_nombre" required="true" z="G6nrmJHiLJ493OzPLFVaqTJ5uiE="/>
+        <input type="hidden" field="nombre" id="c_es_uca_iw_uj2016_dominio_Inscripcion_nombre" name="nombre" required="true" value="Recibida" z="G6nrmJHiLJ493OzPLFVaqTJ5uiE="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_es_uca_iw_uj2016_dominio_Inscripcion" render="${not empty dependencies}" z="oCfqeNXyo5Lg6I2v/iQMPHPiGtQ="/>
 </div>

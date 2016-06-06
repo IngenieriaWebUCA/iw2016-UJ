@@ -4,7 +4,13 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_es_uca_iw_uj2016_dominio_Inscripcion" modelAttribute="inscripcion" path="/inscripcions" versionField="none" z="PabdZDfZNLnCgrRlmq9pQgl34Tc=">
         <field:select field="idOfertaDeTrabajo" id="c_es_uca_iw_uj2016_dominio_Inscripcion_idOfertaDeTrabajo" itemValue="id" items="${ofertadetrabajoes}" path="/ofertadetrabajoes" z="iceB7pezKmH4PIPHHk7+D5+zus0="/>
-        <field:select field="idDemandante" id="c_es_uca_iw_uj2016_dominio_Inscripcion_idDemandante" itemValue="id" items="${demandantes}" path="/demandantes" z="qEkp+rkdPty1m0Y7xR6rkfFGZHc="/>
-        <field:input field="nombre" id="c_es_uca_iw_uj2016_dominio_Inscripcion_nombre" required="true" z="G6nrmJHiLJ493OzPLFVaqTJ5uiE="/>
+        <input type="hidden" field="idDemandante" id="c_es_uca_iw_uj2016_dominio_Inscripcion_idDemandante" itemValue="id" name="idDemandante" value="${demandante.id}" z="qEkp+rkdPty1m0Y7xR6rkfFGZHc="/>
+    	Estado de la oferta: <select field="nombre" id="c_es_uca_iw_uj2016_dominio_Inscripcion_nombre" name="nombre" required="true" z="G6nrmJHiLJ493OzPLFVaqTJ5uiE=">
+    		<option value="Recibida">Recibida</option>
+    		<option value="Retirada">Retirada</option>
+    		<option value="En estudio">En estudio</option>
+    		<option value="Descartada">Descartada</option>
+    		<option value="Aceptada">Aceptada</option>
+    	</select>
     </form:update>
 </div>

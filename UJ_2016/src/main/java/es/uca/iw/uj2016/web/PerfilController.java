@@ -11,6 +11,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,9 +36,64 @@ public class PerfilController {
             populateEditForm(uiModel, perfil);
             return "perfils/create";
         }
+        
+        List<Demandante> deman = Demandante.findAllDemandantes();
+        List<Usuario> us = new ArrayList<Usuario>(); //Userperfil
+        for(int i=0; i<deman.size(); i++){
+        	us.add(deman.get(i).getIdUsuario());
+        }
+        List<Perfil> perf = Perfil.findAllPerfils();
+        List<Demandante> d = new ArrayList<Demandante>(); //PerfilDeman
+        for(int i=0; i<perf.size(); i++){
+        	d.add(perf.get(i).getIdDemandante());
+        }
+        
+        List<FormacionAcademica> formAc = FormacionAcademica.findAllFormacionAcademicas();
+        List<Perfil> p = new ArrayList<Perfil>(); //FormacionAcademica-Perfil
+        for(int i=0; i<formAc.size(); i++){
+        	p.add(formAc.get(i).getIdPerfil());
+        }
+        
+        //ID del usuario actual
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String name = user.getUsername();
+        List<Usuario> todosUs = new ArrayList<Usuario>();
+        todosUs = Usuario.findAllUsuarios();
+        int idUsuarioActual=-1;
+        for(int i=0; i<todosUs.size(); i++){
+        	if(name.equals(todosUs.get(i).getNombre())){
+        		idUsuarioActual=todosUs.get(i).getId();
+        	}
+        }
+            
+        int idDemanActual=0;
+        for(int i=0; i<us.size(); i++){
+        	if(idUsuarioActual==us.get(i).getId()){
+        		idDemanActual=deman.get(i).getId();
+        	}
+        }
+        
+        int idPerfilActual=0;
+        for(int i=0; i<d.size(); i++){
+        	if(idDemanActual == d.get(i).getId()){
+        		idPerfilActual=perf.get(i).getId();
+        	}
+        }
+        
+        int idFormacionAcademica=0;
+        for(int i=0; i<p.size(); i++){
+        	if(idPerfilActual == p.get(i).getId()){
+        		idFormacionAcademica=formAc.get(i).getId();
+        	}
+        }
+
         uiModel.asMap().clear();
         perfil.persist();
-        return "redirect:/perfils/" + encodeUrlPathSegment(perfil.getId().toString(), httpServletRequest);
+        if(idFormacionAcademica==0){
+        	return "redirect:/formacionacademicas/?form";
+        }else{
+        	return "redirect:/formacionacademicas/"+idFormacionAcademica+"?form";
+        }
     }
 
 	@RequestMapping(params = "form", produces = "text/html")
@@ -72,9 +129,63 @@ public class PerfilController {
             populateEditForm(uiModel, perfil);
             return "perfils/update";
         }
+        List<Demandante> deman = Demandante.findAllDemandantes();
+        List<Usuario> us = new ArrayList<Usuario>(); //Userperfil
+        for(int i=0; i<deman.size(); i++){
+        	us.add(deman.get(i).getIdUsuario());
+        }
+        List<Perfil> perf = Perfil.findAllPerfils();
+        List<Demandante> d = new ArrayList<Demandante>(); //PerfilDeman
+        for(int i=0; i<perf.size(); i++){
+        	d.add(perf.get(i).getIdDemandante());
+        }
+        
+        List<FormacionAcademica> formAc = FormacionAcademica.findAllFormacionAcademicas();
+        List<Perfil> p = new ArrayList<Perfil>(); //FormacionAcademica-Perfil
+        for(int i=0; i<formAc.size(); i++){
+        	p.add(formAc.get(i).getIdPerfil());
+        }
+        
+        //ID del usuario actual
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String name = user.getUsername();
+        List<Usuario> todosUs = new ArrayList<Usuario>();
+        todosUs = Usuario.findAllUsuarios();
+        int idUsuarioActual=-1;
+        for(int i=0; i<todosUs.size(); i++){
+        	if(name.equals(todosUs.get(i).getNombre())){
+        		idUsuarioActual=todosUs.get(i).getId();
+        	}
+        }
+            
+        int idDemanActual=0;
+        for(int i=0; i<us.size(); i++){
+        	if(idUsuarioActual==us.get(i).getId()){
+        		idDemanActual=deman.get(i).getId();
+        	}
+        }
+        
+        int idPerfilActual=0;
+        for(int i=0; i<d.size(); i++){
+        	if(idDemanActual == d.get(i).getId()){
+        		idPerfilActual=perf.get(i).getId();
+        	}
+        }
+        
+        int idFormacionAcademica=0;
+        for(int i=0; i<p.size(); i++){
+        	if(idPerfilActual == p.get(i).getId()){
+        		idFormacionAcademica=formAc.get(i).getId();
+        	}
+        }
+        
         uiModel.asMap().clear();
         perfil.merge();
-        return "redirect:/perfils/" + encodeUrlPathSegment(perfil.getId().toString(), httpServletRequest);
+        if(idFormacionAcademica==0){
+        	return "redirect:/formacionacademicas/?form";
+        }else{
+        	return "redirect:/formacionacademicas/"+idFormacionAcademica+"?form";
+        }
     }
 
 	@RequestMapping(value = "/{id}", params = "form", produces = "text/html")

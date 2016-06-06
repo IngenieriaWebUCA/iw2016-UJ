@@ -7,7 +7,7 @@
             <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_cif" property="cif" z="kdz43X4hAwLCCyfxPePTdbwW4yY="/>
             <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_nombre" property="nombre" z="WeRVD49epo1gBy5yZrjKNbbi9Hg="/>
             <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_email" property="email" z="BV8AbTa7gBK42Y7nHcpdS37ohtU="/>
-            <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_idUsuario" property="idUsuario" z="0LRZRS8kuN8Gfdw7caox9m2GuFc="/>
+            <!--  <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_idUsuario" property="idUsuario" z="0LRZRS8kuN8Gfdw7caox9m2GuFc="/> -->
         </table:table>
     </page:list>
 </div>
