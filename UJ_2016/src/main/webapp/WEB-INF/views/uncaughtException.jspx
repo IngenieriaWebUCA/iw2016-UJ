@@ -3,12 +3,14 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <spring:message code="error_uncaughtexception_title" htmlEscape="false" var="title"/>
+   
     <util:panel id="title" title="${title}">
         <!-- repeat <h2> in util/panel.tagx -->
         <!-- <h2>${fn:escapeXml(title)}</h2> -->
         <p>
             <spring:message code="error_uncaughtexception_problemdescription"/>
         </p>
+        <!--  
         <c:if test="${not empty exception}">
             <p>
                 <h4>
@@ -27,5 +29,6 @@
                 </util:panel>
             </p>
         </c:if>
+        -->
     </util:panel>
 </div>

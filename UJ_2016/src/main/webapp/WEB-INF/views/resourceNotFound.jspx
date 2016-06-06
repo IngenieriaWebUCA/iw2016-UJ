@@ -8,6 +8,7 @@
         <p>
             <spring:message code="error_resourcenotfound_problemdescription"/>
         </p>
+        <!-- 
         <c:if test="${not empty exception}">
             <p>
                 <h4>
@@ -26,5 +27,6 @@
                 </util:panel>
             </p>
         </c:if>
+        -->
     </util:panel>
 </div>
