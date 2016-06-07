@@ -4,10 +4,17 @@ import es.uca.iw.uj2016.dominio.Empresa;
 import es.uca.iw.uj2016.dominio.Inscripcion;
 import es.uca.iw.uj2016.dominio.OfertaDeTrabajo;
 import es.uca.iw.uj2016.dominio.Usuario;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -18,6 +25,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.UriUtils;
+import org.springframework.web.util.WebUtils;
 import org.gvnix.addon.web.mvc.annotations.jquery.GvNIXWebJQuery;
 
 
@@ -28,6 +37,9 @@ import org.gvnix.addon.web.mvc.annotations.jquery.GvNIXWebJQuery;
 public class InscripcionController {
 
 	public static int idOf=-1;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 	void populateEditForm(Model uiModel, Inscripcion inscripcion) {
         uiModel.addAttribute("inscripcion", inscripcion);
         uiModel.addAttribute("demandantes", Demandante.findAllDemandantes());
@@ -164,5 +176,68 @@ public class InscripcionController {
         uiModel.asMap().clear();
         inscripcion.persist();
         return "redirect:/inscripcions/" + encodeUrlPathSegment(inscripcion.getId().toString(), httpServletRequest);
+    }
+
+	@RequestMapping(value = "/{id}", produces = "text/html")
+    public String show(@PathVariable("id") Integer id, Model uiModel) {
+        uiModel.addAttribute("inscripcion", Inscripcion.findInscripcion(id));
+        uiModel.addAttribute("itemId", id);
+        return "inscripcions/show";
+    }
+
+	@RequestMapping(method = RequestMethod.PUT, produces = "text/html")
+    public String update(@Valid Inscripcion inscripcion, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            populateEditForm(uiModel, inscripcion);
+            return "inscripcions/update";
+        }
+        
+        String emailDeman = inscripcion.getIdDemandante().getEmail();
+        String estadoIns = inscripcion.getNombre();
+        String nombreEmpresa = inscripcion.getIdOfertaDeTrabajo().getIdEmpresa().getNombre();
+        
+        //Enviar correos electronicos
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setFrom("Ucas_Jobs");
+        msg.setTo(emailDeman);
+        msg.setSubject("El estado de tu Inscripcion ha cambiado");
+        msg.setText("Tu inscripcion en la oferta de la empresa "+nombreEmpresa+" ha pasado a un nuevo estado: "+estadoIns);
+        try {
+            mailSender.send(msg);
+        } catch (MailException ex) {
+        	System.err.println(ex.getMessage());
+        } 
+        
+
+        uiModel.asMap().clear();
+        inscripcion.merge();
+        return "redirect:/inscripcions/" + encodeUrlPathSegment(inscripcion.getId().toString(), httpServletRequest);
+    }
+
+	@RequestMapping(value = "/{id}", params = "form", produces = "text/html")
+    public String updateForm(@PathVariable("id") Integer id, Model uiModel) {
+        populateEditForm(uiModel, Inscripcion.findInscripcion(id));
+        return "inscripcions/update";
+    }
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
+    public String delete(@PathVariable("id") Integer id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+        Inscripcion inscripcion = Inscripcion.findInscripcion(id);
+        inscripcion.remove();
+        uiModel.asMap().clear();
+        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/inscripcions";
+    }
+
+	String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
+        if (enc == null) {
+            enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
+        }
+        try {
+            pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
+        } catch (UnsupportedEncodingException uee) {}
+        return pathSegment;
     }
 }

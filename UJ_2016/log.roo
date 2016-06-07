@@ -53,3 +53,6 @@ database reverse engineer --package ~.dominio --schema no-schema-required
 // Spring Roo 1.3.2.RELEASE [rev d18aef8] log closed at 2016-05-31 19:32:39
 // Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-06-07 17:05:52
 // Spring Roo 1.3.2.RELEASE [rev d18aef8] log closed at 2016-06-07 19:44:50
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-06-07 23:24:17
+email sender setup --hostServer smtp.gmail.com --protocol smtp --port 587
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log closed at 2016-06-08 00:43:18
