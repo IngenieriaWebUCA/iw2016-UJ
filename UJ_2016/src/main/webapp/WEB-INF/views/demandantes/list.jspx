@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+<div xmlns:sec="http://www.springframework.org/security/tags" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    <sec:authorize ifAllGranted="Administrador"> 
     <page:list id="pl_es_uca_iw_uj2016_dominio_Demandante" items="${demandantes}" z="9vwX3x2o5mnGjeN2yhq7aoasPZ8=">
         <table:table data="${demandantes}" id="l_es_uca_iw_uj2016_dominio_Demandante" path="/demandantes" z="mUgKX9D81xYF/2zyoyEhOUz+X8A=">
             <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_nombre" property="nombre" z="7xwbEKRQzzOeo0FUvKr0gvc+B3M="/>
@@ -10,4 +11,18 @@
             <!-- <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_idUsuario" property="idUsuario" z="hQ0kUhCiBbQzdRjvNBmBF1hLH0s="/> -->
         </table:table>
     </page:list>
+    </sec:authorize>
+    
+    <sec:authorize ifAllGranted="Empresa"> 
+    <page:list id="pl_es_uca_iw_uj2016_dominio_Demandante" items="${demandantes}" z="9vwX3x2o5mnGjeN2yhq7aoasPZ8=">
+        <table:table data="${demandantes}" id="l_es_uca_iw_uj2016_dominio_Demandante" path="/demandantes" z="mUgKX9D81xYF/2zyoyEhOUz+X8A=" create="false" update="false" delete="false">
+            <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_nombre" property="nombre" z="7xwbEKRQzzOeo0FUvKr0gvc+B3M="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_apellidos" property="apellidos" z="KdoT6VvJOVMaipmZUOnV1oOqkrU="/>
+            <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_dni" property="dni" z="ZFh/CIOOf9ltGvltrv1ffEpn3y0="/>
+            <!-- <table:column id="c_es_uca_iw_uj2016_dominio_Demandante_idUsuario" property="idUsuario" z="hQ0kUhCiBbQzdRjvNBmBF1hLH0s="/> -->
+        </table:table>
+    </page:list>
+    </sec:authorize>
+    
+    
 </div>

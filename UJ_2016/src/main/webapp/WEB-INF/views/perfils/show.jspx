@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+<div xmlns:sec="http://www.springframework.org/security/tags" xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_es_uca_iw_uj2016_dominio_Perfil" object="${perfil}" path="/perfils" z="vKouLDUDXfyPzUUtHbzpy3q/p7w=">
-        <field:display field="foto" id="s_es_uca_iw_uj2016_dominio_Perfil_foto" object="${perfil}" z="ea9/uP5qa5Ezn8EAyBn3YAdu9wk="/>
-        <field:display field="presentacion" id="s_es_uca_iw_uj2016_dominio_Perfil_presentacion" object="${perfil}" z="j7r8PbXUJkuJaUsDKeCEC3BByGQ="/>
-        <field:display field="idDemandante" id="s_es_uca_iw_uj2016_dominio_Perfil_idDemandante" object="${perfil}" z="PS9RdgDTHLI1SS51PS1btkKqB34="/>
-    </page:show>
+    
+    <sec:authorize ifAnyGranted="Empresa, Demandante"> 
+	    <page:show id="ps_es_uca_iw_uj2016_dominio_Perfil" object="${perfil}" path="/perfils" z="vKouLDUDXfyPzUUtHbzpy3q/p7w=" create="false" list="false" update="false" delete="false">
+	        <field:display field="foto" id="s_es_uca_iw_uj2016_dominio_Perfil_foto" object="${perfil}" z="ea9/uP5qa5Ezn8EAyBn3YAdu9wk="/>
+	        <field:display field="presentacion" id="s_es_uca_iw_uj2016_dominio_Perfil_presentacion" object="${perfil}" z="j7r8PbXUJkuJaUsDKeCEC3BByGQ="/>
+	        <field:display field="idDemandante" id="s_es_uca_iw_uj2016_dominio_Perfil_idDemandante" object="${perfil}" z="PS9RdgDTHLI1SS51PS1btkKqB34="/>
+	    </page:show>
+    </sec:authorize>
+    
+    <sec:authorize ifAllGranted="Administrador"> 
+	    <page:show id="ps_es_uca_iw_uj2016_dominio_Perfil" object="${perfil}" path="/perfils" z="vKouLDUDXfyPzUUtHbzpy3q/p7w=">
+	        <field:display field="foto" id="s_es_uca_iw_uj2016_dominio_Perfil_foto" object="${perfil}" z="ea9/uP5qa5Ezn8EAyBn3YAdu9wk="/>
+	        <field:display field="presentacion" id="s_es_uca_iw_uj2016_dominio_Perfil_presentacion" object="${perfil}" z="j7r8PbXUJkuJaUsDKeCEC3BByGQ="/>
+	        <field:display field="idDemandante" id="s_es_uca_iw_uj2016_dominio_Perfil_idDemandante" object="${perfil}" z="PS9RdgDTHLI1SS51PS1btkKqB34="/>
+	    </page:show>
+    </sec:authorize>
 </div>

@@ -15,7 +15,7 @@
     
     <sec:authorize ifAllGranted="Demandante">
     <page:list id="pl_es_uca_iw_uj2016_dominio_Inscripcion" items="${inscDeman}" z="/di1pLwNuF/PhWliUjouwgHD3uM=">
-        <table:table data="${inscDeman}" id="l_es_uca_iw_uj2016_dominio_Inscripcion" path="/inscripcions" z="c9ZJbs15jxmc4ohNVbyUYcoz300=">
+        <table:table data="${inscDeman}" id="l_es_uca_iw_uj2016_dominio_Inscripcion" path="/inscripcions" z="c9ZJbs15jxmc4ohNVbyUYcoz300=" create="false" update="false">
             <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_idOfertaDeTrabajo" property="idOfertaDeTrabajo" z="6XM1fbneKRCsHhfPUD6wJsw4nto="/>
             <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_idDemandante" property="idDemandante" z="s5dulch11JAvsBdns4bG7WsQ40M="/>
             <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_nombre" property="nombre" z="JrYR99FviBAGse4AD/8jchRDHFU="/>
@@ -25,7 +25,7 @@
     
     <sec:authorize ifAllGranted="Empresa">
     <page:list id="pl_es_uca_iw_uj2016_dominio_Inscripcion" items="${inscEmpr}" z="/di1pLwNuF/PhWliUjouwgHD3uM=">
-        <table:table data="${inscEmpr}" id="l_es_uca_iw_uj2016_dominio_Inscripcion" path="/inscripcions" z="c9ZJbs15jxmc4ohNVbyUYcoz300=">
+        <table:table data="${inscEmpr}" id="l_es_uca_iw_uj2016_dominio_Inscripcion" path="/inscripcions" z="c9ZJbs15jxmc4ohNVbyUYcoz300=" create="false" delete="false">
             <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_idOfertaDeTrabajo" property="idOfertaDeTrabajo" z="6XM1fbneKRCsHhfPUD6wJsw4nto="/>
             <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_idDemandante" property="idDemandante" z="s5dulch11JAvsBdns4bG7WsQ40M="/>
             <table:column id="c_es_uca_iw_uj2016_dominio_Inscripcion_nombre" property="nombre" z="JrYR99FviBAGse4AD/8jchRDHFU="/>

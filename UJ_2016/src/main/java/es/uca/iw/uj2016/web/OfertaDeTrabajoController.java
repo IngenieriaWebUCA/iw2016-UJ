@@ -51,6 +51,11 @@ public class OfertaDeTrabajoController {
             uiModel.addAttribute("ofertadetrabajoes", OfertaDeTrabajo.findAllOfertaDeTrabajoes(sortFieldName, sortOrder));
         }
         
+        
+        
+        
+        
+        
         //ID del usuario actual
         User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String name = user.getUsername();
@@ -85,9 +90,18 @@ public class OfertaDeTrabajoController {
         	}
         }
         
+        //Ofertas de trabajo activas
+        List<OfertaDeTrabajo> of_dem = new ArrayList<OfertaDeTrabajo>();
+        for(int i=0; i<of.size(); i++){
+        	if((of.get(i).getIdEstado().getNombre()).equals("Activa")){
+        		of_dem.add(of.get(i));
+        	}
+        }
        //Ofertas de trabajo relacionadas con la empresa
         uiModel.addAttribute("ofEmpr", of_empr);
         
+        //Ofertas de trabajo activas
+        uiModel.addAttribute("ofDem", of_dem);
         addDateTimeFormatPatterns(uiModel);
         return "ofertadetrabajoes/list";
     }

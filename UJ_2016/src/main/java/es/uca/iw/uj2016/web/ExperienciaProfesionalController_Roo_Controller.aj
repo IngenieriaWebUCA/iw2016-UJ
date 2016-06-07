@@ -5,6 +5,7 @@ package es.uca.iw.uj2016.web;
 
 import es.uca.iw.uj2016.dominio.Demandante;
 import es.uca.iw.uj2016.dominio.ExperienciaProfesional;
+import es.uca.iw.uj2016.dominio.Inscripcion;
 import es.uca.iw.uj2016.dominio.Perfil;
 import es.uca.iw.uj2016.dominio.PuestoDeTrabajo;
 import es.uca.iw.uj2016.dominio.Usuario;
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,21 +56,7 @@ privileged aspect ExperienciaProfesionalController_Roo_Controller {
         return "experienciaprofesionals/show";
     }
     
-    @RequestMapping(produces = "text/html")
-    public String ExperienciaProfesionalController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
-        if (page != null || size != null) {
-            int sizeNo = size == null ? 10 : size.intValue();
-            final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
-            uiModel.addAttribute("experienciaprofesionals", ExperienciaProfesional.findExperienciaProfesionalEntries(firstResult, sizeNo, sortFieldName, sortOrder));
-            float nrOfPages = (float) ExperienciaProfesional.countExperienciaProfesionals() / sizeNo;
-            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
-        } else {
-            uiModel.addAttribute("experienciaprofesionals", ExperienciaProfesional.findAllExperienciaProfesionals(sortFieldName, sortOrder));
-        }
-        addDateTimeFormatPatterns(uiModel);
-        return "experienciaprofesionals/list";
-    }
-    
+        
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String ExperienciaProfesionalController.update(@Valid ExperienciaProfesional experienciaProfesional, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {

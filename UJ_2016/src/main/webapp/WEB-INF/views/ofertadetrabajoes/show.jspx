@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
+<div xmlns:sec="http://www.springframework.org/security/tags" xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    
+    <sec:authorize ifAnyGranted="Empresa, Administrador"> 
     <page:show id="ps_es_uca_iw_uj2016_dominio_OfertaDeTrabajo" object="${ofertadetrabajo}" path="/ofertadetrabajoes" z="Igm7/wHlkY7t3Zoze1AZzMYBJY4=">
         <field:display field="idEstado" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_idEstado" object="${ofertadetrabajo}" z="3DIfRCCiGW2zWlPyXqiWR9XgPhs="/>
         <field:display field="idEmpresa" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_idEmpresa" object="${ofertadetrabajo}" z="0SXp2qftS3lSO7zTHxDpImX7qOU="/>
@@ -13,4 +15,21 @@
         <field:display field="experienciaPrevia" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_experienciaPrevia" object="${ofertadetrabajo}" z="pBVO5UKKdD/xYmz9JNB3BXGoHD8="/>
         <field:display date="true" dateTimePattern="${ofertaDeTrabajo_fechadefin_date_format}" field="fechaDeFin" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_fechaDeFin" object="${ofertadetrabajo}" z="f18IY9e3Yag3azQiRaa9o91Isa8="/>
     </page:show>
+    </sec:authorize>
+    
+    <sec:authorize ifAllGranted="Demandante"> 
+     <page:show id="ps_es_uca_iw_uj2016_dominio_OfertaDeTrabajo" object="${ofertadetrabajo}" path="/ofertadetrabajoes" z="Igm7/wHlkY7t3Zoze1AZzMYBJY4=" create="false" update="false" delete="false" list="false">
+        <field:display field="idEstado" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_idEstado" object="${ofertadetrabajo}" z="3DIfRCCiGW2zWlPyXqiWR9XgPhs="/>
+        <field:display field="idEmpresa" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_idEmpresa" object="${ofertadetrabajo}" z="0SXp2qftS3lSO7zTHxDpImX7qOU="/>
+        <field:display field="idPuestoDeTrabajo" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_idPuestoDeTrabajo" object="${ofertadetrabajo}" z="TPcVjgQPhn4t8ZZI9b1BGhSNTew="/>
+        <field:display field="tipoConcreto" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_tipoConcreto" object="${ofertadetrabajo}" z="WUr8dBD6UszcBW60IP8xB2Hb8bE="/>
+        <field:display field="sueldoBruto" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_sueldoBruto" object="${ofertadetrabajo}" z="ULFryX5XMYVMuPZqQpNgsZbLcjc="/>
+        <field:display date="true" dateTimePattern="${ofertaDeTrabajo_fechainicio_date_format}" field="fechaInicio" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_fechaInicio" object="${ofertadetrabajo}" z="75PzHJRsaFemr/CESmwaMiFBCfQ="/>
+        <field:display field="vacantes" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_vacantes" object="${ofertadetrabajo}" z="PypwD6Jx3edJOIvVkOJMzRd5Ovg="/>
+        <field:display field="experienciaPrevia" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_experienciaPrevia" object="${ofertadetrabajo}" z="pBVO5UKKdD/xYmz9JNB3BXGoHD8="/>
+        <field:display date="true" dateTimePattern="${ofertaDeTrabajo_fechadefin_date_format}" field="fechaDeFin" id="s_es_uca_iw_uj2016_dominio_OfertaDeTrabajo_fechaDeFin" object="${ofertadetrabajo}" z="f18IY9e3Yag3azQiRaa9o91Isa8="/>
+    </page:show>
+    
+    </sec:authorize>
+    
 </div>

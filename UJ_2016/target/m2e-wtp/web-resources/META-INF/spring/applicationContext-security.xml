@@ -40,7 +40,7 @@
         
          <!-- Inscripcion -->
         <intercept-url pattern="\A/inscripcions/\d*\Z" method="DELETE" access="hasAnyRole('Administrador', 'Demandante')" />
-        <intercept-url pattern="\A/inscripcions\Z" method="PUT" access="hasAnyRole('Administrador', 'Demandante')" />
+        <intercept-url pattern="\A/inscripcions\Z" method="PUT" access="hasAnyRole('Administrador', 'Empresa', 'Demandante')" />
         <intercept-url pattern="\A/inscripcions/\d*\Z" method="GET" access="hasAnyRole('Administrador', 'Empresa', 'Demandante')" />
         <intercept-url pattern="\A/inscripcions\?form.*\Z" access="hasAnyRole('Administrador', 'Empresa', 'Demandante')" />
         <intercept-url pattern="\A/inscripcions\?page=\d*.*" access="hasAnyRole('Administrador', 'Empresa', 'Demandante')" />

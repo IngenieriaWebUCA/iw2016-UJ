@@ -3,21 +3,11 @@
 
 package es.uca.iw.uj2016.web;
 
-import es.uca.iw.uj2016.dominio.Demandante;
-import es.uca.iw.uj2016.dominio.Empresa;
 import es.uca.iw.uj2016.dominio.Inscripcion;
-import es.uca.iw.uj2016.dominio.OfertaDeTrabajo;
-import es.uca.iw.uj2016.dominio.Usuario;
 import es.uca.iw.uj2016.web.InscripcionController;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,23 +19,6 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect InscripcionController_Roo_Controller {
     
-    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String InscripcionController.create(@Valid Inscripcion inscripcion, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            populateEditForm(uiModel, inscripcion);
-            return "inscripcions/create";
-        }
-        uiModel.asMap().clear();
-        inscripcion.persist();
-        return "redirect:/inscripcions/" + encodeUrlPathSegment(inscripcion.getId().toString(), httpServletRequest);
-    }
-    
-    @RequestMapping(params = "form", produces = "text/html")
-    public String InscripcionController.createForm(Model uiModel) {
-        populateEditForm(uiModel, new Inscripcion());
-        return "inscripcions/create";
-    }
-    
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String InscripcionController.show(@PathVariable("id") Integer id, Model uiModel) {
         uiModel.addAttribute("inscripcion", Inscripcion.findInscripcion(id));
@@ -53,7 +26,6 @@ privileged aspect InscripcionController_Roo_Controller {
         return "inscripcions/show";
     }
     
-        
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String InscripcionController.update(@Valid Inscripcion inscripcion, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -81,7 +53,6 @@ privileged aspect InscripcionController_Roo_Controller {
         return "redirect:/inscripcions";
     }
     
-        
     String InscripcionController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {

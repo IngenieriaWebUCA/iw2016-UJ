@@ -22,6 +22,7 @@
   <jsp:directive.attribute name="z" type="java.lang.String" required="false" description="Used for checking if element has been modified (to recalculate simply provide empty string value)" />
   <jsp:directive.attribute name="actionHeaderCssStyle" type="java.lang.String" required="false" description="Custom css-style for action columns header" />
 
+  <h1>${path}</h1>
   <!-- selection -->
   <!-- This options now are configured base on datatablesConfig -->
   <jsp:directive.attribute name="selection" type="java.lang.Boolean" required="false" description="Enable selection. If has batch support is true by default. Selection only works with batch installed." />
@@ -1091,7 +1092,10 @@
 		window.setTimeout(loadDatatablesState${id}, 100);
 	});
 	</c:if>
-
+	
+	
+	
+	<c:set var="update" value="false"/>
   </script>
   </div>
 </jsp:root>

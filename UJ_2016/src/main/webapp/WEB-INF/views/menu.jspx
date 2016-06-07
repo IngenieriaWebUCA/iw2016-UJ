@@ -44,7 +44,7 @@
          -->
         <sec:authorize ifAnyGranted="Administrador, Empresa, Demandante">
 	        <menu:category id="c_inscripcion" z="WGH6UGn8Xk1BCQvYxOLO3zhO32w=">
-	            <sec:authorize ifAnyGranted="Administrador, Demandante">
+	            <sec:authorize ifAnyGranted="Administrador">
 	            <menu:item id="i_inscripcion_new" messageCode="global_menu_new" url="/inscripcions?form" z="c/fKPa6XZ8IWr+NnUZsDmwBVAoo="/>
 	            </sec:authorize>
 	            <sec:authorize ifAnyGranted="Administrador, Empresa, Demandante">

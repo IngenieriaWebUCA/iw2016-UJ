@@ -5,8 +5,7 @@
   <definition extends="default" name="inicio">
     <put-attribute name="body" value="/WEB-INF/views/red_inicio.jspx"/>
   </definition>
-  
-  
+
   <definition extends="default" name="index">
     <put-attribute name="body" value="/WEB-INF/views/index.jspx"/>
   </definition>
