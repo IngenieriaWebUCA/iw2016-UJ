@@ -1,4 +1,5 @@
 package es.uca.iw.uj2016.web;
+import es.uca.iw.uj2016.dominio.Demandante;
 import es.uca.iw.uj2016.dominio.Empresa;
 import es.uca.iw.uj2016.dominio.Estado;
 import es.uca.iw.uj2016.dominio.Inscripcion;
@@ -99,6 +100,28 @@ public class OfertaDeTrabajoController {
         	}
         }
         
+        //Demandanate actual
+        List<Demandante> deman = Demandante.findAllDemandantes();
+        List<Usuario> us = new ArrayList<Usuario>(); //Userperfil
+        for(int i=0; i<deman.size(); i++){
+        	us.add(deman.get(i).getIdUsuario());
+        }
+        int idDemanActual=0;
+        for(int i=0; i<us.size(); i++){
+        	if(idUsuarioActual==us.get(i).getId()){
+        		idDemanActual=deman.get(i).getId();
+        	}
+        }
+        
+        List<Inscripcion> todosInsc = Inscripcion.findAllInscripcions();
+        List<Inscripcion> inscripcionesDeman = new ArrayList<Inscripcion>();
+        for(int i=0; i<todosInsc.size(); i++){
+        	if(todosInsc.get(i).getIdDemandante().getId() == idDemanActual){
+        		inscripcionesDeman.add(todosInsc.get(i));
+        	}
+        }
+        
+        
         //Averiguamos todas las ofertas de trabajo de esta empresa
         List<OfertaDeTrabajo> of = OfertaDeTrabajo.findAllOfertaDeTrabajoes();
         List<OfertaDeTrabajo> of_empr = new ArrayList<OfertaDeTrabajo>();
@@ -108,11 +131,21 @@ public class OfertaDeTrabajoController {
         	}
         }
         
-        //Ofertas de trabajo activas
+        //Ofertas de trabajo activas y que no este inscritos
+        boolean inscrito = false;
         List<OfertaDeTrabajo> of_dem = new ArrayList<OfertaDeTrabajo>();
         for(int i=0; i<of.size(); i++){
         	if((of.get(i).getIdEstado().getNombre()).equals("Activa")){
-        		of_dem.add(of.get(i));
+        		inscrito=false;
+        		for(int j=0; j<inscripcionesDeman.size(); j++){
+        			if(inscripcionesDeman.get(j).getIdOfertaDeTrabajo().getId() == of.get(i).getId()){
+        				inscrito=true;
+        			}
+        		}
+        		if(!inscrito){
+        			of_dem.add(of.get(i));
+        		}
+        		
         	}
         }
        //Ofertas de trabajo relacionadas con la empresa
