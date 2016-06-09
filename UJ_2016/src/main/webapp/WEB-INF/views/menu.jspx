@@ -2,146 +2,133 @@
 <div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:sec="http://www.springframework.org/security/tags" id="menu" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    
     <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-    	<sec:authorize ifAllGranted="">
-        	<menu:category id="c_puestotrabajoperfil" z="1lJkqY+HNQIBHoGJKotZQr42Fa8=">
-            	<menu:item id="i_puestotrabajoperfil_new" messageCode="global_menu_new" url="/puestotrabajoperfils?form" z="uEl3+UUTsXGw8UHsjyXuD9z7sKQ="/>
-            	<menu:item id="i_puestotrabajoperfil_list" messageCode="global_menu_list" url="/puestotrabajoperfils?page=1&amp;size=${empty param.size ? 10 : param.size}" z="tujhuVB4YuBd+utiHh405zNxOxw="/>
-        	</menu:category>
+        <sec:authorize ifAllGranted="">
+            <menu:category id="c_puestotrabajoperfil" z="1lJkqY+HNQIBHoGJKotZQr42Fa8=">
+                <menu:item id="i_puestotrabajoperfil_new" messageCode="global_menu_new" url="/puestotrabajoperfils?form" z="uEl3+UUTsXGw8UHsjyXuD9z7sKQ="/>
+                <menu:item id="i_puestotrabajoperfil_list" messageCode="global_menu_list" url="/puestotrabajoperfils?page=1&amp;size=${empty param.size ? 10 : param.size}" z="tujhuVB4YuBd+utiHh405zNxOxw="/>
+            </menu:category>
         </sec:authorize>
-
-		<sec:authorize ifAnyGranted="Administrador, Demandante">
-	        <menu:category id="c_experienciaprofesional" z="X9VbgSVRE4o89EOHwHVfxBrZqlQ=">
-	            <menu:item id="i_experienciaprofesional_new" messageCode="global_menu_new_experiencia" url="/experienciaprofesionals?form" z="YTjV3r9Xx1o/OUSVE6IefcVG0nQ="/>
-	            <menu:item id="i_experienciaprofesional_list" messageCode="global_menu_list_experiencia" url="/experienciaprofesionals?page=1&amp;size=${empty param.size ? 10 : param.size}" z="r/vrlPEC9TnR7mYjDrIJRUxnKW4="/>
-	        </menu:category>
-	    </sec:authorize>
-	   
-	   
+        <sec:authorize ifAnyGranted="Administrador, Demandante">
+            <menu:category id="c_experienciaprofesional" z="X9VbgSVRE4o89EOHwHVfxBrZqlQ=">
+                <menu:item id="i_experienciaprofesional_new" messageCode="global_menu_new_experiencia" url="/experienciaprofesionals?form" z="user-managed"/>
+                <menu:item id="i_experienciaprofesional_list" messageCode="global_menu_list_experiencia" url="/experienciaprofesionals?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            </menu:category>
+        </sec:authorize>
         <sec:authorize ifAnyGranted="Administrador, Empresa, Demandante">
-	        <menu:category id="c_ofertadetrabajo" z="Zo9vHLVG1I0RhNv7axASlKWY4CM=">
-	        	<sec:authorize ifAnyGranted="Administrador, Empresa">
-	            <menu:item id="i_ofertadetrabajo_new" messageCode="global_menu_new_oferta" url="/ofertadetrabajoes?form" z="OqJ29Rahp1Xj+9rzYfZL8Z4303E="/>
-	            </sec:authorize>
-	            <sec:authorize ifAnyGranted="Administrador, Empresa, Demandante">
-	            <menu:item id="i_ofertadetrabajo_list" messageCode="global_menu_list_ofertas" url="/ofertadetrabajoes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="v91T1hqc+j/casiEfuNQycA5nMA="/>
-	        	</sec:authorize>
-	        </menu:category>
+            <menu:category id="c_ofertadetrabajo" z="Zo9vHLVG1I0RhNv7axASlKWY4CM=">
+                <sec:authorize ifAnyGranted="Administrador, Empresa">
+                    <menu:item id="i_ofertadetrabajo_new" messageCode="global_menu_new_oferta" url="/ofertadetrabajoes?form" z="user-managed"/>
+                </sec:authorize>
+                <sec:authorize ifAnyGranted="Administrador, Empresa, Demandante">
+                    <menu:item id="i_ofertadetrabajo_list" messageCode="global_menu_list_ofertas" url="/ofertadetrabajoes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+                </sec:authorize>
+            </menu:category>
         </sec:authorize>
-        
         <sec:authorize ifAnyGranted="Administrador, Empresa, Demandante">
-	        <menu:category id="c_inscripcion" z="WGH6UGn8Xk1BCQvYxOLO3zhO32w=">
-	            <sec:authorize ifAnyGranted="Administrador">
-	            <menu:item id="i_inscripcion_new" messageCode="global_menu_new" url="/inscripcions?form" z="c/fKPa6XZ8IWr+NnUZsDmwBVAoo="/>
-	            </sec:authorize>
-	            <sec:authorize ifAnyGranted="Administrador, Empresa, Demandante">
-	            <menu:item id="i_inscripcion_list" messageCode="global_menu_list_inscripciones" url="/inscripcions?page=1&amp;size=${empty param.size ? 10 : param.size}" z="EtJRFL7zVP9IpwmuzMtP1k1M0P0="/>
-	        	</sec:authorize>
-	        </menu:category>
-	    </sec:authorize>
-        
-        <sec:authorize ifAllGranted="Administrador">
-	        <menu:category id="c_formacionacademica" z="RhhwbYBIA+37xBOf4y79n4ZeYuU=">
-	            <menu:item id="i_formacionacademica_new" messageCode="global_menu_new" url="/formacionacademicas?form" z="BQ1VacwGYCerqZEL/2IyT3IuB6c="/>
-	            <menu:item id="i_formacionacademica_list" messageCode="global_menu_list_formacionac" url="/formacionacademicas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="RLjXRWKygNkMUiCAXalXThNrK/8="/>
-	        </menu:category>
+            <menu:category id="c_inscripcion" z="WGH6UGn8Xk1BCQvYxOLO3zhO32w=">
+                <sec:authorize ifAnyGranted="Administrador">
+                    <menu:item id="i_inscripcion_new" messageCode="global_menu_new" url="/inscripcions?form" z="c/fKPa6XZ8IWr+NnUZsDmwBVAoo="/>
+                </sec:authorize>
+                <sec:authorize ifAnyGranted="Administrador, Empresa, Demandante">
+                    <menu:item id="i_inscripcion_list" messageCode="global_menu_list_inscripciones" url="/inscripcions?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+                </sec:authorize>
+            </menu:category>
         </sec:authorize>
-        
         <sec:authorize ifAllGranted="Administrador">
-	        <menu:category id="c_ciudad" z="LNOdPhh/X7s6w+n+TyHBrE5UwaM=">
-	            <menu:item id="i_ciudad_new" messageCode="global_menu_new" url="/ciudads?form" z="iTejtevQQuZm+gjKYTh+9ZkQ3Qw="/>
-	            <menu:item id="i_ciudad_list" messageCode="global_menu_list_ciudad" url="/ciudads?page=1&amp;size=${empty param.size ? 10 : param.size}" z="mNw0gXKR04kiQf9imAigBSq24qQ="/>
-	        </menu:category>
+            <menu:category id="c_formacionacademica" z="RhhwbYBIA+37xBOf4y79n4ZeYuU=">
+                <menu:item id="i_formacionacademica_new" messageCode="global_menu_new" url="/formacionacademicas?form" z="BQ1VacwGYCerqZEL/2IyT3IuB6c="/>
+                <menu:item id="i_formacionacademica_list" messageCode="global_menu_list_formacionac" url="/formacionacademicas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            </menu:category>
         </sec:authorize>
-        
+        <sec:authorize ifAllGranted="Administrador">
+            <menu:category id="c_ciudad" z="LNOdPhh/X7s6w+n+TyHBrE5UwaM=">
+                <menu:item id="i_ciudad_new" messageCode="global_menu_new" url="/ciudads?form" z="iTejtevQQuZm+gjKYTh+9ZkQ3Qw="/>
+                <menu:item id="i_ciudad_list" messageCode="global_menu_list_ciudad" url="/ciudads?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            </menu:category>
+        </sec:authorize>
         <sec:authorize ifAnyGranted="">
-	        <menu:category id="c_titulosformacion" z="h9sXm0Mbpa8oH8VCEivHCnx2peU=">
-	            <menu:item id="i_titulosformacion_new" messageCode="global_menu_new" url="/titulosformacions?form" z="iA0JUYGKRpZVuC7PFfj8gJBV3UE="/>
-	            <menu:item id="i_titulosformacion_list" messageCode="global_menu_list" url="/titulosformacions?page=1&amp;size=${empty param.size ? 10 : param.size}" z="2SM3fO7o2uOatQMV94K+eBxI8CA="/>
-	        </menu:category>
+            <menu:category id="c_titulosformacion" z="h9sXm0Mbpa8oH8VCEivHCnx2peU=">
+                <menu:item id="i_titulosformacion_new" messageCode="global_menu_new" url="/titulosformacions?form" z="iA0JUYGKRpZVuC7PFfj8gJBV3UE="/>
+                <menu:item id="i_titulosformacion_list" messageCode="global_menu_list" url="/titulosformacions?page=1&amp;size=${empty param.size ? 10 : param.size}" z="2SM3fO7o2uOatQMV94K+eBxI8CA="/>
+            </menu:category>
         </sec:authorize>
-        
         <sec:authorize ifAnyGranted="Administrador, Empresa">
-	        <menu:category id="c_localizacion" z="Xz23btBvQalu0fOfODfDsPk458k=">
-	            <menu:item id="i_localizacion_new" messageCode="global_menu_new_localizacion" url="/localizacions?form" z="zkpqXsv93tOCNQokTOLb8lKILmQ="/>
-	            <menu:item id="i_localizacion_list" messageCode="global_menu_list_localizacion" url="/localizacions?page=1&amp;size=${empty param.size ? 10 : param.size}" z="InM8yKFoMAdXifon78tQEBD/Y28="/>
-	        </menu:category>
+            <menu:category id="c_localizacion" z="Xz23btBvQalu0fOfODfDsPk458k=">
+                <menu:item id="i_localizacion_new" messageCode="global_menu_new_localizacion" url="/localizacions?form" z="user-managed"/>
+                <menu:item id="i_localizacion_list" messageCode="global_menu_list_localizacion" url="/localizacions?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            </menu:category>
         </sec:authorize>
-        
         <sec:authorize ifAnyGranted="">
-	        <menu:category id="c_estado" z="R0VnER9YYkIt+dO11st4rxP96qg=">
-	            <menu:item id="i_estado_new" messageCode="global_menu_new" url="/estadoes?form" z="ycg0kAs5SJ41KTsAQHflCSNyXf0="/>
-	            <menu:item id="i_estado_list" messageCode="global_menu_list_estado" url="/estadoes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/PJMqPVs73Y+7l/7KDQDkMo0E5E="/>
-	        </menu:category>
+            <menu:category id="c_estado" z="R0VnER9YYkIt+dO11st4rxP96qg=">
+                <menu:item id="i_estado_new" messageCode="global_menu_new" url="/estadoes?form" z="ycg0kAs5SJ41KTsAQHflCSNyXf0="/>
+                <menu:item id="i_estado_list" messageCode="global_menu_list_estado" url="/estadoes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            </menu:category>
         </sec:authorize>
-        
         <sec:authorize ifAllGranted="Administrador">
-	        <menu:category id="c_perfil" z="IXsqDjmAdFx8UDse6pIX4BWTzJI=">
-	            <menu:item id="i_perfil_new" messageCode="global_menu_new" url="/perfils?form" z="o4iwt5RupWuivgX3bSp1Ge1LhlA="/>
-	           	<menu:item id="i_perfil_list" messageCode="global_menu_list_perfil" url="/perfils?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9a6XPu7Dg4+ZnXkuIifSq+pUUuU="/>
-	        </menu:category>
+            <menu:category id="c_perfil" z="IXsqDjmAdFx8UDse6pIX4BWTzJI=">
+                <menu:item id="i_perfil_new" messageCode="global_menu_new" url="/perfils?form" z="o4iwt5RupWuivgX3bSp1Ge1LhlA="/>
+                <menu:item id="i_perfil_list" messageCode="global_menu_list_perfil" url="/perfils?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            </menu:category>
         </sec:authorize>
-        
         <sec:authorize ifAllGranted="Administrador">
-	        <menu:category id="c_puestodetrabajo" z="eVghtih+LshsGpI3ARsk2v+KHX4=">
-	            <menu:item id="i_puestodetrabajo_new" messageCode="global_menu_new" url="/puestodetrabajoes?form" z="g1mw9TBNsw4Hkzf0URW6ghXIMbo="/>
-	            <menu:item id="i_puestodetrabajo_list" messageCode="global_menu_list_puesto" url="/puestodetrabajoes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="fD3AzJaSg8s+ca1oHfYosWwaAaU="/>
-	        </menu:category>
+            <menu:category id="c_puestodetrabajo" z="eVghtih+LshsGpI3ARsk2v+KHX4=">
+                <menu:item id="i_puestodetrabajo_new" messageCode="global_menu_new" url="/puestodetrabajoes?form" z="g1mw9TBNsw4Hkzf0URW6ghXIMbo="/>
+                <menu:item id="i_puestodetrabajo_list" messageCode="global_menu_list_puesto" url="/puestodetrabajoes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            </menu:category>
         </sec:authorize>
-        
-     	<sec:authorize ifAnyGranted="Administrador, Demandante, Empresa">
-	        <menu:category id="c_empresa" z="Xy2UIEQBwGL74OghlgyDNqDXG44=">
-	        	<sec:authorize ifAnyGranted="Administrador, Empresa">
-	            	<menu:item id="i_empresa_new" messageCode="global_menu_new_empresa" url="/empresas?form" z="TBXez8QM+aB2tzcjHN1lQJYrewc="/>
-	            </sec:authorize>
-	            <sec:authorize ifAnyGranted="Administrador, Demandante">
-	            	<menu:item id="i_empresa_list" messageCode="global_menu_list_empresa" url="/empresas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/YQYlSdehDz3lrOGSSpWZYe++Zk="/>
-	        	</sec:authorize>
-	        </menu:category>
-        </sec:authorize>
-        
-        <sec:authorize ifAllGranted="">
-	        <menu:category id="c_ofertatrabajotitulos" z="1VQ/rb51nf0kW8ShHosrwI9aO4s=">
-	            <menu:item id="i_ofertatrabajotitulos_new" messageCode="global_menu_new" url="/ofertatrabajotituloses?form" z="uWger8xPuCoC2WeL1R4bKcvx498="/>
-	            <menu:item id="i_ofertatrabajotitulos_list" messageCode="global_menu_list" url="/ofertatrabajotituloses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="bqslfpypkuC+VufYbMUP6H91ZcA="/>
-	        </menu:category>
-        </sec:authorize>
-        
-        <sec:authorize ifAllGranted="">
-	        <menu:category id="c_titulosacademicos" z="K3vhRjcHCDoEKErzhOU0m5Nkl7c=">
-	            <menu:item id="i_titulosacademicos_new" messageCode="global_menu_new_titulo" url="/titulosacademicoses?form" z="ocjt/iZMeMPF6cn81C8I3Q/pCMc="/>
-	            <menu:item id="i_titulosacademicos_list" messageCode="global_menu_list_titulo" url="/titulosacademicoses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="mAhkTIutBD60PFpmOZd7f+8ybe8="/>
-	        </menu:category>
-        </sec:authorize>
-        
         <sec:authorize ifAnyGranted="Administrador, Demandante, Empresa">
-	        <menu:category id="c_demandante" z="ap7hcwTTE7QpwHyV1OnSKrPHdQc=">
-	        	<sec:authorize ifAnyGranted="Administrador, Demandante">
-	            	<menu:item id="i_demandante_new" messageCode="global_menu_new_demandante" url="/demandantes?form" z="8+S2ulD0VSXmoyyhDfXJ+CNxgh8="/>
-	            </sec:authorize>
-	            <sec:authorize ifAnyGranted="Administrador, Empresa">
-	            	<menu:item id="i_demandante_list" messageCode="global_menu_list_demandante" url="/demandantes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="1MtvqFaAsZmIa4hZR8pApwIOdDY="/>
-	        	</sec:authorize>
-	        </menu:category>
-	    </sec:authorize>
-        
-        <sec:authorize ifAnyGranted="Administrador, Empresa, Demandante">
-	        <menu:category id="c_usuario" z="g6oG0656PcsmmvUYeBtpgiQROck=">
-	        	<sec:authorize ifAllGranted="Administrador">
-	            	<menu:item id="i_usuario_new" messageCode="global_menu_new" url="/usuarios?form" z="RG1gCsiZQjg1HLDzXbHKht6yDkw="/>
-	            </sec:authorize>
-	            <sec:authorize ifAnyGranted="Administrador, Empresa, Demandante">
-	            	<menu:item id="i_usuario_list" messageCode="global_menu_list_user" url="/usuarios?page=1&amp;size=${empty param.size ? 10 : param.size}" z="P7ZIPrcTTBR41JYD0QldbYgsZrM="/>
-	        	</sec:authorize>
-	        </menu:category>
-	    </sec:authorize>
-        
+            <menu:category id="c_empresa" z="Xy2UIEQBwGL74OghlgyDNqDXG44=">
+                <sec:authorize ifAnyGranted="Administrador, Empresa">
+                    <menu:item id="i_empresa_new" messageCode="global_menu_new_empresa" url="/empresas?form" z="user-managed"/>
+                </sec:authorize>
+                <sec:authorize ifAnyGranted="Administrador, Demandante">
+                    <menu:item id="i_empresa_list" messageCode="global_menu_list_empresa" url="/empresas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+                </sec:authorize>
+            </menu:category>
+        </sec:authorize>
         <sec:authorize ifAllGranted="">
-	        <menu:category id="c_rolusuario" z="y2VPYjaSpUhBo5DJ8tKaOYJ4Jhg=">
-	            <menu:item id="i_rolusuario_new" messageCode="global_menu_new" url="/rolusuarios?form" z="fLNWyXPyGHpc8gH93mpE7AV0GvI="/>
-	            <menu:item id="i_rolusuario_list" messageCode="global_menu_list_rol" url="/rolusuarios?page=1&amp;size=${empty param.size ? 10 : param.size}" z="HTe5F/yVx6QM8vfFhz0H+ABgAbE="/>
+            <menu:category id="c_ofertatrabajotitulos" z="1VQ/rb51nf0kW8ShHosrwI9aO4s=">
+                <menu:item id="i_ofertatrabajotitulos_new" messageCode="global_menu_new" url="/ofertatrabajotituloses?form" z="uWger8xPuCoC2WeL1R4bKcvx498="/>
+                <menu:item id="i_ofertatrabajotitulos_list" messageCode="global_menu_list" url="/ofertatrabajotituloses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="bqslfpypkuC+VufYbMUP6H91ZcA="/>
+            </menu:category>
+        </sec:authorize>
+        <sec:authorize ifAllGranted="">
+            <menu:category id="c_titulosacademicos" z="K3vhRjcHCDoEKErzhOU0m5Nkl7c=">
+                <menu:item id="i_titulosacademicos_new" messageCode="global_menu_new_titulo" url="/titulosacademicoses?form" z="user-managed"/>
+                <menu:item id="i_titulosacademicos_list" messageCode="global_menu_list_titulo" url="/titulosacademicoses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            </menu:category>
+        </sec:authorize>
+        <sec:authorize ifAnyGranted="Administrador, Demandante, Empresa">
+            <menu:category id="c_demandante" z="ap7hcwTTE7QpwHyV1OnSKrPHdQc=">
+                <sec:authorize ifAnyGranted="Administrador, Demandante">
+                    <menu:item id="i_demandante_new" messageCode="global_menu_new_demandante" url="/demandantes?form" z="user-managed"/>
+                </sec:authorize>
+                <sec:authorize ifAnyGranted="Administrador, Empresa">
+                    <menu:item id="i_demandante_list" messageCode="global_menu_list_demandante" url="/demandantes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+                </sec:authorize>
+            </menu:category>
+        </sec:authorize>
+        <sec:authorize ifAnyGranted="Administrador, Empresa, Demandante">
+            <menu:category id="c_usuario" z="g6oG0656PcsmmvUYeBtpgiQROck=">
+                <sec:authorize ifAllGranted="Administrador">
+                    <menu:item id="i_usuario_new" messageCode="global_menu_new" url="/usuarios?form" z="RG1gCsiZQjg1HLDzXbHKht6yDkw="/>
+                </sec:authorize>
+                <sec:authorize ifAnyGranted="Administrador, Empresa, Demandante">
+                    <menu:item id="i_usuario_list" messageCode="global_menu_list_user" url="/usuarios?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+                </sec:authorize>
+            </menu:category>
+        </sec:authorize>
+        <sec:authorize ifAllGranted="">
+            <menu:category id="c_rolusuario" z="y2VPYjaSpUhBo5DJ8tKaOYJ4Jhg=">
+                <menu:item id="i_rolusuario_new" messageCode="global_menu_new" url="/rolusuarios?form" z="fLNWyXPyGHpc8gH93mpE7AV0GvI="/>
+                <menu:item id="i_rolusuario_list" messageCode="global_menu_list_rol" url="/rolusuarios?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            </menu:category>
+        </sec:authorize>
+        <sec:authorize ifAllGranted="Administrador">
+	        <menu:category id="c_seleniumtests" z="PPLMd2yNB6/LSbjIWogAacRPU+Q=">
+	            <menu:item id="si_seleniumtests_test" messageCode="selenium_menu_test_suite" url="/resources/selenium/test-suite.xhtml" z="wwunW/IPDcunN97u41MvMJZQ2to="/>
 	        </menu:category>
-	   </sec:authorize>
+        </sec:authorize>
     </menu:menu>
 </div>

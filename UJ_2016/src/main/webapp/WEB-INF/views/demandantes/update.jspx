@@ -2,24 +2,24 @@
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    
-    <c:set var="idDemanActual" value="${0}"/>
-    <c:set var="fin" value="${fn:length(userperfil) - 1}"/>
-        <c:forEach begin="0" end="${fin}" varStatus="loop">
-        	<c:if test="${idUsuarioActual == userperfil[loop.index].id}">
-        		<c:set var="idDemanActual" value="${demandantes[loop.index].id}"/>
-        	</c:if>
-        </c:forEach>
-        
+    <c:set value="${0}" var="idDemanActual"/>
+    <c:set value="${fn:length(userperfil) - 1}" var="fin"/>
+    <c:forEach begin="0" end="${fin}" varStatus="loop">
+        <c:if test="${idUsuarioActual == userperfil[loop.index].id}">
+            <c:set value="${demandantes[loop.index].id}" var="idDemanActual"/>
+        </c:if>
+    </c:forEach>
     <form:update id="fu_es_uca_iw_uj2016_dominio_Demandante" modelAttribute="demandante" path="/demandantes" versionField="none" z="CBIzJ3p3vdgMkKOkuIHVBhVZ7Z8=">
         <field:input field="nombre" id="c_es_uca_iw_uj2016_dominio_Demandante_nombre" required="true" z="vaoGBWdqQd+xTyFBcrM8T9dTIBM="/>
-	        <field:input field="apellidos" id="c_es_uca_iw_uj2016_dominio_Demandante_apellidos" required="true" z="4CsX/niawHWxk1/5n0T4g5AWshg="/>
-	        <field:input field="dni" id="c_es_uca_iw_uj2016_dominio_Demandante_dni" required="true" z="Zl7g8D5oT6xh18wvZeyIas5RzG0="/>
-	        <field:datetime dateTimePattern="${demandante_fechanacimiento_date_format}" field="fechaNacimiento" id="c_es_uca_iw_uj2016_dominio_Demandante_fechaNacimiento" required="true" z="YrtBEsB6PQqO//PTLYeWG1QcHGI="/>
-	        <field:input field="sexo" id="c_es_uca_iw_uj2016_dominio_Demandante_sexo" required="true" z="KFwenhxoY96hBveFtOVrmtxnpT4="/>
-	        <field:input field="direccion" id="c_es_uca_iw_uj2016_dominio_Demandante_direccion" required="true" z="C7wWY2RTch+nnPhdYGMe6fQK6Zo="/>
-	        <field:input field="email" id="c_es_uca_iw_uj2016_dominio_Demandante_email" required="true" validationMessageCode="field_invalid_email" z="jyfEZL4vCkWGnzCp2Ccv+FR6duI="/>
-	        <field:input field="telefono" id="c_es_uca_iw_uj2016_dominio_Demandante_telefono" required="true" validationMessageCode="field_invalid_integer" z="zg8mL995bXNMhJGXFFfCU5V3tf0="/>
-	        <input type="hidden" field="idUsuario" id="c_es_uca_iw_uj2016_dominio_Demandante_idUsuario" name="idUsuario" value="${idUsuarioActual}" z="gQNc7yCAQAWuIR0AoxduaG5GD9Q="/>
+        <field:input field="apellidos" id="c_es_uca_iw_uj2016_dominio_Demandante_apellidos" required="true" z="4CsX/niawHWxk1/5n0T4g5AWshg="/>
+        <field:input field="dni" id="c_es_uca_iw_uj2016_dominio_Demandante_dni" required="true" z="Zl7g8D5oT6xh18wvZeyIas5RzG0="/>
+        <field:datetime dateTimePattern="${demandante_fechanacimiento_date_format}" field="fechaNacimiento" id="c_es_uca_iw_uj2016_dominio_Demandante_fechaNacimiento" required="true" z="YrtBEsB6PQqO//PTLYeWG1QcHGI="/>
+        <field:input field="sexo" id="c_es_uca_iw_uj2016_dominio_Demandante_sexo" required="true" z="KFwenhxoY96hBveFtOVrmtxnpT4="/>
+        <field:input field="direccion" id="c_es_uca_iw_uj2016_dominio_Demandante_direccion" required="true" z="C7wWY2RTch+nnPhdYGMe6fQK6Zo="/>
+        <field:input field="email" id="c_es_uca_iw_uj2016_dominio_Demandante_email" required="true" validationMessageCode="field_invalid_email" z="jyfEZL4vCkWGnzCp2Ccv+FR6duI="/>
+        <field:input field="telefono" id="c_es_uca_iw_uj2016_dominio_Demandante_telefono" required="true" validationMessageCode="field_invalid_integer" z="zg8mL995bXNMhJGXFFfCU5V3tf0="/>
+        <input field="idUsuario" id="c_es_uca_iw_uj2016_dominio_Demandante_idUsuario" name="idUsuario" type="hidden" value="${idUsuarioActual}" z="user-managed"/>
+        <field:simple field="inscripcions" id="c_es_uca_iw_uj2016_dominio_Demandante_inscripcions" messageCode="entity_reference_not_managed" messageCodeAttribute="Inscripcion" z="wuAfytJIlrHinaHP53TaAmeTv8M="/>
+        <field:simple field="perfils" id="c_es_uca_iw_uj2016_dominio_Demandante_perfils" messageCode="entity_reference_not_managed" messageCodeAttribute="Perfil" z="uXHVj9cDdi3RubKjrMJM97sj/6U="/>
     </form:update>
 </div>

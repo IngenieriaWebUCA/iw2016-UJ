@@ -3,23 +3,13 @@
 
 package es.uca.iw.uj2016.web;
 
-import es.uca.iw.uj2016.dominio.Demandante;
 import es.uca.iw.uj2016.dominio.ExperienciaProfesional;
-import es.uca.iw.uj2016.dominio.Inscripcion;
-import es.uca.iw.uj2016.dominio.Perfil;
-import es.uca.iw.uj2016.dominio.PuestoDeTrabajo;
-import es.uca.iw.uj2016.dominio.Usuario;
 import es.uca.iw.uj2016.web.ExperienciaProfesionalController;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,7 +46,6 @@ privileged aspect ExperienciaProfesionalController_Roo_Controller {
         return "experienciaprofesionals/show";
     }
     
-        
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String ExperienciaProfesionalController.update(@Valid ExperienciaProfesional experienciaProfesional, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -89,7 +78,6 @@ privileged aspect ExperienciaProfesionalController_Roo_Controller {
         uiModel.addAttribute("experienciaProfesional_fechafin_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
-        
     String ExperienciaProfesionalController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {

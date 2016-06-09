@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:sec="http://www.springframework.org/security/tags" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/jquery/form" xmlns:sec="http://www.springframework.org/security/tags" xmlns:table="urn:jsptagdir:/WEB-INF/tags/jquery/form/fields" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <sec:authorize ifAnyGranted="Empresa, Demandante"> 
-    <page:list id="pl_es_uca_iw_uj2016_dominio_Empresa" items="${empresas}" z="ORsN9NlpCPsnpwdyheWOAT2DxAk=">
-        <table:table data="${empresas}" id="l_es_uca_iw_uj2016_dominio_Empresa" path="/empresas" z="Z40X8UdeJFl/ynR3QQs6DqTksc0=" create="false" update="false" delete="false">
-            <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_cif" property="cif" z="kdz43X4hAwLCCyfxPePTdbwW4yY="/>
-            <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_nombre" property="nombre" z="WeRVD49epo1gBy5yZrjKNbbi9Hg="/>
-            <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_email" property="email" z="BV8AbTa7gBK42Y7nHcpdS37ohtU="/>
-            <!--  <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_idUsuario" property="idUsuario" z="0LRZRS8kuN8Gfdw7caox9m2GuFc="/> -->
-        </table:table>
-    </page:list>
+    <sec:authorize ifAnyGranted="Empresa, Demandante">
+        <page:list id="pl_es_uca_iw_uj2016_dominio_Empresa" items="${empresas}" z="ORsN9NlpCPsnpwdyheWOAT2DxAk=">
+            <table:table create="false" data="${empresas}" delete="false" id="l_es_uca_iw_uj2016_dominio_Empresa" path="/empresas" update="false" z="user-managed">
+                <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_cif" property="cif" z="kdz43X4hAwLCCyfxPePTdbwW4yY="/>
+                <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_nombre" property="nombre" z="WeRVD49epo1gBy5yZrjKNbbi9Hg="/>
+                <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_email" property="email" z="BV8AbTa7gBK42Y7nHcpdS37ohtU="/>
+                <!--  <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_idUsuario" property="idUsuario" z="0LRZRS8kuN8Gfdw7caox9m2GuFc="/> -->
+                <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_idUsuario" property="idUsuario" z="0LRZRS8kuN8Gfdw7caox9m2GuFc="/>
+            </table:table>
+        </page:list>
     </sec:authorize>
-    
     <sec:authorize ifAllGranted="Administrador">
-    	<page:list id="pl_es_uca_iw_uj2016_dominio_Empresa" items="${empresas}" z="ORsN9NlpCPsnpwdyheWOAT2DxAk=">
-        <table:table data="${empresas}" id="l_es_uca_iw_uj2016_dominio_Empresa" path="/empresas" z="Z40X8UdeJFl/ynR3QQs6DqTksc0=">
-            <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_cif" property="cif" z="kdz43X4hAwLCCyfxPePTdbwW4yY="/>
-            <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_nombre" property="nombre" z="WeRVD49epo1gBy5yZrjKNbbi9Hg="/>
-            <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_email" property="email" z="BV8AbTa7gBK42Y7nHcpdS37ohtU="/>
-            <!--  <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_idUsuario" property="idUsuario" z="0LRZRS8kuN8Gfdw7caox9m2GuFc="/> -->
-        </table:table>
-    </page:list>
-    
+        <page:list id="pl_es_uca_iw_uj2016_dominio_Empresa" items="${empresas}" z="ORsN9NlpCPsnpwdyheWOAT2DxAk=">
+            <table:table data="${empresas}" id="l_es_uca_iw_uj2016_dominio_Empresa" path="/empresas" z="Z40X8UdeJFl/ynR3QQs6DqTksc0=">
+                <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_cif" property="cif" z="kdz43X4hAwLCCyfxPePTdbwW4yY="/>
+                <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_nombre" property="nombre" z="WeRVD49epo1gBy5yZrjKNbbi9Hg="/>
+                <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_email" property="email" z="BV8AbTa7gBK42Y7nHcpdS37ohtU="/>
+                <!--  <table:column id="c_es_uca_iw_uj2016_dominio_Empresa_idUsuario" property="idUsuario" z="0LRZRS8kuN8Gfdw7caox9m2GuFc="/> -->
+            </table:table>
+        </page:list>
     </sec:authorize>
-    
-    
 </div>

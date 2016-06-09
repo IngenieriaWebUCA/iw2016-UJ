@@ -57,3 +57,58 @@ database reverse engineer --package ~.dominio --schema no-schema-required
 email sender setup --hostServer smtp.gmail.com --protocol smtp --port 587
 // Spring Roo 1.3.2.RELEASE [rev d18aef8] log closed at 2016-06-08 00:43:18
 // Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-06-09 17:50:13
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-06-09 18:39:36
+test mock --entity ~.domain.Demandante
+test mock --entity ~.dominio.Demandante
+test mock --entity ~.dominio.Ciudad
+test mock --entity ~.dominio.Empresa
+test mock --entity ~.dominio.Estado
+test mock --entity ~.dominio.ExperienciaProfesional
+test mock --entity ~.dominio.FormacionAcademica
+test mock --entity ~.dominio.Inscripcion
+test mock --entity ~.dominio.Localizacion
+test mock --entity ~.dominio.OfertaDeTrabajo
+test mock --entity ~.dominio.OfertaTrabajoTitulos
+test mock --entity ~.dominio.Perfil
+test mock --entity ~.dominio.PuestoDeTrabajo
+test mock --entity ~.dominio.PuestoDeTrabajoPerfil
+test mock --entity ~.dominio.PuestoTrabajoPerfil
+test mock --entity ~.dominio.RolUsuario
+test mock --entity ~.dominio.TitulosAcademicos
+test mock --entity ~.dominio.TitulosFormacion
+test mock --entity ~.dominio.Usuario
+test integration --entity ~.dominio.Ciudad
+test integration --entity ~.dominio.Demandante
+test integration --entity ~.dominio.Empresa
+test integration --entity ~.dominio.Estado
+test integration --entity ~.dominio.ExperienciaProfesional
+test integration --entity ~.dominio.FormacionAcademica
+test integration --entity ~.dominio.Inscripcion
+test integration --entity ~.dominio.Localizacion
+test integration --entity ~.dominio.OfertaDeTrabajo
+test integration --entity ~.dominio.OfertaTrabajoTitulos
+test integration --entity ~.dominio.Perfil
+test integration --entity ~.dominio.PuestoDeTrabajo
+test integration --entity ~.dominio.PuestoTrabajoPerfil
+test integration --entity ~.dominio.RolUsuario
+test integration --entity ~.dominio.TitulosAcademicos
+test integration --entity ~.dominio.TitulosFormacion
+test integration --entity ~.dominio.Usuario
+selenium test --controller ~.web.CiudadController
+selenium test --controller ~.web.DemandanteController
+selenium test --controller ~.web.EmpresaController
+selenium test --controller ~.web.EstadoController
+selenium test --controller ~.web.ExperienciaProfesionalController
+selenium test --controller ~.web.FormacionAcademicaController
+selenium test --controller ~.web.InscripcionController
+selenium test --controller ~.web.LocalizacionController
+// [failed] selenium test --controller ~.web.ObtenerIdController
+selenium test --controller ~.web.OfertaDeTrabajoController
+selenium test --controller ~.web.OfertaTrabajoTitulosController
+selenium test --controller ~.web.PerfilController
+selenium test --controller ~.web.PuestoDeTrabajoController
+selenium test --controller ~.web.PuestoTrabajoPerfilController
+selenium test --controller ~.web.RolUsuarioController
+selenium test --controller ~.web.TitulosAcademicosController
+selenium test --controller ~.web.TitulosFormacionController
+selenium test --controller ~.web.UsuarioController
