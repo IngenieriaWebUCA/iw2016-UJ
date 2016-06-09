@@ -21,8 +21,6 @@
             <field:input field="email" id="c_es_uca_iw_uj2016_dominio_Demandante_email" required="true" validationMessageCode="field_invalid_email" z="jyfEZL4vCkWGnzCp2Ccv+FR6duI="/>
             <field:input field="telefono" id="c_es_uca_iw_uj2016_dominio_Demandante_telefono" required="true" validationMessageCode="field_invalid_integer" z="zg8mL995bXNMhJGXFFfCU5V3tf0="/>
             <input field="idUsuario" id="c_es_uca_iw_uj2016_dominio_Demandante_idUsuario" name="idUsuario" type="hidden" value="${idUsuarioActual}" z="user-managed"/>
-            <field:simple field="inscripcions" id="c_es_uca_iw_uj2016_dominio_Demandante_inscripcions" messageCode="entity_reference_not_managed" messageCodeAttribute="Inscripcion" z="wuAfytJIlrHinaHP53TaAmeTv8M="/>
-            <field:simple field="perfils" id="c_es_uca_iw_uj2016_dominio_Demandante_perfils" messageCode="entity_reference_not_managed" messageCodeAttribute="Perfil" z="uXHVj9cDdi3RubKjrMJM97sj/6U="/>
         </form:create>
         <form:dependency dependencies="${dependencies}" id="d_es_uca_iw_uj2016_dominio_Demandante" render="${not empty dependencies}" z="eU5tL5MLbzaX2Fh3i7vbuSqXLik="/>
     </c:if>

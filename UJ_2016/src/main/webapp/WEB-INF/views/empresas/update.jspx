@@ -16,7 +16,5 @@
         <field:input field="numeroEmpleados" id="c_es_uca_iw_uj2016_dominio_Empresa_numeroEmpleados" required="true" validationMessageCode="field_invalid_integer" z="RTNLYTqUP5q8wqC/Dwtz0nPDJ3A="/>
         <field:input field="actividadProfesional" id="c_es_uca_iw_uj2016_dominio_Empresa_actividadProfesional" required="true" z="E3W1ujavSm/NTWfdyQ8Q7XGvDlQ="/>
         <input field="idUsuario" id="c_es_uca_iw_uj2016_dominio_Empresa_idUsuario" name="idUsuario" type="hidden" value="${idUsuarioActual}" z="user-managed"/>
-        <field:simple field="localizacions" id="c_es_uca_iw_uj2016_dominio_Empresa_localizacions" messageCode="entity_reference_not_managed" messageCodeAttribute="Localizacion" z="+GYsqg2LzfTH/scWU1Fe1YIvlQc="/>
-        <field:simple field="ofertaDeTrabajoes" id="c_es_uca_iw_uj2016_dominio_Empresa_ofertaDeTrabajoes" messageCode="entity_reference_not_managed" messageCodeAttribute="Oferta De Trabajo" z="vbMyhpyLomZ/s8adf8DEEcqv95s="/>
     </form:update>
 </div>

@@ -3,7 +3,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_es_uca_iw_uj2016_dominio_RolUsuario" modelAttribute="rolUsuario" path="/rolusuarios" versionField="none" z="gg8I6xxh9hPfA9avmDXCM9AcMuI=">
-        <field:simple field="usuarios" id="c_es_uca_iw_uj2016_dominio_RolUsuario_usuarios" messageCode="entity_reference_not_managed" messageCodeAttribute="Usuario" z="Q4kpI+bHtV7s1rhUoQpL6DL0OIs="/>
         <field:input field="nombre" id="c_es_uca_iw_uj2016_dominio_RolUsuario_nombre" required="true" z="sTmrcg+soMTjF3lcfYMdSpXUypM="/>
     </form:update>
 </div>

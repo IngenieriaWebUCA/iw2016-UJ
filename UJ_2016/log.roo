@@ -112,3 +112,4 @@ selenium test --controller ~.web.RolUsuarioController
 selenium test --controller ~.web.TitulosAcademicosController
 selenium test --controller ~.web.TitulosFormacionController
 selenium test --controller ~.web.UsuarioController
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log closed at 2016-06-09 19:41:38
