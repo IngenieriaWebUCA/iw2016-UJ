@@ -4,7 +4,7 @@
     <jsp:output omit-xml-declaration="yes"/>
     
     <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-    	<sec:authorize ifAllGranted="Administrador">
+    	<sec:authorize ifAllGranted="">
         	<menu:category id="c_puestotrabajoperfil" z="1lJkqY+HNQIBHoGJKotZQr42Fa8=">
             	<menu:item id="i_puestotrabajoperfil_new" messageCode="global_menu_new" url="/puestotrabajoperfils?form" z="uEl3+UUTsXGw8UHsjyXuD9z7sKQ="/>
             	<menu:item id="i_puestotrabajoperfil_list" messageCode="global_menu_list" url="/puestotrabajoperfils?page=1&amp;size=${empty param.size ? 10 : param.size}" z="tujhuVB4YuBd+utiHh405zNxOxw="/>
@@ -55,7 +55,7 @@
 	        </menu:category>
         </sec:authorize>
         
-        <sec:authorize ifAnyGranted="Administrador">
+        <sec:authorize ifAnyGranted="">
 	        <menu:category id="c_titulosformacion" z="h9sXm0Mbpa8oH8VCEivHCnx2peU=">
 	            <menu:item id="i_titulosformacion_new" messageCode="global_menu_new" url="/titulosformacions?form" z="iA0JUYGKRpZVuC7PFfj8gJBV3UE="/>
 	            <menu:item id="i_titulosformacion_list" messageCode="global_menu_list" url="/titulosformacions?page=1&amp;size=${empty param.size ? 10 : param.size}" z="2SM3fO7o2uOatQMV94K+eBxI8CA="/>
@@ -69,7 +69,7 @@
 	        </menu:category>
         </sec:authorize>
         
-        <sec:authorize ifAnyGranted="Administrador">
+        <sec:authorize ifAnyGranted="">
 	        <menu:category id="c_estado" z="R0VnER9YYkIt+dO11st4rxP96qg=">
 	            <menu:item id="i_estado_new" messageCode="global_menu_new" url="/estadoes?form" z="ycg0kAs5SJ41KTsAQHflCSNyXf0="/>
 	            <menu:item id="i_estado_list" messageCode="global_menu_list_estado" url="/estadoes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/PJMqPVs73Y+7l/7KDQDkMo0E5E="/>
@@ -101,14 +101,14 @@
 	        </menu:category>
         </sec:authorize>
         
-        <sec:authorize ifAllGranted="Administrador">
+        <sec:authorize ifAllGranted="">
 	        <menu:category id="c_ofertatrabajotitulos" z="1VQ/rb51nf0kW8ShHosrwI9aO4s=">
 	            <menu:item id="i_ofertatrabajotitulos_new" messageCode="global_menu_new" url="/ofertatrabajotituloses?form" z="uWger8xPuCoC2WeL1R4bKcvx498="/>
 	            <menu:item id="i_ofertatrabajotitulos_list" messageCode="global_menu_list" url="/ofertatrabajotituloses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="bqslfpypkuC+VufYbMUP6H91ZcA="/>
 	        </menu:category>
         </sec:authorize>
         
-        <sec:authorize ifAllGranted="Administrador">
+        <sec:authorize ifAllGranted="">
 	        <menu:category id="c_titulosacademicos" z="K3vhRjcHCDoEKErzhOU0m5Nkl7c=">
 	            <menu:item id="i_titulosacademicos_new" messageCode="global_menu_new_titulo" url="/titulosacademicoses?form" z="ocjt/iZMeMPF6cn81C8I3Q/pCMc="/>
 	            <menu:item id="i_titulosacademicos_list" messageCode="global_menu_list_titulo" url="/titulosacademicoses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="mAhkTIutBD60PFpmOZd7f+8ybe8="/>
@@ -137,7 +137,7 @@
 	        </menu:category>
 	    </sec:authorize>
         
-        <sec:authorize ifAllGranted="Administrador">
+        <sec:authorize ifAllGranted="">
 	        <menu:category id="c_rolusuario" z="y2VPYjaSpUhBo5DJ8tKaOYJ4Jhg=">
 	            <menu:item id="i_rolusuario_new" messageCode="global_menu_new" url="/rolusuarios?form" z="fLNWyXPyGHpc8gH93mpE7AV0GvI="/>
 	            <menu:item id="i_rolusuario_list" messageCode="global_menu_list_rol" url="/rolusuarios?page=1&amp;size=${empty param.size ? 10 : param.size}" z="HTe5F/yVx6QM8vfFhz0H+ABgAbE="/>
