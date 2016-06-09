@@ -3,6 +3,6 @@
 	
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-	<meta http-equiv="Refresh" content="0;url=http://localhost:8080/UJ_2016/ObtenerIdController/inicio"/>
+	<meta http-equiv="Refresh" content="0;url=http://${pageContext.request.localName}:${pageContext.request.localPort}/UJ_2016/ObtenerIdController/inicio"/>
 	
 </div>

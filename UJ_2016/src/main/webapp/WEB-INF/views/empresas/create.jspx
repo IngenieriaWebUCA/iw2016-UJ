@@ -21,6 +21,6 @@
         <form:dependency dependencies="${dependencies}" id="d_es_uca_iw_uj2016_dominio_Empresa" render="${not empty dependencies}" z="EjXFBqH1SIDWDPHfC9Yf7FRuFhM="/>
     </c:if>
     <c:if test="${idEmpresaActual &gt; 0}">
-        <meta content="0;url=http://localhost:8080/UJ_2016/empresas/${idEmpresaActual}?form" http-equiv="Refresh"/>
+        <meta content="0;url=http://${pageContext.request.localName}:${pageContext.request.localPort}/UJ_2016/empresas/${idEmpresaActual}?form" http-equiv="Refresh"/>
     </c:if>
 </div>
