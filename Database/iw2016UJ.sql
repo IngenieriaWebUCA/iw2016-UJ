@@ -20,6 +20,10 @@ SET time_zone = "+00:00";
 -- Base de datos: `iw2016UJ`
 --
 
+CREATE DATABASE IF NOT EXISTS iw2016UJ;
+GRANT ALL PRIVILEGES ON iw2016UJ.* TO 'iw2016UJ'@'localhost';
+USE iw2016UJ; 
+
 -- --------------------------------------------------------
 
 --
